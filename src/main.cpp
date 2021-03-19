@@ -20,10 +20,25 @@
  * ---------- ---------- ---------------------------------------------------------------------------
  * 2021-03-17 Old Squire Template created
  ***************************************************************************************************/
+//#include <WiFi.h> // Required to connect to WiFi network. Comes with Platform.io
 #include <aaChip.h> // Used to access details about the core (CPU) that the Arduino framework runs on
+#include <aaFormat.h> // Collection of handy format conversion functions
+#include <aaNetwork.h> // Required for handling Wifi functions. 
 
 // Instantiate library objects
-aaChip appCpu; // Access information about the ESP32 application microprocessor
+aaChip appCpu; // Access information about the ESP32 application microprocessor (Core1)
+aaFormat convert; // Assortment of handy conversion functions
+aaNetwork network; // WiFi session management
+
+// Global variables
+const char* myMacChar; // Pointer to char array containing the SOC MAC address.   
+const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
+byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
+
+const char* mqttBrokerIpChar; // Pointer to char array containing MQTT broker IP address
+const int8_t ipv4NumBytes = 4; // IPv4 has 4 byte address
+byte mqttBrokerIpByte[ipv4NumBytes]; // Byte array for IP address
+//char ipv4ByteSep = '.'; // IP address bytes are seperated with a period
 
 /**
  * @brief Initialize the serial output with the specified baud rate measured in bits per second
@@ -41,8 +56,8 @@ void showCfgDetails()
 {
    Serial.println("<showCfgDetails> Robot Configuration Report");
    Serial.println("<showCfgDetails> ==========================");
-   Serial.print("<showCfgDetails> ... Robot firmware version = "); 
    appCpu.cfgToConsole(); // Display core0 information on the console
+   network.cfgToConsole(); // Display network information on the console
 } //showCfgDetails()
 
 /** 
@@ -53,6 +68,36 @@ void setup()
    setupSerial(); // Set serial baud rate  
    Serial.println("<setup> Start of setup");
    showCfgDetails(); // Show all configuration details
+   network.connect(); // Start WiFi connection
+/*   
+   convert.ipToByteArray(mqttBrokerIpChar, mqttBrokerIpByte); // Convert to byte array
+   Serial.print("<setup> Broker IP = ");
+   Serial.print(mqttBrokerIpByte[0],DEC);
+   Serial.print(".");
+   Serial.print(mqttBrokerIpByte[1],DEC);
+   Serial.print(".");
+   Serial.print(mqttBrokerIpByte[2],DEC);
+   Serial.print(".");
+   Serial.println(mqttBrokerIpByte[3],DEC);
+   
+   String x = WiFi.macAddress(); // Get MAC address as String
+   myMacChar = x.c_str(); // Convert to pointer to const char array   
+   convert.macToByteArray(myMacChar, myMacByte); // Convert to Byte array
+   Serial.print("<setup> My MAC = ");
+   Serial.printf("%02X",myMacByte[0]);    
+   Serial.print("-");
+   Serial.printf("%02X",myMacByte[1]);
+   Serial.print("-");
+   Serial.printf("%02X",myMacByte[2]);
+   Serial.print("-");
+   Serial.printf("%02X",myMacByte[3]);
+   Serial.print("-");
+   Serial.printf("%02X",myMacByte[4]);
+   Serial.print("-");
+   Serial.printf("%02X",myMacByte[5]);
+   Serial.println();
+*/
+
    Serial.println("<setup> End of setup");
 } //setup()
 

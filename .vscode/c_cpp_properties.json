@@ -10,6 +10,9 @@
             "includePath": [
                 "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/include",
                 "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/src",
+                "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/lib/aaNetwork",
+                "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/lib/aaFormat",
                 "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/lib/aaChip",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
@@ -103,7 +106,6 @@
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
                 "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
@@ -115,6 +117,9 @@
                 "path": [
                     "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/include",
                     "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/src",
+                    "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/lib/aaNetwork",
+                    "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                    "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/lib/aaFormat",
                     "/Users/andrewmitchell/Documents/VisualStudioCode/PlatformIO/Projects/Twipe2/lib/aaChip",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
@@ -208,7 +213,6 @@
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                    "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
                     "/Users/andrewmitchell/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
@@ -217,7 +221,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=50100",
+                "PLATFORMIO=50101",
                 "ARDUINO_FEATHER_ESP32",
                 "ESP32",
                 "ESP_PLATFORM",
