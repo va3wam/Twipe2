@@ -22,12 +22,12 @@
  ***************************************************************************************************/
 //#include <WiFi.h> // Required to connect to WiFi network. Comes with Platform.io
 #include <aaChip.h> // Used to access details about the core (CPU) that the Arduino framework runs on
-#include <aaFormat.h> // Collection of handy format conversion functions
+//#include <aaFormat.h> // Collection of handy format conversion functions
 #include <aaNetwork.h> // Required for handling Wifi functions. 
 
 // Instantiate library objects
 aaChip appCpu; // Access information about the ESP32 application microprocessor (Core1)
-aaFormat convert; // Assortment of handy conversion functions
+//aaFormat convert; // Assortment of handy conversion functions
 aaNetwork network; // WiFi session management
 
 // Global variables
@@ -67,8 +67,9 @@ void setup()
 {
    setupSerial(); // Set serial baud rate  
    Serial.println("<setup> Start of setup");
-   showCfgDetails(); // Show all configuration details
    network.connect(); // Start WiFi connection
+   showCfgDetails(); // Show all configuration details
+
 /*   
    convert.ipToByteArray(mqttBrokerIpChar, mqttBrokerIpByte); // Convert to byte array
    Serial.print("<setup> Broker IP = ");

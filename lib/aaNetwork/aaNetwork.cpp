@@ -16,99 +16,51 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- -------------------------------------------------------------------------------------------------------------
+ * 2021-03-19 Old Squire Overhauled code base to allow for wifi event callbacks and added signal evaluation and encryption method data. 
  * 2021-03-18 Old Squire Program created.
  *************************************************************************************************************************************/
 #include <aaNetwork.h> // Required for Webserver data type
 
 /**
- * @brief This is the constructor for this class.
- * @details This class extends the LiquidCrystal_I2C class
+ * @brief This is the default constructor for this class.
 ===================================================================================================*/
 aaNetwork::aaNetwork() // Constructor for this class
 {
-
+   Serial.println("<aaNetwork::aaNetwork> aaNetwork default constructor running.");
 } //aaNetwork::aaNetwork()
 
 /**
- * @brief Event handler for wifi connection event.
- * @param WiFiEvent_t event tells us what type of event occurred
- * @param WiFiEventInfo_t info provides additional information about the event as a struct
+ * @brief This is the second form of the constructor for this class.
 ===================================================================================================*/
-void WiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info)
+aaNetwork::aaNetwork(const char *ssid, const char *password)
 {
-/*
-   switch(event) 
-   {
-      case SYSTEM_EVENT_AP_START:
-         WiFi.softAP(AP_SSID, AP_PASS); //can set ap hostname here   
-         WiFi.softAPenableIpV6(); //enable ap ipv6 here
-         break;
-      case SYSTEM_EVENT_STA_START:
-         //set sta hostname here
-         WiFi.setHostname(AP_SSID);
-         break;
-      case SYSTEM_EVENT_STA_CONNECTED:
-         //enable sta ipv6 here
-         WiFi.enableIpV6();
-         break;
-      case SYSTEM_EVENT_AP_STA_GOT_IP6:
-         //both interfaces get the same event
-         break;
-      case SYSTEM_EVENT_STA_GOT_IP:
-         //wifiOnConnect();
-         wifi_connected = true;
-         break;
-      case SYSTEM_EVENT_STA_DISCONNECTED:
-         wifi_connected = false;
-         break;
-      default:
-         break;
-   } //switch
-*/
-} //aaNetwork::WiFiEvent()
+   Serial.println("<aaNetwork::aaNetwork> aaNetwork second form constructor running.");
+} //aaNetwork::aaNetwork()
 
 /**
- * @brief This function translates the type of encryption that an Access Point (AP) advertises (an an ENUM) 
- * and returns a more human readable description of what that encryption method is.
- * @param wifi_auth_mode_t encryptionType is the ENUM that the Access Point advertises for encryption.
- * @return String containing human readable label for the type of encryption the Access Point uses.
- */
-String aaNetwork::_translateEncryptionType(wifi_auth_mode_t encryptionType)
+ * @brief This is the destructor for this class.
+===================================================================================================*/
+aaNetwork::~aaNetwork() // Constructor for this class
 {
-   switch (encryptionType)
-   {
-      case (WIFI_AUTH_OPEN):
-         return "Open";
-      case (WIFI_AUTH_WEP):
-         return "WEP";
-      case (WIFI_AUTH_WPA_PSK):
-         return "WPA_PSK";
-      case (WIFI_AUTH_WPA2_PSK):
-         return "WPA2_PSK";
-      case (WIFI_AUTH_WPA_WPA2_PSK):
-         return "WPA_WPA2_PSK";
-      case (WIFI_AUTH_WPA2_ENTERPRISE):
-         return "WPA2_ENTERPRISE";
-      default:
-         return "UNKNOWN";
-   } //switch
-} //aaNetwork::translateEncryptionType()
+   Serial.println("<aaNetwork::aaNetwork> aaNetwork destructor running.");
+} //aaNetwork::aaNetwork()
 
 /**
  * @brief Scan the 2.4Ghz band for known Access Points and select the one with the strongest signal.
- * @return const char _apSsid which is the SSID of the best AP candidate to connect to
+ * @return const char _ssid which is the SSID of the best AP candidate to connect to
 =================================================================================================== */
 const char* aaNetwork::_lookForAP()
 {
-   _apSsid = "unknown"; //  At the start no known Access Point has been foundto connect to
+   Serial.println("<aaNetwork::_lookForAP> Scanning the 2.4GHz radio spectrum for known Access Points.");
+   _ssid = _unknownAP; //  At the start no known Access Point has been foundto connect to
    int numberOfNetworks = WiFi.scanNetworks(); // Used to track how many APs are detected by the scan
    int StrongestSignal = -127; // Used to find the strongest signal. Set as low as possible to start
-   int SSIDIndex = 0; // Contains the SSID index number from the known list of APs
+//   int SSIDIndex = 0; // Contains the SSID index number from the known list of APs
    bool APknown; // Flag to indicate if the current AP appears in the known AP list
    Serial.println(numberOfNetworks);
 
    // Loop through all detected APs
-   for (int i = 0; i < numberOfNetworks; i++)
+   for(int i = 0; i < numberOfNetworks; i++)
    {
       APknown = false;
    
@@ -116,132 +68,203 @@ const char* aaNetwork::_lookForAP()
       for (int j = 0; j < numKnownAPs; j++)
       {
          // If the current scanned AP appears in the known AP list note the index value and flag found
-         if (WiFi.SSID(i) == SSID[j])
+         if(WiFi.SSID(i) == SSID[j])
          {
             APknown = true;
-            SSIDIndex = j;
+            _SSIDIndex = j;
          } //if
       }   //for
 
       // If the current AP is known and has a stronger signal than the others that have been checked
       // then store it in the variables that will be used to connect to the AP later
-      if ((APknown == true) && (WiFi.SSID(i).toInt() > StrongestSignal))
+      if((APknown == true) && (WiFi.SSID(i).toInt() > StrongestSignal))
       {
-         _apSsid = SSID[SSIDIndex].c_str();
-         _apPassword = Password[SSIDIndex].c_str();
+         _ssid = SSID[_SSIDIndex].c_str();
+         _password = Password[_SSIDIndex].c_str();
          StrongestSignal = WiFi.SSID(i).toInt();
       } //if
    } //for
-   return _apSsid;
+   return _ssid;
 }  //aaNetwork::lookForAP()
 
 /**
- * @brief Return the SSID of the Access Point the we are using.
- * @return String WiFi.SSID() Name of the AP  
+ * @brief Event handler for wifi events.
+ * @brief Tracks all wifi event activity even though we do not act on any of it at this time. At the 
+ *        very least the logs help us troule shoot wifi issues but this routine also acts as a 
+ *        reminder of what functional possibilities exist for future consideration.
+ * @param WiFiEvent_t event tells us what type of event occurred
+ * @param WiFiEventInfo_t info provides additional information about the event as a struct
 ===================================================================================================*/
-String aaNetwork::getAccessPointName()
+void aaNetwork::_wiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info)
 {
-   return WiFi.SSID();
-} //aaNetwork::getAccessPointName()
+   switch(event) 
+   {
+      case SYSTEM_EVENT_AP_START:
+//         WiFi.softAP(AP_SSID, AP_PASS); //can set ap hostname here   
+//         WiFi.softAPenableIpV6(); //enable ap ipv6 here
+         Serial.println("<aaNetwork::WiFiEvent> Detected SYSTEM_EVENT_AP_START");            
+         break;
+      case SYSTEM_EVENT_STA_START:         
+//         WiFi.setHostname(AP_SSID); //set sta hostname here
+         Serial.println("<aaNetwork::WiFiEvent> Detected SYSTEM_EVENT_STA_START");            
+         break;
+      case SYSTEM_EVENT_STA_CONNECTED:         
+//         WiFi.enableIpV6(); //enable sta ipv6 here
+         Serial.println("<aaNetwork::WiFiEvent> Detected SYSTEM_EVENT_STA_CONNECTED");            
+         break;
+      case SYSTEM_EVENT_AP_STA_GOT_IP6:
+         Serial.println("<aaNetwork::WiFiEvent> Detected SYSTEM_EVENT_AP_STA_GOT_IP6");            
+         break;
+      case SYSTEM_EVENT_STA_GOT_IP:
+//         wifiOnConnect(); // Call function to do things dependant upon getting wifi connected
+         Serial.println("<aaNetwork::WiFiEvent> Detected SYSTEM_EVENT_STA_GOT_IP");            
+         break;
+      case SYSTEM_EVENT_STA_DISCONNECTED:
+         Serial.println("<aaNetwork::WiFiEvent> Detected SYSTEM_EVENT_STA_DISCONNECTED");            
+         break;
+      case WL_NO_SSID_AVAIL:
+         Serial.println("<aaNetwork::WiFiEvent> WL_NO_SSID_AVAIL");            
+         break;
+      case WL_IDLE_STATUS: 
+         Serial.println("<aaNetwork::WiFiEvent> Detected WL_IDLE_STATUS");            
+         break;
+      default:
+         Serial.println("<aaNetwork::WiFiEvent> ERROR - UNKNOW SYSTEM EVENT"); 
+         Serial.print("<aaNetwork::WiFiEvent> ... Event = "); Serial.println(event);           
+         break;
+   } //switch
+} //aaNetwork::WiFiEvent()
 
 /**
- * @brief Return the MAC of the Access Point of our WiFi radio transmitter.
- * @return String WiFi.macAddress() MAC address of WiFi radio  
-===================================================================================================*/
-String aaNetwork::getMacAddress()
+ * @brief Provide human readable text for wifi connection status codes.
+ * @return const char* "Text that explains what the code means".
+ ===================================================================================================*/
+const char* aaNetwork::connectionStatus(wl_status_t status) 
 {
-   return WiFi.macAddress();
-} //aaNetwork::getMACaddress()
+   switch(status) 
+   {
+      case WL_NO_SHIELD: return "WL_NO_SHIELD"; // For compatibility with WiFi Shield library
+      case WL_IDLE_STATUS: return "WL_IDLE_STATUS";
+      case WL_NO_SSID_AVAIL: return "WL_NO_SSID_AVAIL";
+      case WL_SCAN_COMPLETED: return "WL_SCAN_COMPLETED";
+      case WL_CONNECTED: return "WL_CONNECTED";
+      case WL_CONNECT_FAILED: return "WL_CONNECT_FAILED";
+      case WL_CONNECTION_LOST: return "WL_CONNECTION_LOST";
+      case WL_DISCONNECTED: return "WL_DISCONNECTED";
+      default: return "UNKNOWN_STATUS";
+   } //switch
+} // aaNetwork::_connectionStatus()
 
 /**
- * @brief Return the IP address that was assigned to us by the DHCP service on the local router.
- * @return IPAddress WiFi.localIP() IPv4 address assigned by APs DHCP service.    
-===================================================================================================*/
-IPAddress aaNetwork::getIpAddress()
+ * @brief This function translates the type of encryption that an Access Point (AP) advertises and 
+ * returns a more human readable description of what that encryption method is.
+ * @param wifi_auth_mode_t encryptionType is the ENUM that the Access Point advertises for encryption.
+ * @return String containing human readable label for the type of encryption the Access Point uses.
+ */
+const char* aaNetwork::_translateEncryptionType(wifi_auth_mode_t encryptionType)
 {
-   return WiFi.localIP();
-} //aaNetwork::getIpAddress()
+   switch (encryptionType)
+   {
+      case (WIFI_AUTH_OPEN): return "Open";
+      case (WIFI_AUTH_WEP): return "WEP";
+      case (WIFI_AUTH_WPA_PSK): return "WPA_PSK";
+      case (WIFI_AUTH_WPA2_PSK): return "WPA2_PSK";
+      case (WIFI_AUTH_WPA_WPA2_PSK): return "WPA_WPA2_PSK";
+      case (WIFI_AUTH_WPA2_ENTERPRISE): return "WPA2_ENTERPRISE";
+      default: return "UNKNOWN";
+   } //switch
+} //aaNetwork::translateEncryptionType()
+
+/**
+ * @brief Manage the process of connecting to the WiFi network.
+ * @details Scan for a suitable Access Point and if one is found then connect to it using the 
+ * init_wifi() method. This method connects to the Access Point, Starts up a webserver that serves
+ * up a web page that allows you to configure network settings withut recompiling as well as 
+ * handling Over The Air updates using websockets.
+ * @return bool where true means a connection was made and false means no connection was made.
+ ===================================================================================================*/
+void aaNetwork::connect()
+{
+   if(_lookForAP() == _unknownAP) // Scan the 2.4Ghz band for known Access Points and select the one with the strongest signal 
+   {
+      Serial.println("<aaNetwork::connect> No known Access Point SSID was detected. Cannot connect to WiFi at this time.");
+   } // if
+   else // Found a known Access Point to connect to
+   {
+      WiFi.onEvent(_wiFiEvent); // Set up WiFi event handler
+      WiFi.begin(_ssid, _password); // Connect too strongest AP found
+      Serial.print("<aaNetwork::connect> Attempting to connect to Access Point with the SSID ");
+      Serial.println(_ssid);
+      while(WiFi.waitForConnectResult() != WL_CONNECTED) // Hold boot process here until IP assigned
+      {
+         delay(500);
+      } //while
+      Serial.println("");
+      Serial.print("<aaNetwork::connect> Connected to Access Point with the SSID ");
+      Serial.print(_ssid);
+      Serial.print(" with status code "); 
+      Serial.print(WiFi.status());
+      Serial.print(" (");
+      Serial.print(connectionStatus(WiFi.status())); 
+      Serial.println(")"); 
+   } //else
+} //aaNetwork::connect()
 
 /**
  * @brief Return the robot name which is both unique and predictable.
  * @return String HOST_NAME_PREFIX  + _convert.noColonMAC(getMacAddress()).   
 ===================================================================================================*/
-String aaNetwork::getUniqueName()
+String aaNetwork::_getUniqueName()
 {
-   return HOST_NAME_PREFIX  + _convert.noColonMAC(getMacAddress());
+   return _hostNamePrefix + _convert.noColonMAC(WiFi.macAddress());
 } //aaNetwork::getUniqueName()
 
 /**
- * @brief Manage the process of connecting to the WiFi network.
- * @details Scan for a suitable Access Point and if one is found then connect to it using the 
- * init_wifi() method. This method connects to the Access Point, Starts up a webserver that serves
- * up a web page that allows you to configure network settings withut recompiling as well as 
- * handling Over The Air updates using websockets.
- * @return bool where true means a connection was made and false means no connection was made.
+ * @brief Take measurements of the Wi-Fi strength and return the average result.
+ * @details RSSI (Received Signal Strength Indicator) is a common measurement, but most WiFi adapter 
+ *          vendors handle it differently, as it isn't standardized. Ultimately, the easiest and most 
+ *          consistent way to express signal strength is with dBm, which stands for decibels relative 
+ *          to a milliwatt. Since RSSI is handled differently by most WiFi adapters, it's usually 
+ *          converted to dBm to make it consistent and human-readable.
+ *          mW - milliwatts (1 mW = 0 dBm)
+ *          RSSI - Received Signal Strength Indicator (usually 0-60 or 0-255)
+ *          dBm - Decibels in relation to a milliwatt (usually -30 to -100)
+ *          dBm does not scale in a linear fashion like you'd expect, instead being logarithmic. That 
+ *          means that signal strength changes aren't smooth and gradual. The Rule of 3s and 10s 
+ *          highlights the logarithmic nature of dBm:
+ *          3 dB of loss = -3 dB = halves signal strength
+ *          3 dB of gain = +3 dB = doubles signal strength
+ *          10 dB of loss = -10 dB = 10 times less signal strength (0.1 mW = -10 dBm, 0.01 mW = -20 dBm, etc.)
+ *          10 dB of gain = +10 dB = 10 times more signal strength (0.00001 mW = -50 dBm, 0.0001 mW = -40 dBm, etc.) 
+ * @param int8_t dataPoints is the number of readings to average together. 
+ * @return long averageRSSI which is the average of 100 signal strength readings in dBm.   
 ===================================================================================================*/
-void aaNetwork::_connectToWifi()
+long aaNetwork::rfSignalStrength(int8_t dataPoints)
 {
-   WiFi.begin(_apSsid, _apPassword); // Connect too strongest AP found
-   Serial.print("<aaNetwork::connect> Attempting to connect to AP SSID ");
-   Serial.print(_apSsid);
-   while(WiFi.waitForConnectResult() != WL_CONNECTED) 
+   long rssi = 0;
+   long averageRSSI = 0;
+   for(int i=0; i < dataPoints; i++)
    {
-      delay(500);
-      Serial.print(".");
-   } //while
-   Serial.println("");
-   Serial.print("<aaNetwork::connect> Connected to AP SSID ");
-   Serial.print(_apSsid);
-   Serial.print(" with status ");
-   Serial.println(WiFi.status());
-} //aaNetwork::_connectToWifi()
+      rssi += WiFi.RSSI();
+      delay(20);
+   } //for
+   averageRSSI = rssi / dataPoints;
+   return averageRSSI;
+} //aaNetwork::rfSignalStrength()
 
 /**
- * @brief Manage the process of connecting to the WiFi network.
- * @details Scan for a suitable Access Point and if one is found then connect to it using the 
- * init_wifi() method. This method connects to the Access Point, Starts up a webserver that serves
- * up a web page that allows you to configure network settings withut recompiling as well as 
- * handling Over The Air updates using websockets.
- * @return bool where true means a connection was made and false means no connection was made.
- *
- * WiFi Library statuses 
- * Constants 	         Value
- * ===================  ========
- * WL_NO_SHIELD 	      255
- * WL_IDLE_STATUS 	   0
- * WL_NO_SSID_AVAIL 	   1
- * WL_SCAN_COMPLETED    2
- * WL_CONNECTED 	      3
- * WL_CONNECT_FAILED    4
- * WL_CONNECTION_LOST   5
- * WL_DISCONNECTED 	   6
+ * @brief Return human readable assessment of signal strength.
+ * @param int16_t signalStrength signal in dBm.
+ * @return String Text assessment of signal strength.   
 ===================================================================================================*/
-void aaNetwork::connect()
+String aaNetwork::evalSignal(int16_t signalStrength)
 {
-   // Look for best Access Point to connect to
-   _lookForAP(); // Scan the 2.4Ghz band for known Access Points and select the one with the strongest signal 
-   if((String)_apSsid == "unknown") // If a suitable Access point is found 
-   {
-      Serial.println("<aaNetwork::connect> No known Access Point SSID was detected. Cannot connect to WiFi at this time.");
-   } //if
-   else
-   {
-      WiFi.mode(WIFI_STA);
-      _hostName = getUniqueName().c_str(); // Host name becomes Twipe2 + MAC address without colons
-      WiFi.softAP(_hostName); //Assign unique name for robot that the network sees
-//      WiFi.onEvent()
-      _connectToWifi();
-   } //else
-} //aaNetwork::connect()
-
-/**
- * @brief Returns the status of the WiFi connection.
- * @return bool WiFi.isCOnnected(), true if there is a connection and false if there is not.
-===================================================================================================*/
-bool aaNetwork::connectStatus()
-{
-   return WiFi.isConnected();
-} // aaNetwork::connectStatus()
+   if(signalStrength <= unusable) return "Unusable";
+   if(signalStrength <= notGood) return "Not good";
+   if(signalStrength <= okay) return "Okay";
+   if(signalStrength <= veryGood) return "Very Good";
+   return "Amazing";
+} //evalSignal()
 
 /**
  * @brief Send detailed network configuration information to the console.
@@ -251,9 +274,16 @@ bool aaNetwork::connectStatus()
 ===================================================================================================*/
 void aaNetwork::cfgToConsole()
 {
+   wifi_auth_mode_t encryption = WiFi.encryptionType(_SSIDIndex);
+   int8_t dataReadings = 100; // Number of data readings to average to determine Wifi signal strength.
+   long signalStrength = rfSignalStrength(dataReadings); // Get average signal strength reading.
    Serial.println("<aaNetwork::cfgToConsole> Network settings:");  
-   Serial.print("<aaNetwork::cfgToConsole> ... Access Point Name = "); Serial.println(getAccessPointName()); 
-   Serial.print("<aaNetwork::cfgToConsole> ... Robot MAC address: "); Serial.println(getMacAddress());
-   Serial.print("<aaNetwork::cfgToConsole> ... Robot IP address: "); Serial.println(getIpAddress());
-   Serial.print("<aaNetwork::cfgToConsole> ... Robot Host Name: "); Serial.println(getUniqueName()); 
+   Serial.print("<aaNetwork::cfgToConsole> ... Access Point Name = "); Serial.println(WiFi.SSID()); 
+   Serial.print("<aaNetwork::cfgToConsole> ... Access Point Encryption method = "); Serial.print(encryption,HEX);
+   Serial.print(" ("); Serial.print(_translateEncryptionType(WiFi.encryptionType(encryption))); Serial.println(")"); 
+   Serial.print("<aaNetwork::cfgToConsole> ... Wifi signal strength = "); Serial.print(signalStrength);
+   Serial.print(" ("); Serial.print(evalSignal(signalStrength)); Serial.println(")"); 
+   Serial.print("<aaNetwork::cfgToConsole> ... Robot MAC address: "); Serial.println(WiFi.macAddress());
+   Serial.print("<aaNetwork::cfgToConsole> ... Robot IP address: "); Serial.println(WiFi.localIP());
+   Serial.print("<aaNetwork::cfgToConsole> ... Robot Host Name: "); Serial.println(_getUniqueName()); 
 } //aaNetwork::cfgToConsole()
