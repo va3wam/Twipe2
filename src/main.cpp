@@ -27,7 +27,7 @@
 
 // Instantiate library objects
 aaChip appCpu; // Access information about the ESP32 application microprocessor (Core1)
-//aaFormat convert; // Assortment of handy conversion functions
+aaFormat convert; // Assortment of handy conversion functions
 aaNetwork network; // WiFi session management
 
 // Global variables
@@ -69,7 +69,11 @@ void setup()
    Serial.println("<setup> Start of setup");
    network.connect(); // Start WiFi connection
    showCfgDetails(); // Show all configuration details
-
+   const char *a = "part a";
+   const char *b = " part b";
+   char all[14];
+   convert.joinTwoConstChar(a ,  b, all);// doConcat(a, b, all);
+   Serial.println(all);
 /*   
    convert.ipToByteArray(mqttBrokerIpChar, mqttBrokerIpByte); // Convert to byte array
    Serial.print("<setup> Broker IP = ");
