@@ -27,7 +27,7 @@ class aaNetwork // Define aaNetwork class
       char* getPSWD(void); // Retrieve Access Point password.
       void connect(); // Connect to Wifi
       long rfSignalStrength(int8_t points); // Collect an average WiFi signal strength 
-      String evalSignal(int16_t signalStrength); // Return human readable assessment of signal strength.
+      const char* evalSignal(int16_t signalStrength); // Return human readable assessment of signal strength.
    private:
       const char* _lookForAP(); // Scan 2.4GHz radio spectrum for known Access Point.
       const char* _translateEncryptionType(wifi_auth_mode_t encryptionType); // Provide human readable wifi encryption method
