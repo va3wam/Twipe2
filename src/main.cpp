@@ -31,9 +31,9 @@ aaFormat convert; // Assortment of handy conversion functions
 aaNetwork network; // WiFi session management
 
 // Global variables
-const char* myMacChar; // Pointer to char array containing the SOC MAC address.   
-const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
-byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
+//const char* myMacChar; // Pointer to char array containing the SOC MAC address.   
+//const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
+//byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
 
 const char* mqttBrokerIpChar; // Pointer to char array containing MQTT broker IP address
 const int8_t ipv4NumBytes = 4; // IPv4 has 4 byte address
