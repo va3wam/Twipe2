@@ -283,7 +283,25 @@ void aaNetwork::cfgToConsole()
    Serial.print(" ("); Serial.print(_translateEncryptionType(WiFi.encryptionType(encryption))); Serial.println(")"); 
    Serial.print("<aaNetwork::cfgToConsole> ... Wifi signal strength = "); Serial.print(signalStrength);
    Serial.print(" ("); Serial.print(evalSignal(signalStrength)); Serial.println(")"); 
-   Serial.print("<aaNetwork::cfgToConsole> ... Robot MAC address: "); Serial.println(WiFi.macAddress());
+   String x = WiFi.macAddress(); // Get MAC address as String
+   const char* myMacChar; // Pointer to char array containing the SOC MAC address.   
+   const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
+   byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
+   myMacChar = x.c_str(); // Convert to pointer to const char array   
+   _convert.macToByteArray(myMacChar, myMacByte); // Convert to Byte array
+   Serial.print("<aaNetwork::cfgToConsole> ... Robot MAC address: ");
+   Serial.printf("%02X",myMacByte[0]);    
+   Serial.print(":");
+   Serial.printf("%02X",myMacByte[1]);
+   Serial.print(":");
+   Serial.printf("%02X",myMacByte[2]);
+   Serial.print(":");
+   Serial.printf("%02X",myMacByte[3]);
+   Serial.print(":");
+   Serial.printf("%02X",myMacByte[4]);
+   Serial.print(":");
+   Serial.printf("%02X",myMacByte[5]);
+   Serial.println();
    Serial.print("<aaNetwork::cfgToConsole> ... Robot IP address: "); Serial.println(WiFi.localIP());
    Serial.print("<aaNetwork::cfgToConsole> ... Robot Host Name: "); Serial.println(_getUniqueName()); 
 } //aaNetwork::cfgToConsole()
