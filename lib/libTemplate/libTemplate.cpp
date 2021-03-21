@@ -21,6 +21,30 @@
 #include <libTemplate.h> // Header file for linking.
 
 /**
+ * @brief This is the default constructor for this class.
+===================================================================================================*/
+libTemplate::libTemplate() 
+{
+   Serial.println("<libTemplate::libTemplate> aaNetwork default constructor running.");
+} //libTemplate::libTemplate()
+
+/**
+ * @brief This is the second form of the constructor for this class.
+===================================================================================================*/
+libTemplate::libTemplate(const char* var1)
+{
+   Serial.println("<libTemplate::libTemplate> aaNetwork second form constructor running.");
+} //libTemplate::libTemplate()
+
+/**
+ * @brief This is the destructor for this class.
+===================================================================================================*/
+libTemplate::~libTemplate() 
+{
+   Serial.println("<libTemplate::libTemplate> aaNetwork destructor running.");
+} //libTemplate::libTemplate()
+
+/**
  * @brief Explain briefly what this is.
  * @details Explain more details.
  * @param uint8_t var1 Explain what this argument is for.
