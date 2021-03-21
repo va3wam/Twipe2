@@ -216,7 +216,15 @@ void aaNetwork::connect()
 ===================================================================================================*/
 String aaNetwork::_getUniqueName()
 {
-   return _hostNamePrefix + _convert.noColonMAC(WiFi.macAddress());
+   String macAdd = WiFi.macAddress(); // Get MAC address as String
+   const char* myMacChar; // Pointer to char array containing the SOC MAC address.   
+   const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
+   byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
+   myMacChar = macAdd.c_str(); // Convert to pointer to const char array   
+   _convert.macToByteArray(myMacChar, myMacByte); // Convert to Byte array
+   char buffer[20];
+   _convert.joinTwoConstChar(_hostNamePrefix.c_str(),  _convert.noColonMAC(macAdd), buffer);
+   return buffer;
 } //aaNetwork::getUniqueName()
 
 /**
@@ -275,7 +283,7 @@ const char* aaNetwork::evalSignal(int16_t signalStrength)
 void aaNetwork::cfgToConsole()
 {
    wifi_auth_mode_t encryption = WiFi.encryptionType(_SSIDIndex);
-   int8_t dataReadings = 100; // Number of data readings to average to determine Wifi signal strength.
+   int8_t dataReadings = 10; // Number of data readings to average to determine Wifi signal strength.
    long signalStrength = rfSignalStrength(dataReadings); // Get average signal strength reading.
    Serial.println("<aaNetwork::cfgToConsole> Network settings:");  
    Serial.print("<aaNetwork::cfgToConsole> ... Access Point Name = "); Serial.println(WiFi.SSID()); 
@@ -283,11 +291,11 @@ void aaNetwork::cfgToConsole()
    Serial.print(" ("); Serial.print(_translateEncryptionType(WiFi.encryptionType(encryption))); Serial.println(")"); 
    Serial.print("<aaNetwork::cfgToConsole> ... Wifi signal strength = "); Serial.print(signalStrength);
    Serial.print(" ("); Serial.print(evalSignal(signalStrength)); Serial.println(")"); 
-   String x = WiFi.macAddress(); // Get MAC address as String
+   String macAdd = WiFi.macAddress(); // Get MAC address as String
    const char* myMacChar; // Pointer to char array containing the SOC MAC address.   
    const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
    byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
-   myMacChar = x.c_str(); // Convert to pointer to const char array   
+   myMacChar = macAdd.c_str(); // Convert to pointer to const char array   
    _convert.macToByteArray(myMacChar, myMacByte); // Convert to Byte array
    Serial.print("<aaNetwork::cfgToConsole> ... Robot MAC address: ");
    Serial.printf("%02X",myMacByte[0]);    
@@ -302,6 +310,19 @@ void aaNetwork::cfgToConsole()
    Serial.print(":");
    Serial.printf("%02X",myMacByte[5]);
    Serial.println();
-   Serial.print("<aaNetwork::cfgToConsole> ... Robot IP address: "); Serial.println(WiFi.localIP());
+   Serial.print("<aaNetwork::cfgToConsole> ... Robot IP address: "); 
+   const char* myIpChar = _convert.ipToString(WiFi.localIP()).c_str(); // Pointer to char array containing MQTT broker IP address
+   const int8_t ipv4NumBytes = 4; // IPv4 has 4 byte address 
+   byte myIpByte[ipv4NumBytes]; // Byte array for IP address   
+   _convert.ipToByteArray(myIpChar, myIpByte); // Convert to byte array
+   Serial.print("<setup> Broker IP = ");
+   Serial.print(myIpByte[0],DEC);
+   Serial.print(".");
+   Serial.print(myIpByte[1],DEC);
+   Serial.print(".");
+   Serial.print(myIpByte[2],DEC);
+   Serial.print(".");
+   Serial.println(myIpByte[3],DEC); 
+//   Serial.println(WiFi.localIP());
    Serial.print("<aaNetwork::cfgToConsole> ... Robot Host Name: "); Serial.println(_getUniqueName()); 
 } //aaNetwork::cfgToConsole()
