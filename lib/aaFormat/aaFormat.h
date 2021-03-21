@@ -8,7 +8,7 @@ class aaFormat
 {
    public:
       aaFormat(); // Constructor
-      String noColonMAC(String macAddress); // Returns string of MAC address with no colons in it
+      const char* noColonMAC(String macAddress); // Returns string of MAC address with no colons in it
       String StringToUpper(String strToConvert); // Retruns string converted to all uppercase
       String ipToString(IPAddress ip); // Returns string of IP address
       void ipToByteArray(const char* str, byte* bytes); // Convert char array containing IP address to byte array

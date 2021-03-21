@@ -31,9 +31,9 @@ aaFormat::aaFormat()
 /** 
  * @brief Strips the colons off the MAC address of this device
  * @param String containing a MAC address with colons (:) embedded in it
- * @return String with MAC address containing no colons
+ * @return const char* with MAC address containing no colons
  * =============================================================================== */
-String aaFormat::noColonMAC(String macAddress)
+const char* aaFormat::noColonMAC(String macAddress)
 {
 //   Serial.println("<aaFormat::noColonMAC> Removing colons from MAC address");
    macAddress.remove(2, 1);        // Remove first colon from MAC address
@@ -41,7 +41,7 @@ String aaFormat::noColonMAC(String macAddress)
    macAddress.remove(6, 1);        // Remove third colon from MAC address
    macAddress.remove(8, 1);        // Remove forth colon from MAC address
    macAddress.remove(10, 1);       // Remove fifth colon from MAC address
-   return macAddress;
+   return macAddress.c_str();
 }  //aaFormat::noColonMAC()
 
 /** 
