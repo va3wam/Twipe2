@@ -121,3 +121,15 @@ void aaFormat::macToByteArray(const char* str, byte* bytes)
    char byteSeperator = ':'; // MAC address bytes are seperated with a dash
    _parseBytes(str, byteSeperator, bytes, macNumBytes, baseNumberingSystem);
 } //macToByteArray()
+
+/** 
+ * @brief Join two const char* variables into one buffer.
+ * @param const char* a - First char array to join together.
+ * @param const char* b - Second char array to join together.
+ * @param const char* out - Pointer to target buffer.
+ * =============================================================================== */
+void aaFormat::joinTwoConstChar(const char *a, const char *b, char *out) 
+{
+    strcpy(out, a);
+    strcat(out, b);
+} //aaFormat::joinTwoConstChar()
