@@ -35,9 +35,9 @@ aaNetwork network; // WiFi session management
 //const int8_t macNumBytes = 6; // MAC addresses have 6 byte addresses.
 //byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
 
-const char* mqttBrokerIpChar; // Pointer to char array containing MQTT broker IP address
-const int8_t ipv4NumBytes = 4; // IPv4 has 4 byte address
-byte mqttBrokerIpByte[ipv4NumBytes]; // Byte array for IP address
+//const char* mqttBrokerIpChar; // Pointer to char array containing MQTT broker IP address
+//const int8_t ipv4NumBytes = 4; // IPv4 has 4 byte address
+//byte mqttBrokerIpByte[ipv4NumBytes]; // Byte array for IP address
 //char ipv4ByteSep = '.'; // IP address bytes are seperated with a period
 
 /**
@@ -69,11 +69,11 @@ void setup()
    Serial.println("<setup> Start of setup");
    network.connect(); // Start WiFi connection
    showCfgDetails(); // Show all configuration details
-   const char *a = "part a";
-   const char *b = " part b";
-   char all[14];
-   convert.joinTwoConstChar(a ,  b, all);// doConcat(a, b, all);
-   Serial.println(all);
+//   const char *a = "part a";
+//   const char *b = " part b";
+//   char all[14];
+//   convert.joinTwoConstChar(a ,  b, all);// doConcat(a, b, all);
+//   Serial.println(all);
 /*   
    convert.ipToByteArray(mqttBrokerIpChar, mqttBrokerIpByte); // Convert to byte array
    Serial.print("<setup> Broker IP = ");
@@ -85,22 +85,6 @@ void setup()
    Serial.print(".");
    Serial.println(mqttBrokerIpByte[3],DEC);
    
-   String x = WiFi.macAddress(); // Get MAC address as String
-   myMacChar = x.c_str(); // Convert to pointer to const char array   
-   convert.macToByteArray(myMacChar, myMacByte); // Convert to Byte array
-   Serial.print("<setup> My MAC = ");
-   Serial.printf("%02X",myMacByte[0]);    
-   Serial.print("-");
-   Serial.printf("%02X",myMacByte[1]);
-   Serial.print("-");
-   Serial.printf("%02X",myMacByte[2]);
-   Serial.print("-");
-   Serial.printf("%02X",myMacByte[3]);
-   Serial.print("-");
-   Serial.printf("%02X",myMacByte[4]);
-   Serial.print("-");
-   Serial.printf("%02X",myMacByte[5]);
-   Serial.println();
 */
 
    Serial.println("<setup> End of setup");
