@@ -18,7 +18,7 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ---------------------------------------------------------------------------
- * 2021-03-17 Old Squire Template created
+ * 2021-03-17 Old Squire Codebase created.
  ***************************************************************************************************/
 //#include <WiFi.h> // Required to connect to WiFi network. Comes with Platform.io
 #include <aaChip.h> // Used to access details about the core (CPU) that the Arduino framework runs on
