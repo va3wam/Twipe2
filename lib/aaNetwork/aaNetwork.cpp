@@ -2,7 +2,8 @@
  * @file aaNetwork.cpp
  * @author theAgingApprentice
  * @brief Handle all of the networking logic required by the robot. 
- * @details Manages TCP/IP, HTTP server, OTA firmware loading and MQTT messaging. See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/
+ * @details Manages TCP/IP, HTTP server, OTA firmware loading and MQTT messaging. 
+ *          See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/
  * @copyright Copyright (c) 2021 the Aging Apprentice
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files 
  * (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, 
@@ -24,7 +25,7 @@
 /**
  * @brief This is the default constructor for this class.
 ===================================================================================================*/
-aaNetwork::aaNetwork() // Constructor for this class
+aaNetwork::aaNetwork() 
 {
    Serial.println("<aaNetwork::aaNetwork> aaNetwork default constructor running.");
 } //aaNetwork::aaNetwork()
@@ -40,7 +41,7 @@ aaNetwork::aaNetwork(const char *ssid, const char *password)
 /**
  * @brief This is the destructor for this class.
 ===================================================================================================*/
-aaNetwork::~aaNetwork() // Constructor for this class
+aaNetwork::~aaNetwork() 
 {
    Serial.println("<aaNetwork::aaNetwork> aaNetwork destructor running.");
 } //aaNetwork::aaNetwork()
@@ -55,7 +56,6 @@ const char* aaNetwork::_lookForAP()
    _ssid = _unknownAP; //  At the start no known Access Point has been foundto connect to
    int numberOfNetworks = WiFi.scanNetworks(); // Used to track how many APs are detected by the scan
    int StrongestSignal = -127; // Used to find the strongest signal. Set as low as possible to start
-//   int SSIDIndex = 0; // Contains the SSID index number from the known list of APs
    bool APknown; // Flag to indicate if the current AP appears in the known AP list
    Serial.println(numberOfNetworks);
 
@@ -156,8 +156,8 @@ const char* aaNetwork::connectionStatus(wl_status_t status)
 } // aaNetwork::_connectionStatus()
 
 /**
- * @brief This function translates the type of encryption that an Access Point (AP) advertises and 
- * returns a more human readable description of what that encryption method is.
+ * @brief This function translates the type of encryption that an Access Point (AP) advertises. 
+ * @brief Returns a more human readable description of what that encryption method is.
  * @param wifi_auth_mode_t encryptionType is the ENUM that the Access Point advertises for encryption.
  * @return String containing human readable label for the type of encryption the Access Point uses.
  */
@@ -255,9 +255,9 @@ long aaNetwork::rfSignalStrength(int8_t dataPoints)
 /**
  * @brief Return human readable assessment of signal strength.
  * @param int16_t signalStrength signal in dBm.
- * @return String Text assessment of signal strength.   
+ * @return const char* Text assessment of signal strength.   
 ===================================================================================================*/
-String aaNetwork::evalSignal(int16_t signalStrength)
+const char* aaNetwork::evalSignal(int16_t signalStrength)
 {
    if(signalStrength <= unusable) return "Unusable";
    if(signalStrength <= notGood) return "Not good";
