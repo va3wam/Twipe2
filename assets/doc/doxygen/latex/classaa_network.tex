@@ -1,0 +1,188 @@
+\hypertarget{classaa_network}{}\doxysection{aa\+Network Class Reference}
+\label{classaa_network}\index{aaNetwork@{aaNetwork}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classaa_network_affbf27339bcbcaf92810034ccb69de5f}{aa\+Network}} ()
+\begin{DoxyCompactList}\small\item\em Handle all of the networking logic required by the robot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classaa_network_aa4c964e502159e4265aed7094b13f1c0}{aa\+Network}} (const char $\ast$ssid, const char $\ast$password)
+\item 
+\mbox{\hyperlink{classaa_network_ac42bfbdba98e7657887754e88e052f68}{$\sim$aa\+Network}} ()
+\item 
+void \mbox{\hyperlink{classaa_network_a5480c6bb017b0c476b1ff06c0cfef7fd}{get\+Unique\+Name}} (char $\ast$ptr\+Name\+Array)
+\begin{DoxyCompactList}\small\item\em Puts a name which is both unique and predictable into the char array \+\_\+unique\+Name\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classaa_network_ac8b9195072733166e7bad1e5fee5580a}{connection\+Status}} (wl\+\_\+status\+\_\+t status)
+\begin{DoxyCompactList}\small\item\em Provide human readable text for wifi connection status codes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classaa_network_a7c607f1200b3ad93e34838bcff61ade1}{cfg\+To\+Console}} ()
+\begin{DoxyCompactList}\small\item\em Send detailed network configuration information to the console. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaa_network_a294380ca36a89feee4dcab570170331d}\label{classaa_network_a294380ca36a89feee4dcab570170331d}} 
+char $\ast$ {\bfseries get\+S\+S\+ID} (void)
+\item 
+\mbox{\Hypertarget{classaa_network_a3a8ede618b2839eaddbcc95467a84d6b}\label{classaa_network_a3a8ede618b2839eaddbcc95467a84d6b}} 
+char $\ast$ {\bfseries get\+P\+S\+WD} (void)
+\item 
+void \mbox{\hyperlink{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}{connect}} ()
+\begin{DoxyCompactList}\small\item\em Manage the process of connecting to the Wi\+Fi network. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{classaa_network_a2939f0d11f02f932b3a1406de14c3876}{rf\+Signal\+Strength}} (int8\+\_\+t points)
+\begin{DoxyCompactList}\small\item\em Take measurements of the Wi-\/\+Fi strength and return the average result. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classaa_network_a8c5caf595e69a1ddb85495824d8e1813}{eval\+Signal}} (int16\+\_\+t signal\+Strength)
+\begin{DoxyCompactList}\small\item\em Return human readable assessment of signal strength. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 22 of file aa\+Network.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classaa_network_affbf27339bcbcaf92810034ccb69de5f}\label{classaa_network_affbf27339bcbcaf92810034ccb69de5f}} 
+\index{aaNetwork@{aaNetwork}!aaNetwork@{aaNetwork}}
+\index{aaNetwork@{aaNetwork}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{aaNetwork()}{aaNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily aa\+Network\+::aa\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handle all of the networking logic required by the robot. 
+
+Manages T\+C\+P/\+IP, H\+T\+TP server, O\+TA firmware loading and M\+Q\+TT messaging. \hypertarget{classaa_network_autotoc_md16}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md16}
+
+
+Definition at line 36 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_aa4c964e502159e4265aed7094b13f1c0}\label{classaa_network_aa4c964e502159e4265aed7094b13f1c0}} 
+\index{aaNetwork@{aaNetwork}!aaNetwork@{aaNetwork}}
+\index{aaNetwork@{aaNetwork}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{aaNetwork()}{aaNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily aa\+Network\+::aa\+Network (\begin{DoxyParamCaption}\item[{const char $\ast$}]{ssid,  }\item[{const char $\ast$}]{password }\end{DoxyParamCaption})}
+
+\hypertarget{classaa_network_autotoc_md17}{}\doxysubsection{@brief This is the second form of the constructor for this class.}\label{classaa_network_autotoc_md17}
+
+
+Definition at line 44 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_ac42bfbdba98e7657887754e88e052f68}\label{classaa_network_ac42bfbdba98e7657887754e88e052f68}} 
+\index{aaNetwork@{aaNetwork}!````~aaNetwork@{$\sim$aaNetwork}}
+\index{````~aaNetwork@{$\sim$aaNetwork}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{$\sim$aaNetwork()}{~aaNetwork()}}
+{\footnotesize\ttfamily aa\+Network\+::$\sim$aa\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hypertarget{classaa_network_autotoc_md18}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_network_autotoc_md18}
+
+
+Definition at line 52 of file aa\+Network.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classaa_network_a7c607f1200b3ad93e34838bcff61ade1}\label{classaa_network_a7c607f1200b3ad93e34838bcff61ade1}} 
+\index{aaNetwork@{aaNetwork}!cfgToConsole@{cfgToConsole}}
+\index{cfgToConsole@{cfgToConsole}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{cfgToConsole()}{cfgToConsole()}}
+{\footnotesize\ttfamily void aa\+Network\+::cfg\+To\+Console (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Send detailed network configuration information to the console. 
+
+The E\+S\+P32-\/\+D0\+W\+D\+Q6 chip has dual Tensilica L\+X6 micro controllers. All Wi\+Fi logic runs on the P\+R\+O\+\_\+\+C\+PU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md27}{}\doxysubsection{the A\+P\+P\+\_\+\+C\+P\+U (core 1) aka the application core.}\label{classaa_network_autotoc_md27}
+
+
+Definition at line 298 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}\label{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}} 
+\index{aaNetwork@{aaNetwork}!connect@{connect}}
+\index{connect@{connect}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void aa\+Network\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manage the process of connecting to the Wi\+Fi network. 
+
+Scan for a suitable Access Point and if one is found then connect to it using the init\+\_\+wifi() method. \begin{DoxyReturn}{Returns}
+bool where true means a connection was made and false means no connection 
+\end{DoxyReturn}
+\hypertarget{classaa_network_autotoc_md23}{}\doxysubsection{was made.}\label{classaa_network_autotoc_md23}
+
+
+Definition at line 199 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_ac8b9195072733166e7bad1e5fee5580a}\label{classaa_network_ac8b9195072733166e7bad1e5fee5580a}} 
+\index{aaNetwork@{aaNetwork}!connectionStatus@{connectionStatus}}
+\index{connectionStatus@{connectionStatus}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{connectionStatus()}{connectionStatus()}}
+{\footnotesize\ttfamily const char $\ast$ aa\+Network\+::connection\+Status (\begin{DoxyParamCaption}\item[{wl\+\_\+status\+\_\+t}]{status }\end{DoxyParamCaption})}
+
+
+
+Provide human readable text for wifi connection status codes. 
+
+\hypertarget{classaa_network_autotoc_md21}{}\doxysubsection{@return const char$\ast$ \char`\"{}\+Text that explains what the code means\char`\"{}.}\label{classaa_network_autotoc_md21}
+
+
+Definition at line 153 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_a8c5caf595e69a1ddb85495824d8e1813}\label{classaa_network_a8c5caf595e69a1ddb85495824d8e1813}} 
+\index{aaNetwork@{aaNetwork}!evalSignal@{evalSignal}}
+\index{evalSignal@{evalSignal}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{evalSignal()}{evalSignal()}}
+{\footnotesize\ttfamily const char $\ast$ aa\+Network\+::eval\+Signal (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{signal\+Strength }\end{DoxyParamCaption})}
+
+
+
+Return human readable assessment of signal strength. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int16\+\_\+t} & signal\+Strength signal in d\+Bm. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_network_autotoc_md26}{}\doxysubsection{@return const char$\ast$ Text assessment of signal strength.}\label{classaa_network_autotoc_md26}
+
+
+Definition at line 283 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_a5480c6bb017b0c476b1ff06c0cfef7fd}\label{classaa_network_a5480c6bb017b0c476b1ff06c0cfef7fd}} 
+\index{aaNetwork@{aaNetwork}!getUniqueName@{getUniqueName}}
+\index{getUniqueName@{getUniqueName}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{getUniqueName()}{getUniqueName()}}
+{\footnotesize\ttfamily void aa\+Network\+::get\+Unique\+Name (\begin{DoxyParamCaption}\item[{char $\ast$}]{\+\_\+unique\+Name\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Puts a name which is both unique and predictable into the char array \+\_\+unique\+Name\mbox{[}\mbox{]}. 
+
+Combines a prefix (H\+O\+S\+T\+N\+A\+M\+E\+\_\+\+P\+R\+E\+F\+IX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md24}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md24}
+
+
+Definition at line 233 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_a2939f0d11f02f932b3a1406de14c3876}\label{classaa_network_a2939f0d11f02f932b3a1406de14c3876}} 
+\index{aaNetwork@{aaNetwork}!rfSignalStrength@{rfSignalStrength}}
+\index{rfSignalStrength@{rfSignalStrength}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{rfSignalStrength()}{rfSignalStrength()}}
+{\footnotesize\ttfamily long aa\+Network\+::rf\+Signal\+Strength (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{data\+Points }\end{DoxyParamCaption})}
+
+
+
+Take measurements of the Wi-\/\+Fi strength and return the average result. 
+
+R\+S\+SI (Received Signal Strength Indicator) is a common measurement, but most Wi\+Fi adapter vendors handle it differently, as it isn\textquotesingle{}t standardized. Ultimately, the easiest and most consistent way to express signal strength is with d\+Bm, which stands for decibels relative to a milliwatt. Since R\+S\+SI is handled differently by most Wi\+Fi adapters, it\textquotesingle{}s usually converted to d\+Bm to make it consistent and human readable. mW -\/ milliwatts (1 mW = 0 d\+Bm) R\+S\+SI -\/ Received Signal Strength Indicator (usually 0-\/60 or 0-\/255) d\+Bm -\/ Decibels in relation to a milliwatt (usually -\/30 to -\/100). d\+Bm does not scale in a linear fashion like you\textquotesingle{}d expect, instead being logarithmic. That means that signal strength changes aren\textquotesingle{}t smooth and gradual. The Rule of 3s and 10s highlights the logarithmic nature of d\+Bm\+: 3 dB of loss = -\/3 dB = halves signal strength 3 dB of gain = +3 dB = doubles signal strength 10 dB of loss = -\/10 dB = 10 times less signal strength (0.\+1 mW = -\/10 d\+Bm, 0.\+01 mW = -\/20 d\+Bm, etc.) 10 dB of gain = +10 dB = 10 times more signal strength (0.\+00001 mW = -\/50 d\+Bm, 0.\+0001 mW = -\/40 d\+Bm, etc.) 
+\begin{DoxyParams}{Parameters}
+{\em int8\+\_\+t} & data\+Points is the number of readings to average together. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_network_autotoc_md25}{}\doxysubsection{@return long average\+R\+S\+S\+I which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md25}
+
+
+Definition at line 265 of file aa\+Network.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/aa\+Network/aa\+Network.\+h\item 
+lib/aa\+Network/aa\+Network.\+cpp\end{DoxyCompactItemize}

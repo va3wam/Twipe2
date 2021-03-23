@@ -1,11 +1,12 @@
 #ifndef aaChip_h
+
 #define aaChip_h
-#include <Arduino.h> // Arduino Core for ESP32. Comes with Platform.io
+
+#include <Arduino.h> // Required for variable type declarations. Arduino Core for ESP32. Comes with Platform.io
 
 #define serialBaudRate 115200 // Speed of serial port
 
-// Define aaChip class
-class aaChip // Indicate that we are extending LiquidCrystal_I2C class with our class 
+class aaChip // Define aaChip class 
 {
    public:
       aaChip(); // Constructor
