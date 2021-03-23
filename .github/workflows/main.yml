@@ -1,4 +1,7 @@
 # This is a basic workflow to help you get started with Actions
+# Have to deplay to gh-pages branch for the first comming. After 
+# that go back to main. This is a bug documented here: 
+# https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token
 
 name: Doxygen Action
 
