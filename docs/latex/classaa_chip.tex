@@ -4,11 +4,11 @@
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classaa_chip_a046d2e33f9548e7d9d26319cf6151d49}{aa\+Chip}} ()
-\begin{DoxyCompactList}\small\item\em Common A\+PI for retrieving E\+S\+P32 chip configuration information. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Common API for retrieving ESP32 chip configuration information. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classaa_chip_a19a81577c04ebfed61c08b24a6bc0dae}{cfg\+To\+Console}} ()
 \begin{DoxyCompactList}\small\item\em Send detailed chip configuration information to the console. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{classaa_chip_a4f8c531f1b2353b4f2533e6f26c7808a}{get\+Revision}} ()
-\begin{DoxyCompactList}\small\item\em Returns the revision number of the E\+S\+P32 chip. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the revision number of the ESP32 chip. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{classaa_chip_a6ebd5e16bd1465c8351d593e3a162f94}{get\+Serial\+Speed}} ()
 \begin{DoxyCompactList}\small\item\em Returns the current speed setting of the serial port (baud rate). \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{classaa_chip_ae74531172173569e235ce5e733bf9a31}{get\+Code\+Size}} ()
@@ -16,7 +16,7 @@ uint32\+\_\+t \mbox{\hyperlink{classaa_chip_ae74531172173569e235ce5e733bf9a31}{g
 uint32\+\_\+t \mbox{\hyperlink{classaa_chip_a2511b9d24c31e5d3bbd2db7c85bd5948}{get\+Free\+Heap}} ()
 \begin{DoxyCompactList}\small\item\em Returns the amount of free heap (sorted memory the program can use) in bytes. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{classaa_chip_a32a5cd366475c88049d14b2221d514d9}{get\+Cpu\+Id}} ()
-\begin{DoxyCompactList}\small\item\em Returns the C\+PU ID of the application core. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the CPU ID of the application core. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{classaa_chip_a089fa3e96e567b76eaaad0739b0fc2a4}{get\+Cpu\+Clock}} ()
 \begin{DoxyCompactList}\small\item\em Returns the clock speed of the application core in Mhz. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -37,9 +37,9 @@ Definition at line 9 of file aa\+Chip.\+h.
 
 
 
-Common A\+PI for retrieving E\+S\+P32 chip configuration information. 
+Common API for retrieving ESP32 chip configuration information. 
 
-Retrieve chip configuration details from both Free\+R\+T\+OS and the E\+S\+P32 \hypertarget{classaa_chip_autotoc_md0}{}\doxysubsection{Arduino framework.}\label{classaa_chip_autotoc_md0}
+Retrieve chip configuration details from both Free\+RTOS and the ESP32 \hypertarget{classaa_chip_autotoc_md0}{}\doxysubsection{Arduino framework.}\label{classaa_chip_autotoc_md0}
 
 
 Definition at line 33 of file aa\+Chip.\+cpp.
@@ -57,7 +57,7 @@ Definition at line 33 of file aa\+Chip.\+cpp.
 
 Send detailed chip configuration information to the console. 
 
-The E\+S\+P32-\/\+D0\+W\+D\+Q6 chip has dual Tensilica L\+X6 micro controllers. All Wi\+Fi logic runs on the P\+R\+O\+\_\+\+C\+PU (core0) aka the processor core. This firmware runs on the \hypertarget{classaa_chip_autotoc_md7}{}\doxysubsection{A\+P\+P\+\_\+\+C\+P\+U (core 1) aka the application core.}\label{classaa_chip_autotoc_md7}
+The ESP32-\/\+D0\+WDQ6 chip has dual Tensilica LX6 micro controllers. All Wi\+Fi logic runs on the PRO\+\_\+\+CPU (core0) aka the processor core. This firmware runs on the \hypertarget{classaa_chip_autotoc_md7}{}\doxysubsection{APP\+\_\+\+CPU (core 1) aka the application core.}\label{classaa_chip_autotoc_md7}
 
 
 Definition at line 99 of file aa\+Chip.\+cpp.
@@ -72,7 +72,7 @@ Definition at line 99 of file aa\+Chip.\+cpp.
 
 Returns the size of the binary file in bytes. 
 
-\hypertarget{classaa_chip_autotoc_md2}{}\doxysubsection{@return uint32\+\_\+t E\+S\+P.\+get\+Sketch\+Size()}\label{classaa_chip_autotoc_md2}
+\hypertarget{classaa_chip_autotoc_md2}{}\doxysubsection{@return uint32\+\_\+t ESP.\+get\+Sketch\+Size()}\label{classaa_chip_autotoc_md2}
 
 
 Definition at line 52 of file aa\+Chip.\+cpp.
@@ -100,9 +100,9 @@ Definition at line 88 of file aa\+Chip.\+cpp.
 
 
 
-Returns the C\+PU ID of the application core. 
+Returns the CPU ID of the application core. 
 
-\hypertarget{classaa_chip_autotoc_md5}{}\doxysubsection{@return uint32\+\_\+t x\+Port\+Get\+Core\+I\+D()}\label{classaa_chip_autotoc_md5}
+\hypertarget{classaa_chip_autotoc_md5}{}\doxysubsection{@return uint32\+\_\+t x\+Port\+Get\+Core\+ID()}\label{classaa_chip_autotoc_md5}
 
 
 Definition at line 79 of file aa\+Chip.\+cpp.
@@ -117,7 +117,7 @@ Definition at line 79 of file aa\+Chip.\+cpp.
 
 Returns the amount of free heap (sorted memory the program can use) in bytes. 
 
-\hypertarget{classaa_chip_autotoc_md3}{}\doxysubsection{@return uint32\+\_\+t E\+S\+P.\+get\+Free\+Heap()}\label{classaa_chip_autotoc_md3}
+\hypertarget{classaa_chip_autotoc_md3}{}\doxysubsection{@return uint32\+\_\+t ESP.\+get\+Free\+Heap()}\label{classaa_chip_autotoc_md3}
 
 
 Definition at line 61 of file aa\+Chip.\+cpp.
@@ -130,9 +130,9 @@ Definition at line 61 of file aa\+Chip.\+cpp.
 
 
 
-Returns the revision number of the E\+S\+P32 chip. 
+Returns the revision number of the ESP32 chip. 
 
-\hypertarget{classaa_chip_autotoc_md1}{}\doxysubsection{@return uint32\+\_\+t E\+S\+P.\+get\+Chip\+Revision()}\label{classaa_chip_autotoc_md1}
+\hypertarget{classaa_chip_autotoc_md1}{}\doxysubsection{@return uint32\+\_\+t ESP.\+get\+Chip\+Revision()}\label{classaa_chip_autotoc_md1}
 
 
 Definition at line 43 of file aa\+Chip.\+cpp.

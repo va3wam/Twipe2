@@ -5,16 +5,16 @@
 \item 
 \mbox{\hyperlink{classaa_format_ad41bf0bf66328e26282c6d35f4b368f8}{aa\+Format}} ()
 \begin{DoxyCompactList}\small\item\em A collection of handy formatting functions. \end{DoxyCompactList}\item 
-const char $\ast$ \mbox{\hyperlink{classaa_format_a0ea33dd911eaf84c599044bc4c9e85d5}{no\+Colon\+M\+AC}} (String mac\+Address)
-\begin{DoxyCompactList}\small\item\em Strips the colons off the M\+AC address of this device. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classaa_format_a0ea33dd911eaf84c599044bc4c9e85d5}{no\+Colon\+MAC}} (String mac\+Address)
+\begin{DoxyCompactList}\small\item\em Strips the colons off the MAC address of this device. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classaa_format_a9477bf9e4631294dccfa91951615875b}{String\+To\+Upper}} (String str\+To\+Convert)
 \begin{DoxyCompactList}\small\item\em Converts a string to upper case. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classaa_format_ace63e200e90fe1858650882e35ee7a8b}{ip\+To\+String}} (I\+P\+Address ip)
+String \mbox{\hyperlink{classaa_format_ace63e200e90fe1858650882e35ee7a8b}{ip\+To\+String}} (IPAddress ip)
 \begin{DoxyCompactList}\small\item\em Converts an IP address to a string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classaa_format_a464b03d67714abf7ec5cd13f47a65811}{ip\+To\+Byte\+Array}} (const char $\ast$str, byte $\ast$bytes)
 \begin{DoxyCompactList}\small\item\em Convert char array containing IP address to byte array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classaa_format_a0549666142edd860063540daf90ae925}{mac\+To\+Byte\+Array}} (const char $\ast$str, byte $\ast$bytes)
-\begin{DoxyCompactList}\small\item\em Convert char array containing M\+AC address to byte array. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Convert char array containing MAC address to byte array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classaa_format_a9bd278c97225bff5cc5cbd77e27eb8ca}{join\+Two\+Const\+Char}} (const char $\ast$a, const char $\ast$b, char $\ast$out)
 \begin{DoxyCompactList}\small\item\em Join two const char$\ast$ variables into one buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -57,7 +57,7 @@ Convert char array containing IP address to byte array.
 
 
 \begin{DoxyParams}{Parameters}
-{\em const} & char$\ast$ str -\/ Character array containing A\+S\+C\+II string to convert \\
+{\em const} & char$\ast$ str -\/ Character array containing ASCII string to convert \\
 \hline
 \end{DoxyParams}
 \hypertarget{classaa_format_autotoc_md13}{}\doxysubsection{@param byte$\ast$ bytes -\/ Pointer to byte array where we are to put the converted values}\label{classaa_format_autotoc_md13}
@@ -69,7 +69,7 @@ Definition at line 108 of file aa\+Format.\+cpp.
 \index{aaFormat@{aaFormat}!ipToString@{ipToString}}
 \index{ipToString@{ipToString}!aaFormat@{aaFormat}}
 \doxysubsubsection{\texorpdfstring{ipToString()}{ipToString()}}
-{\footnotesize\ttfamily String aa\+Format\+::ip\+To\+String (\begin{DoxyParamCaption}\item[{I\+P\+Address}]{ip }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily String aa\+Format\+::ip\+To\+String (\begin{DoxyParamCaption}\item[{IPAddress}]{ip }\end{DoxyParamCaption})}
 
 
 
@@ -77,10 +77,10 @@ Converts an IP address to a string.
 
 
 \begin{DoxyParams}{Parameters}
-{\em I\+P\+Address} & any valid IP address \\
+{\em IPAddress} & any valid IP address \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_format_autotoc_md11}{}\doxysubsection{@return String containing an I\+P address}\label{classaa_format_autotoc_md11}
+\hypertarget{classaa_format_autotoc_md11}{}\doxysubsection{@return String containing an IP address}\label{classaa_format_autotoc_md11}
 
 
 Definition at line 70 of file aa\+Format.\+cpp.
@@ -115,11 +115,11 @@ Definition at line 135 of file aa\+Format.\+cpp.
 
 
 
-Convert char array containing M\+AC address to byte array. 
+Convert char array containing MAC address to byte array. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em const} & char$\ast$ str -\/ Character array containing A\+S\+C\+II string to convert \\
+{\em const} & char$\ast$ str -\/ Character array containing ASCII string to convert \\
 \hline
 \end{DoxyParams}
 \hypertarget{classaa_format_autotoc_md14}{}\doxysubsection{@param byte$\ast$ bytes -\/ Pointer to byte array where we are to put the converted values}\label{classaa_format_autotoc_md14}
@@ -131,18 +131,18 @@ Definition at line 121 of file aa\+Format.\+cpp.
 \index{aaFormat@{aaFormat}!noColonMAC@{noColonMAC}}
 \index{noColonMAC@{noColonMAC}!aaFormat@{aaFormat}}
 \doxysubsubsection{\texorpdfstring{noColonMAC()}{noColonMAC()}}
-{\footnotesize\ttfamily const char $\ast$ aa\+Format\+::no\+Colon\+M\+AC (\begin{DoxyParamCaption}\item[{String}]{mac\+Address }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const char $\ast$ aa\+Format\+::no\+Colon\+MAC (\begin{DoxyParamCaption}\item[{String}]{mac\+Address }\end{DoxyParamCaption})}
 
 
 
-Strips the colons off the M\+AC address of this device. 
+Strips the colons off the MAC address of this device. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em String} & containing a M\+AC address with colons (\+:) embedded in it \\
+{\em String} & containing a MAC address with colons (\+:) embedded in it \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_format_autotoc_md9}{}\doxysubsection{@return const char$\ast$ with M\+A\+C address containing no colons}\label{classaa_format_autotoc_md9}
+\hypertarget{classaa_format_autotoc_md9}{}\doxysubsection{@return const char$\ast$ with MAC address containing no colons}\label{classaa_format_autotoc_md9}
 
 
 Definition at line 43 of file aa\+Format.\+cpp.

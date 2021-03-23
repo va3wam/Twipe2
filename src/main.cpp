@@ -3,7 +3,6 @@
  * @author the Aging Apprentice
  * @brief Twipe2 robot firmware 
  * @details Basic operating code for the Twipe2 robot 
- * @copyright Copyright (c) 2020 theAgingApprentice@protonmail.com
  * @copyright Copyright (c) 2021 the Aging Apprentice
  * Permission is hereby granted, free of charge, to any person obtaining a copy of 
  * this software and associated documentation files (the "Software"), to deal in the 

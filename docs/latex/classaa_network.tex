@@ -16,10 +16,10 @@ const char $\ast$ \mbox{\hyperlink{classaa_network_ac8b9195072733166e7bad1e5fee5
 void \mbox{\hyperlink{classaa_network_a7c607f1200b3ad93e34838bcff61ade1}{cfg\+To\+Console}} ()
 \begin{DoxyCompactList}\small\item\em Send detailed network configuration information to the console. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classaa_network_a294380ca36a89feee4dcab570170331d}\label{classaa_network_a294380ca36a89feee4dcab570170331d}} 
-char $\ast$ {\bfseries get\+S\+S\+ID} (void)
+char $\ast$ {\bfseries get\+SSID} (void)
 \item 
 \mbox{\Hypertarget{classaa_network_a3a8ede618b2839eaddbcc95467a84d6b}\label{classaa_network_a3a8ede618b2839eaddbcc95467a84d6b}} 
-char $\ast$ {\bfseries get\+P\+S\+WD} (void)
+char $\ast$ {\bfseries get\+PSWD} (void)
 \item 
 void \mbox{\hyperlink{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}{connect}} ()
 \begin{DoxyCompactList}\small\item\em Manage the process of connecting to the Wi\+Fi network. \end{DoxyCompactList}\item 
@@ -47,7 +47,7 @@ Definition at line 22 of file aa\+Network.\+h.
 
 Handle all of the networking logic required by the robot. 
 
-Manages T\+C\+P/\+IP, H\+T\+TP server, O\+TA firmware loading and M\+Q\+TT messaging. \hypertarget{classaa_network_autotoc_md16}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md16}
+Manages TCP/\+IP, HTTP server, OTA firmware loading and MQTT messaging. \hypertarget{classaa_network_autotoc_md16}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md16}
 
 
 Definition at line 36 of file aa\+Network.\+cpp.
@@ -87,7 +87,7 @@ Definition at line 52 of file aa\+Network.\+cpp.
 
 Send detailed network configuration information to the console. 
 
-The E\+S\+P32-\/\+D0\+W\+D\+Q6 chip has dual Tensilica L\+X6 micro controllers. All Wi\+Fi logic runs on the P\+R\+O\+\_\+\+C\+PU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md27}{}\doxysubsection{the A\+P\+P\+\_\+\+C\+P\+U (core 1) aka the application core.}\label{classaa_network_autotoc_md27}
+The ESP32-\/\+D0\+WDQ6 chip has dual Tensilica LX6 micro controllers. All Wi\+Fi logic runs on the PRO\+\_\+\+CPU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md27}{}\doxysubsection{the APP\+\_\+\+CPU (core 1) aka the application core.}\label{classaa_network_autotoc_md27}
 
 
 Definition at line 298 of file aa\+Network.\+cpp.
@@ -155,7 +155,7 @@ Definition at line 283 of file aa\+Network.\+cpp.
 
 Puts a name which is both unique and predictable into the char array \+\_\+unique\+Name\mbox{[}\mbox{]}. 
 
-Combines a prefix (H\+O\+S\+T\+N\+A\+M\+E\+\_\+\+P\+R\+E\+F\+IX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md24}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md24}
+Combines a prefix (HOSTNAME\+\_\+\+PREFIX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md24}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md24}
 
 
 Definition at line 233 of file aa\+Network.\+cpp.
@@ -170,12 +170,12 @@ Definition at line 233 of file aa\+Network.\+cpp.
 
 Take measurements of the Wi-\/\+Fi strength and return the average result. 
 
-R\+S\+SI (Received Signal Strength Indicator) is a common measurement, but most Wi\+Fi adapter vendors handle it differently, as it isn\textquotesingle{}t standardized. Ultimately, the easiest and most consistent way to express signal strength is with d\+Bm, which stands for decibels relative to a milliwatt. Since R\+S\+SI is handled differently by most Wi\+Fi adapters, it\textquotesingle{}s usually converted to d\+Bm to make it consistent and human readable. mW -\/ milliwatts (1 mW = 0 d\+Bm) R\+S\+SI -\/ Received Signal Strength Indicator (usually 0-\/60 or 0-\/255) d\+Bm -\/ Decibels in relation to a milliwatt (usually -\/30 to -\/100). d\+Bm does not scale in a linear fashion like you\textquotesingle{}d expect, instead being logarithmic. That means that signal strength changes aren\textquotesingle{}t smooth and gradual. The Rule of 3s and 10s highlights the logarithmic nature of d\+Bm\+: 3 dB of loss = -\/3 dB = halves signal strength 3 dB of gain = +3 dB = doubles signal strength 10 dB of loss = -\/10 dB = 10 times less signal strength (0.\+1 mW = -\/10 d\+Bm, 0.\+01 mW = -\/20 d\+Bm, etc.) 10 dB of gain = +10 dB = 10 times more signal strength (0.\+00001 mW = -\/50 d\+Bm, 0.\+0001 mW = -\/40 d\+Bm, etc.) 
+RSSI (Received Signal Strength Indicator) is a common measurement, but most Wi\+Fi adapter vendors handle it differently, as it isn\textquotesingle{}t standardized. Ultimately, the easiest and most consistent way to express signal strength is with d\+Bm, which stands for decibels relative to a milliwatt. Since RSSI is handled differently by most Wi\+Fi adapters, it\textquotesingle{}s usually converted to d\+Bm to make it consistent and human readable. mW -\/ milliwatts (1 mW = 0 d\+Bm) RSSI -\/ Received Signal Strength Indicator (usually 0-\/60 or 0-\/255) d\+Bm -\/ Decibels in relation to a milliwatt (usually -\/30 to -\/100). d\+Bm does not scale in a linear fashion like you\textquotesingle{}d expect, instead being logarithmic. That means that signal strength changes aren\textquotesingle{}t smooth and gradual. The Rule of 3s and 10s highlights the logarithmic nature of d\+Bm\+: 3 dB of loss = -\/3 dB = halves signal strength 3 dB of gain = +3 dB = doubles signal strength 10 dB of loss = -\/10 dB = 10 times less signal strength (0.\+1 mW = -\/10 d\+Bm, 0.\+01 mW = -\/20 d\+Bm, etc.) 10 dB of gain = +10 dB = 10 times more signal strength (0.\+00001 mW = -\/50 d\+Bm, 0.\+0001 mW = -\/40 d\+Bm, etc.) 
 \begin{DoxyParams}{Parameters}
 {\em int8\+\_\+t} & data\+Points is the number of readings to average together. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_network_autotoc_md25}{}\doxysubsection{@return long average\+R\+S\+S\+I which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md25}
+\hypertarget{classaa_network_autotoc_md25}{}\doxysubsection{@return long average\+RSSI which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md25}
 
 
 Definition at line 265 of file aa\+Network.\+cpp.
