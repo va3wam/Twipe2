@@ -1,6 +1,6 @@
 # Twipe2
 
-This repository contains all of the information for the next generation of our Two Wheeled Inverted Pendulum robot. Full details about the code can be viewed in the [online documentation](https://github.com/va3wam/Twipe2/tree/gh-pages).
+This repository contains all of the information for the next generation of our Two Wheeled Inverted Pendulum robot. Full details about the code can be viewed in the [online documentation](https://va3wam.github.io/Twipe2/html/index.html).
 
 ## Getting Started
 
