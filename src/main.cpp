@@ -21,7 +21,7 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ------------------------------------------------------------
- * 2021-03-17 Old Squire Codebase created.
+ * 2021-03-17 Old Squire Code base created.
  ************************************************************************************/
 #include <main.h> // Allows us to have functions appear out of order. 
 
