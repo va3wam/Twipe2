@@ -934,10 +934,6 @@ EXCLUDE_SYMLINKS       = NO
 # exclude all test directories for example use the pattern */test/*
 
 EXCLUDE_PATTERNS       = */assets/*
-EXCLUDE_PATTERNS       = */Doxy*
-EXCLUDE_PATTERNS       = */LICENSE*
-EXCLUDE_PATTERNS       = */platformio*
-EXCLUDE_PATTERNS       = */README*
 EXCLUDE_PATTERNS      += */lib/async-mqtt-client-master/*
 EXCLUDE_PATTERNS      += */lib/AsyncTCP-master/*
 EXCLUDE_PATTERNS      += */lib/ESP32TimerInterrupt-master/*

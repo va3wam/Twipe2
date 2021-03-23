@@ -1,0 +1,69 @@
+This repository contains all of the information for the next generation of our Two Wheeled Inverted Pendulum robot.\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxysection{Getting Started}\label{md__r_e_a_d_m_e_autotoc_md29}
+Full details about this project can be read on our \href{https://github.com/va3wam/Twipe2/wiki}{\texttt{ wiki}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysubsection{Prerequisites}\label{md__r_e_a_d_m_e_autotoc_md30}
+The software in this repository was written in the C++ (Arduino) language using Microsoft\textquotesingle{}s Visual Source Code I\+DE and the library management was handled using the plugin Platform\+IO. As such, source code files have the extension \char`\"{}cpp\char`\"{} denoting c++ rather than the extension \char`\"{}ino\char`\"{} denoting Arduino. ~\newline
+\hypertarget{md__r_e_a_d_m_e_autotoc_md31}{}\doxysubsection{Code Compatibility}\label{md__r_e_a_d_m_e_autotoc_md31}
+The Arduino C++ code was written to run on the Espressif E\+SP W\+R\+O\+O\+M32 \char`\"{}\+Software On a Chip\char`\"{} (S\+OC). The development board used for this S\+OC is the Adafruit Huzzah32 featherboard. Note that some standard Arduino functions such as Analog\+Write() have not been implemented on the E\+S\+P32 S\+OC and alternate functions such as ledc\+Setup(), ledc\+Attach\+Pin() and ledc\+Write() must be used in their place. There are some additional compatibility issues of note as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item The G\+P\+IO pin usage is loosey Adafruit featherboard compliant meaning it will work with some boards such as the O\+L\+ED board
+\item This code does not use the Twipe pinout configuration or naming convension so will not port over to a Twipe compliant robot unmodified
+\item This code will N\+OT run on an E\+S\+P8266 unmodified because of both G\+P\+IO incompatibility as well as some E\+S\+P32 specific libraries that are in use
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysubsection{Installing}\label{md__r_e_a_d_m_e_autotoc_md32}
+There are numerous tutorials on how to install Arduino code onto an E\+SP W\+R\+O\+O\+M32 from Microsoft\textquotesingle{}s Visual Studio Code. Try out one of the following tutorials or find another one that is more to your liking\+:
+\begin{DoxyItemize}
+\item \href{https://maker.pro/arduino/tutorial/how-to-use-visual-studio-code-for-arduino}{\texttt{ Maker\+Pro}}
+\item \href{https://randomnerdtutorials.com/vs-code-platformio-ide-esp32-esp8266-arduino/}{\texttt{ Random Nerd}}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md33}{}\doxysection{Running the tests}\label{md__r_e_a_d_m_e_autotoc_md33}
+At this time there are no automated tests for this application.\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{Deployment}\label{md__r_e_a_d_m_e_autotoc_md34}
+This Arduino code was developed using the following set up.\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysubsection{Built With}\label{md__r_e_a_d_m_e_autotoc_md35}
+
+\begin{DoxyItemize}
+\item \href{https://code.visualstudio.com/}{\texttt{ Visual Studio Code}} -\/ The I\+DE
+\item \href{https://platformio.org/}{\texttt{ Platformio}} -\/ Editor plugin
+\item Library Framework -\/ Arduino
+\item Hardware platform -\/ Espressif E\+S\+P32
+\item Board -\/ Adafruit Huzzah32 featherboard
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md36}{}\doxysubsection{Arduino Libraries}\label{md__r_e_a_d_m_e_autotoc_md36}
+The following additional libraries are used in the Arduino C++ code\+:
+
+
+\begin{DoxyItemize}
+\item The standard Arduino library that is bundled with Platform\+IO
+\item The standard Wire library that is bundled with Platform\+IO
+\item To be filled in as the code is developed
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxysection{Contributing}\label{md__r_e_a_d_m_e_autotoc_md37}
+This project is being developed by a couple of buddies. If you wish to get involved in this project feel free to contact us at one of the email addresses listed in the authors section below. All current and planned work for this project is tracked using the \href{https://github.com/va3wam/Twipe2/projects}{\texttt{ Github projects feature}}. Here are the standards that we follow for all va3wam projects\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/va3wam/va3wam.github.io/wiki/Software-Version-Control}{\texttt{ Set up your local repo, Git workflow}}
+\item \href{https://github.com/va3wam/va3wam.github.io/wiki/Software-Languages-&-Tools}{\texttt{ Recommended Tool chain}}
+\item \href{https://github.com/va3wam/va3wam.github.io/wiki/Software-Coding-Standards}{\texttt{ va3wam coding standards}}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md38}{}\doxysection{Versioning}\label{md__r_e_a_d_m_e_autotoc_md38}
+We use \href{http://semver.org/}{\texttt{ Sem\+Ver}} for versioning. For the versions available, see the \href{https://github.com/va3wam/ZippiTwipi/tags}{\texttt{ tags on this repository}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md39}{}\doxysection{Authors}\label{md__r_e_a_d_m_e_autotoc_md39}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/nerdoug}{\texttt{ Doug}}
+\item \href{https://github.com/va3wam}{\texttt{ va3wam}}
+\end{DoxyItemize}
+
+See also the list of \href{https://github.com/va3wam/ZippiTwipi/settings/access}{\texttt{ contributors}} who participated in this project.\hypertarget{md__r_e_a_d_m_e_autotoc_md40}{}\doxysection{Acknowledgements}\label{md__r_e_a_d_m_e_autotoc_md40}
+
+\begin{DoxyItemize}
+\item Joop Brokking and his \href{http://www.brokking.net/yabr_main.html}{\texttt{ Balancing Robot}}
+\item Tony Di\+Cola and Adafruit Industries for their M\+Q\+TT Q\+O\+S1 Arduino library
+\item Jeff Rowberg for the M\+P\+U6050 D\+MP logic
+\item The many folks involved in porting the Arduino libraries over to the E\+S\+P32
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md41}{}\doxysection{Lisence}\label{md__r_e_a_d_m_e_autotoc_md41}
+\href{https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE}{\texttt{ }}
+
+The M\+IT License (M\+IT)
+
+Copyright (c) 2013-\/2020 Michael Rose and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\+HE S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED \char`\"{}\+A\+S I\+S\char`\"{}, W\+I\+T\+H\+O\+UT W\+A\+R\+R\+A\+N\+TY OF A\+NY K\+I\+ND, E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED, I\+N\+C\+L\+U\+D\+I\+NG B\+UT N\+OT L\+I\+M\+I\+T\+ED TO T\+HE W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY, F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+ND N\+O\+N\+I\+N\+F\+R\+I\+N\+G\+E\+M\+E\+NT. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE A\+U\+T\+H\+O\+RS OR C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+E\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY C\+L\+A\+IM, D\+A\+M\+A\+G\+ES OR O\+T\+H\+ER L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN AN A\+C\+T\+I\+ON OF C\+O\+N\+T\+R\+A\+CT, T\+O\+RT OR O\+T\+H\+E\+R\+W\+I\+SE, A\+R\+I\+S\+I\+NG F\+R\+OM, O\+UT OF OR IN C\+O\+N\+N\+E\+C\+T\+I\+ON W\+I\+TH T\+HE S\+O\+F\+T\+W\+A\+RE OR T\+HE U\+SE OR O\+T\+H\+ER D\+E\+A\+L\+I\+N\+GS IN T\+HE S\+O\+F\+T\+W\+A\+RE. 
