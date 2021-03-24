@@ -73,35 +73,35 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;main.h&gt;</span> <span class="comment">// Allows us to have functions appear out of order. </span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> setupSerial()</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   Serial.begin(serialBaudRate); <span class="comment">// Open a serial connection at specified baud rate. </span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;   <span class="keywordflow">while</span> (!Serial); <span class="comment">// Wait for Serial port to be ready.</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">//setupSerial()</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> showCfgDetails()</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;showCfgDetails&gt; Robot Configuration Report&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;showCfgDetails&gt; ==========================&quot;</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   appCpu.<a class="code" href="classaa_chip.html#a19a81577c04ebfed61c08b24a6bc0dae">cfgToConsole</a>(); <span class="comment">// Display core0 information on the console.</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   network.<a class="code" href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">cfgToConsole</a>(); <span class="comment">// Display network information on the console.</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">//showCfgDetails()</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> setup()</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   setupSerial(); <span class="comment">// Set serial baud rate. </span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;setup&gt; Start of setup&quot;</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   network.<a class="code" href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">connect</a>(); <span class="comment">// Start WiFi connection.</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   showCfgDetails(); <span class="comment">// Show all configuration details.</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;setup&gt; End of setup&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;} <span class="comment">//setup()</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> loop()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;} <span class="comment">//loop()</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;main.h&gt;</span> <span class="comment">// Allows us to have functions appear out of order. </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> setupSerial()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;   Serial.begin(serialBaudRate); <span class="comment">// Open a serial connection at specified baud rate. </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <span class="keywordflow">while</span> (!Serial); <span class="comment">// Wait for Serial port to be ready.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <span class="comment">//setupSerial()</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> showCfgDetails()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;showCfgDetails&gt; Robot Configuration Report&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;showCfgDetails&gt; ==========================&quot;</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   appCpu.<a class="code" href="classaa_chip.html#a19a81577c04ebfed61c08b24a6bc0dae">cfgToConsole</a>(); <span class="comment">// Display core0 information on the console.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   network.<a class="code" href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">cfgToConsole</a>(); <span class="comment">// Display network information on the console.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">//showCfgDetails()</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> setup()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;   setupSerial(); <span class="comment">// Set serial baud rate. </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;setup&gt; Start of setup&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   network.<a class="code" href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">connect</a>(); <span class="comment">// Start WiFi connection.</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   showCfgDetails(); <span class="comment">// Show all configuration details.</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;setup&gt; End of setup&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">//setup()</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> loop()</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <span class="comment">//loop()</span></div>
 <div class="ttc" id="aclassaa_chip_html_a19a81577c04ebfed61c08b24a6bc0dae"><div class="ttname"><a href="classaa_chip.html#a19a81577c04ebfed61c08b24a6bc0dae">aaChip::cfgToConsole</a></div><div class="ttdeci">void cfgToConsole()</div><div class="ttdoc">Send detailed chip configuration information to the console.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00099">aaChip.cpp:99</a></div></div>
 <div class="ttc" id="aclassaa_network_html_a7c607f1200b3ad93e34838bcff61ade1"><div class="ttname"><a href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">aaNetwork::cfgToConsole</a></div><div class="ttdeci">void cfgToConsole()</div><div class="ttdoc">Send detailed network configuration information to the console.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00298">aaNetwork.cpp:298</a></div></div>
 <div class="ttc" id="aclassaa_network_html_ae6deeb2d04230e62a5891f2f5c459084"><div class="ttname"><a href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">aaNetwork::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdoc">Manage the process of connecting to the WiFi network.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00199">aaNetwork.cpp:199</a></div></div>
