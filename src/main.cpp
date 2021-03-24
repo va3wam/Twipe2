@@ -1,6 +1,6 @@
-/************************************************************************************
+/** 
  * @file main.cpp
- * 
+ *
  * @mainpage Twipe2 robot firmware 
  * 
  * @section intro_section Introduction
@@ -16,11 +16,14 @@
  *   
  * @section author Author 
  * 
- * Written by Doug Elliott and Old Squire collaborating as the Aging Apprentices.
+ * Written as Aging Apprentices by:
+ * @author Doug Elliott 
+ * @author Old Squire
+ * 
+ * @copyright Copyright (c) 2021 the Aging Apprentice
  * 
  * @section license License
  * 
- * @copyright Copyright (c) 2021 the Aging Apprentice
  * Permission is hereby granted, free of charge, to any person obtaining a copy of 
  * this software and associated documentation files (the "Software"), to deal in the 
  * Software without restriction, including without limitation the rights to use, copy, 
