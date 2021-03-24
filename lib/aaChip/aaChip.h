@@ -1,6 +1,6 @@
-#ifndef aaChip_h
+#ifndef aaChip_h // Start of precompiler check to avoid dupicate inclusion of this code block.
 
-#define aaChip_h
+#define aaChip_h // Precompiler macro used for precompiler check.
 
 #include <Arduino.h> // Required for variable type declarations. Arduino Core for ESP32. Comes with Platform.io
 
@@ -21,4 +21,4 @@ class aaChip // Define aaChip class
       unsigned long serialSpeed; 
 }; //class aaChip
 
-#endif
+#endif // End of precompiler protected code block.

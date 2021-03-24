@@ -47,4 +47,4 @@ class aaNetwork // Define aaNetwork class
       char *_uniqueNamePtr = &_uniqueName[0]; // Pointer to first address position of unique name character array. 
 }; //class aaNetwork
 
-#endif // End of precompiler protected code block
+#endif // End of precompiler protected code block.

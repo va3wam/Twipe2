@@ -21,6 +21,7 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ------------------------------------------------------------
+ * 2021-03-24 Old Squire Updated preprocessor conditional logic comments.
  * 2021-03-17 Old Squire Program created.
   ***********************************************************************************/
 #include <aaChip.h> // Header file for linking.
@@ -33,7 +34,6 @@
 aaChip::aaChip()
 {
    serialSpeed = serialBaudRate;
-
 } //aaChip::aaChip()
 
 /**
