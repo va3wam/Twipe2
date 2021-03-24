@@ -72,9 +72,9 @@ $(function() {
 <div class="title">aaChip.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef aaChip_h</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef aaChip_h </span><span class="comment">// Start of precompiler check to avoid dupicate inclusion of this code block.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define aaChip_h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define aaChip_h </span><span class="comment">// Precompiler macro used for precompiler check.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span> <span class="comment">// Required for variable type declarations. Arduino Core for ESP32. Comes with Platform.io</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
@@ -95,9 +95,9 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> serialSpeed; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}; <span class="comment">//class aaChip</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// End of precompiler protected code block.</span></div>
 <div class="ttc" id="aclassaa_chip_html"><div class="ttname"><a href="classaa_chip.html">aaChip</a></div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8h_source.html#l00009">aaChip.h:10</a></div></div>
-<div class="ttc" id="aclassaa_chip_html_a046d2e33f9548e7d9d26319cf6151d49"><div class="ttname"><a href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">aaChip::aaChip</a></div><div class="ttdeci">aaChip()</div><div class="ttdoc">Common API for retrieving ESP32 chip configuration information.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00033">aaChip.cpp:33</a></div></div>
+<div class="ttc" id="aclassaa_chip_html_a046d2e33f9548e7d9d26319cf6151d49"><div class="ttname"><a href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">aaChip::aaChip</a></div><div class="ttdeci">aaChip()</div><div class="ttdoc">Common API for retrieving ESP32 chip configuration information.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00034">aaChip.cpp:34</a></div></div>
 <div class="ttc" id="aclassaa_chip_html_a089fa3e96e567b76eaaad0739b0fc2a4"><div class="ttname"><a href="classaa_chip.html#a089fa3e96e567b76eaaad0739b0fc2a4">aaChip::getCpuClock</a></div><div class="ttdeci">uint32_t getCpuClock()</div><div class="ttdoc">Returns the clock speed of the application core in Mhz.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00088">aaChip.cpp:88</a></div></div>
 <div class="ttc" id="aclassaa_chip_html_a19a81577c04ebfed61c08b24a6bc0dae"><div class="ttname"><a href="classaa_chip.html#a19a81577c04ebfed61c08b24a6bc0dae">aaChip::cfgToConsole</a></div><div class="ttdeci">void cfgToConsole()</div><div class="ttdoc">Send detailed chip configuration information to the console.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00099">aaChip.cpp:99</a></div></div>
 <div class="ttc" id="aclassaa_chip_html_a2511b9d24c31e5d3bbd2db7c85bd5948"><div class="ttname"><a href="classaa_chip.html#a2511b9d24c31e5d3bbd2db7c85bd5948">aaChip::getFreeHeap</a></div><div class="ttdeci">uint32_t getFreeHeap()</div><div class="ttdoc">Returns the amount of free heap (sorted memory the program can use) in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00061">aaChip.cpp:61</a></div></div>

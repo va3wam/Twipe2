@@ -95,14 +95,14 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * </span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * YYYY-MM-DD Dev        Description</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * ---------- ---------- ------------------------------------------------------------</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * 2021-03-17 Old Squire Program created.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">  ***********************************************************************************/</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;aaChip.h&gt;</span> <span class="comment">// Header file for linking.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">   33</a></span>&#160;<a class="code" href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">aaChip::aaChip</a>()</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   serialSpeed = serialBaudRate;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * 2021-03-24 Old Squire Updated preprocessor conditional logic comments.</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * 2021-03-17 Old Squire Program created.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">  ***********************************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;aaChip.h&gt;</span> <span class="comment">// Header file for linking.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">   34</a></span>&#160;<a class="code" href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">aaChip::aaChip</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;   serialSpeed = serialBaudRate;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} <span class="comment">//aaChip::aaChip()</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classaa_chip.html#a4f8c531f1b2353b4f2533e6f26c7808a">   43</a></span>&#160;uint8_t <a class="code" href="classaa_chip.html#a4f8c531f1b2353b4f2533e6f26c7808a">aaChip::getRevision</a>()</div>
@@ -153,7 +153,7 @@ $(function() {
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaChip::cfgToConsole&gt; ... Arduino core clock frequency = &quot;</span>); </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   Serial.print(<a class="code" href="classaa_chip.html#a089fa3e96e567b76eaaad0739b0fc2a4">getCpuClock</a>()); Serial.println(<span class="stringliteral">&quot; MHz&quot;</span>);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">//aaChip::cfgToConsole()</span></div>
-<div class="ttc" id="aclassaa_chip_html_a046d2e33f9548e7d9d26319cf6151d49"><div class="ttname"><a href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">aaChip::aaChip</a></div><div class="ttdeci">aaChip()</div><div class="ttdoc">Common API for retrieving ESP32 chip configuration information.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00033">aaChip.cpp:33</a></div></div>
+<div class="ttc" id="aclassaa_chip_html_a046d2e33f9548e7d9d26319cf6151d49"><div class="ttname"><a href="classaa_chip.html#a046d2e33f9548e7d9d26319cf6151d49">aaChip::aaChip</a></div><div class="ttdeci">aaChip()</div><div class="ttdoc">Common API for retrieving ESP32 chip configuration information.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00034">aaChip.cpp:34</a></div></div>
 <div class="ttc" id="aclassaa_chip_html_a089fa3e96e567b76eaaad0739b0fc2a4"><div class="ttname"><a href="classaa_chip.html#a089fa3e96e567b76eaaad0739b0fc2a4">aaChip::getCpuClock</a></div><div class="ttdeci">uint32_t getCpuClock()</div><div class="ttdoc">Returns the clock speed of the application core in Mhz.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00088">aaChip.cpp:88</a></div></div>
 <div class="ttc" id="aclassaa_chip_html_a19a81577c04ebfed61c08b24a6bc0dae"><div class="ttname"><a href="classaa_chip.html#a19a81577c04ebfed61c08b24a6bc0dae">aaChip::cfgToConsole</a></div><div class="ttdeci">void cfgToConsole()</div><div class="ttdoc">Send detailed chip configuration information to the console.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00099">aaChip.cpp:99</a></div></div>
 <div class="ttc" id="aclassaa_chip_html_a2511b9d24c31e5d3bbd2db7c85bd5948"><div class="ttname"><a href="classaa_chip.html#a2511b9d24c31e5d3bbd2db7c85bd5948">aaChip::getFreeHeap</a></div><div class="ttdeci">uint32_t getFreeHeap()</div><div class="ttdoc">Returns the amount of free heap (sorted memory the program can use) in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="aa_chip_8cpp_source.html#l00061">aaChip.cpp:61</a></div></div>
