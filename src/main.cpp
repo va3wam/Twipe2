@@ -17,8 +17,7 @@
  * @section author Author 
  * 
  * Written as Aging Apprentices by:
- * @author Doug Elliott 
- * @author Old Squire
+ * @authors Doug Elliott, Old Squire
  * 
  * @copyright Copyright (c) 2021 the Aging Apprentice
  * 
