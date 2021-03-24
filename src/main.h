@@ -1,7 +1,5 @@
 /************************************************************************************
- * @file main.h
- * 
- * @mainpage Twipe2 robot firmware 
+ * @file main.h  
  ************************************************************************************/
 #ifndef main_h // Start of precompiler check to avoid dupicate inclusion of this code block.
 
