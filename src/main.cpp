@@ -1,8 +1,25 @@
 /************************************************************************************
  * @file main.cpp
- * @author the Aging Apprentice
- * @brief Twipe2 robot firmware 
- * @details Basic operating code for the Twipe2 robot 
+ * 
+ * @mainpage Twipe2 robot firmware 
+ * 
+ * @section intro_section Introduction
+ * 
+ * This is the source code for the the Twipe2 robot. It is comprised of a number of 
+ * custom general purpose libraries that will be reused for other applications as 
+ * well as the main logic specific to the function oof this particular robot.
+ * 
+ * @section dependencies Dependencies
+ *
+ * This code depends on the following external code sources. 
+ * @ref includes   
+ *   
+ * @section author Author 
+ * 
+ * Written by Doug Elliott and Old Squire collaborating as the Aging Apprentices.
+ * 
+ * @section license License
+ * 
  * @copyright Copyright (c) 2021 the Aging Apprentice
  * Permission is hereby granted, free of charge, to any person obtaining a copy of 
  * this software and associated documentation files (the "Software"), to deal in the 
@@ -17,6 +34,8 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE 
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * @section history Edit History
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ------------------------------------------------------------
