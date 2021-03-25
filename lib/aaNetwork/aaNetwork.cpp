@@ -28,6 +28,9 @@
  ************************************************************************************/
 #include <aaNetwork.h> // Required for Webserver data type
 
+// This should be in the header file but that causes a warning durng build time.
+static const char* HOST_NAME_PREFIX = "Twipe2"; // Prefix of unique name of this device on the network.
+
 /**
  * @brief Handle all of the networking logic required by the robot. 
  * @details Manages TCP/IP, HTTP server, OTA firmware loading and MQTT messaging. 

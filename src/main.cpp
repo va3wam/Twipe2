@@ -12,11 +12,9 @@
  * @section dependencies Dependencies
  *
  * This code depends on the following external code sources. 
- * @ref includes   
+ *
+ * @ref mainIncludes   
  *   
- * @section author Author 
- * 
- * Written as Aging Apprentices by:
  * @authors Doug Elliott, Old Squire
  * 
  * @copyright Copyright (c) 2021 the Aging Apprentice
@@ -67,6 +65,21 @@ void showCfgDetails()
 } //showCfgDetails()
 
 /** 
+ * @brief Start up the web server.
+ * @details Web server supports configuring the MQTT broker IP without needing to 
+ *          rebuild. It also provides a web interface for doing OTA code downloads.
+ * =================================================================================*/
+void startWebServer()
+{
+   char uniqueName[HOST_NAME_SIZE]; // Character array that holds unique name for Wifi network purposes. 
+   char *uniqueNamePtr = &uniqueName[0]; // Pointer to first address position of unique name character array. 
+   network.getUniqueName(uniqueNamePtr); // Get unique name and put it into 
+   Serial.print("<startWebServer> Unique Name: "); Serial.println(uniqueName);
+   webServer.start(uniqueName);
+   Serial.println("<startWebServer> End of setup");
+} //startWebServer()
+
+/** 
  * @brief Arduino mandatory function #1. Runs once at boot. 
  * =================================================================================*/
 void setup()
@@ -74,8 +87,8 @@ void setup()
    setupSerial(); // Set serial baud rate. 
    Serial.println("<setup> Start of setup");
    network.connect(); // Start WiFi connection.
+   startWebServer(); // Start up web server.
    showCfgDetails(); // Show all configuration details.
-   Serial.println("<setup> End of setup");
 } //setup()
 
 /**
@@ -83,5 +96,4 @@ void setup()
  * =================================================================================*/
 void loop()
 {
-
 } //loop()

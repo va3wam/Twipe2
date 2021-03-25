@@ -16,8 +16,8 @@ enum signalStrength // English translation of dB readings for WiFi signal streng
     notGood = -80,
     unusable = -90,      
 }; //enum
+
 static const int8_t HOST_NAME_SIZE = 20; // Max size of unique network name of this device on the network. 
-static const char* HOST_NAME_PREFIX = "Twipe2"; // Prefix of unique name of this device on the network.
 
 class aaNetwork // Define aaNetwork class
 {
@@ -35,8 +35,7 @@ class aaNetwork // Define aaNetwork class
       const char* evalSignal(int16_t signalStrength); // Return human readable assessment of signal strength.
    private:
       const char* _lookForAP(); // Scan 2.4GHz radio spectrum for known Access Point.
-      const char* _translateEncryptionType(wifi_auth_mode_t encryptionType); // Provide human readable wifi encryption method
- 
+      const char* _translateEncryptionType(wifi_auth_mode_t encryptionType); // Provide human readable wifi encryption method 
       static void _wiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info); // Event handler for wifi
       const char* _unknownAP = "unknown"; // Comparitor used to check if a valid AP was found.
       const char* _ssid; // SSID of Access Point selected to connect to over Wifi. 

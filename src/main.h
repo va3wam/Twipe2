@@ -6,21 +6,23 @@
 #define main_h // Precompiler macro used for precompiler check.
 
 /************************************************************************************
- * @section includes Included libraries
+ * @section mainIncludes Included libraries
  ************************************************************************************/
 #include <Arduino.h> // Arduino Core for ESP32. Comes with Platform.io.
-#include <aaChip.h> // Used to access details about the core (CPU) that the Arduino framework is running on.
+#include <aaChip.h> // Core (CPU) details that the code running on.
 #include <aaNetwork.h> // Required for handling Wifi functions. 
+#include <aaAndrew.h> // Realtime web-based network config and OTA code updates.
 
 /************************************************************************************
- * @section instantiate Instantiated objects
+ * @section mainInstantiate Instantiated objects
  ************************************************************************************/
 aaChip appCpu; // Access information about the ESP32 application microprocessor (Core1).
-aaFormat convert; // Assortment of handy conversion functions.
+//aaFormat convert; // Assortment of handy conversion functions.
 aaNetwork network; // WiFi session management.
+aaAndrew webServer; // Webserver hosted by microcontroller. 
 
 /************************************************************************************
- * @section declare Declare functions
+ * @section mainDeclare Declare functions
  ************************************************************************************/
 // Declare functions.
 void setupSerial(); // Initialize the serial output.
