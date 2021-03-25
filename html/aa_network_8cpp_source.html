@@ -102,245 +102,248 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> ************************************************************************************/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;aaNetwork.h&gt;</span> <span class="comment">// Required for Webserver data type</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">   36</a></span>&#160;<a class="code" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork::aaNetwork</a>() </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::aaNetwork&gt; aaNetwork default constructor running.&quot;</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <span class="comment">//aaNetwork::aaNetwork()</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classaa_network.html#aa4c964e502159e4265aed7094b13f1c0">   44</a></span>&#160;<a class="code" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork::aaNetwork</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *ssid, <span class="keyword">const</span> <span class="keywordtype">char</span> *password)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::aaNetwork&gt; aaNetwork second form constructor running.&quot;</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">//aaNetwork::aaNetwork()</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">   52</a></span>&#160;<a class="code" href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">aaNetwork::~aaNetwork</a>() </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::aaNetwork&gt; aaNetwork destructor running.&quot;</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">//aaNetwork::aaNetwork()</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* aaNetwork::_lookForAP()</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::_lookForAP&gt; Scanning the 2.4GHz radio spectrum for known Access Points.&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   _ssid = _unknownAP; <span class="comment">//  At the start no known Access Point has been foundto connect to</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   <span class="keywordtype">int</span> numberOfNetworks = WiFi.scanNetworks(); <span class="comment">// Used to track how many APs are detected by the scan</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   <span class="keywordtype">int</span> StrongestSignal = -127; <span class="comment">// Used to find the strongest signal. Set as low as possible to start</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   <span class="keywordtype">bool</span> APknown; <span class="comment">// Flag to indicate if the current AP appears in the known AP list</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   Serial.println(numberOfNetworks);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="comment">// Loop through all detected APs</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; numberOfNetworks; i++)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;   {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      APknown = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="comment">// Scan table of known APs to see if the current AP is known to us</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; numKnownAPs; j++)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;         <span class="comment">// If the current scanned AP appears in the known AP list note the index value and flag found</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         <span class="keywordflow">if</span>(WiFi.SSID(i) == SSID[j])</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;         {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            APknown = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            _SSIDIndex = j;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;         } <span class="comment">//if</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      }   <span class="comment">//for</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="comment">// If the current AP is known and has a stronger signal than the others that have been checked</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="comment">// then store it in the variables that will be used to connect to the AP later</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keywordflow">if</span>((APknown == <span class="keyword">true</span>) &amp;&amp; (WiFi.SSID(i).toInt() &gt; StrongestSignal))</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;         _ssid = SSID[_SSIDIndex].c_str();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;         _password = Password[_SSIDIndex].c_str();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;         StrongestSignal = WiFi.SSID(i).toInt();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      } <span class="comment">//if</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   } <span class="comment">//for</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;   <span class="keywordflow">return</span> _ssid;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}  <span class="comment">//aaNetwork::lookForAP()</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> aaNetwork::_wiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;   <span class="keywordflow">switch</span>(event) </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;   {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_AP_START:</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//         WiFi.softAP(AP_SSID, AP_PASS); //can set ap hostname here   </span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">//         WiFi.softAPenableIpV6(); //enable ap ipv6 here</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_AP_START&quot;</span>);            </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_START:         </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//         WiFi.setHostname(AP_SSID); //set sta hostname here</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_START&quot;</span>);            </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_CONNECTED:         </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">//         WiFi.enableIpV6(); //enable sta ipv6 here</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_CONNECTED&quot;</span>);            </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_AP_STA_GOT_IP6:</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_AP_STA_GOT_IP6&quot;</span>);            </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// This should be in the header file but that causes a warning durng build time.</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* HOST_NAME_PREFIX = <span class="stringliteral">&quot;Twipe2&quot;</span>; <span class="comment">// Prefix of unique name of this device on the network.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">   39</a></span>&#160;<a class="code" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork::aaNetwork</a>() </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::aaNetwork&gt; aaNetwork default constructor running.&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <span class="comment">//aaNetwork::aaNetwork()</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classaa_network.html#aa4c964e502159e4265aed7094b13f1c0">   47</a></span>&#160;<a class="code" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork::aaNetwork</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *ssid, <span class="keyword">const</span> <span class="keywordtype">char</span> *password)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::aaNetwork&gt; aaNetwork second form constructor running.&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <span class="comment">//aaNetwork::aaNetwork()</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">   55</a></span>&#160;<a class="code" href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">aaNetwork::~aaNetwork</a>() </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::aaNetwork&gt; aaNetwork destructor running.&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <span class="comment">//aaNetwork::aaNetwork()</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* aaNetwork::_lookForAP()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::_lookForAP&gt; Scanning the 2.4GHz radio spectrum for known Access Points.&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   _ssid = _unknownAP; <span class="comment">//  At the start no known Access Point has been foundto connect to</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   <span class="keywordtype">int</span> numberOfNetworks = WiFi.scanNetworks(); <span class="comment">// Used to track how many APs are detected by the scan</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;   <span class="keywordtype">int</span> StrongestSignal = -127; <span class="comment">// Used to find the strongest signal. Set as low as possible to start</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="keywordtype">bool</span> APknown; <span class="comment">// Flag to indicate if the current AP appears in the known AP list</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   Serial.println(numberOfNetworks);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;   <span class="comment">// Loop through all detected APs</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; numberOfNetworks; i++)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      APknown = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="comment">// Scan table of known APs to see if the current AP is known to us</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; numKnownAPs; j++)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;         <span class="comment">// If the current scanned AP appears in the known AP list note the index value and flag found</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;         <span class="keywordflow">if</span>(WiFi.SSID(i) == SSID[j])</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;         {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            APknown = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            _SSIDIndex = j;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         } <span class="comment">//if</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      }   <span class="comment">//for</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="comment">// If the current AP is known and has a stronger signal than the others that have been checked</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="comment">// then store it in the variables that will be used to connect to the AP later</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="keywordflow">if</span>((APknown == <span class="keyword">true</span>) &amp;&amp; (WiFi.SSID(i).toInt() &gt; StrongestSignal))</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;         _ssid = SSID[_SSIDIndex].c_str();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;         _password = Password[_SSIDIndex].c_str();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;         StrongestSignal = WiFi.SSID(i).toInt();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      } <span class="comment">//if</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;   } <span class="comment">//for</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;   <span class="keywordflow">return</span> _ssid;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}  <span class="comment">//aaNetwork::lookForAP()</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">void</span> aaNetwork::_wiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;   <span class="keywordflow">switch</span>(event) </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_AP_START:</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">//         WiFi.softAP(AP_SSID, AP_PASS); //can set ap hostname here   </span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">//         WiFi.softAPenableIpV6(); //enable ap ipv6 here</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_AP_START&quot;</span>);            </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;         <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_START:         </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">//         WiFi.setHostname(AP_SSID); //set sta hostname here</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_START&quot;</span>);            </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;         <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_CONNECTED:         </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">//         WiFi.enableIpV6(); //enable sta ipv6 here</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_CONNECTED&quot;</span>);            </div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_GOT_IP:</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">//         wifiOnConnect(); // Call function to do things dependant upon getting wifi connected</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_GOT_IP&quot;</span>);            </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_DISCONNECTED:</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_DISCONNECTED&quot;</span>);            </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_AP_STA_GOT_IP6:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_AP_STA_GOT_IP6&quot;</span>);            </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;         <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_GOT_IP:</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">//         wifiOnConnect(); // Call function to do things dependant upon getting wifi connected</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_GOT_IP&quot;</span>);            </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <span class="keywordflow">case</span> WL_NO_SSID_AVAIL:</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; WL_NO_SSID_AVAIL&quot;</span>);            </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <span class="keywordflow">case</span> SYSTEM_EVENT_STA_DISCONNECTED:</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected SYSTEM_EVENT_STA_DISCONNECTED&quot;</span>);            </div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="keywordflow">case</span> WL_IDLE_STATUS: </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected WL_IDLE_STATUS&quot;</span>);            </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="keywordflow">case</span> WL_NO_SSID_AVAIL:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; WL_NO_SSID_AVAIL&quot;</span>);            </div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; ERROR - UNKNOW SYSTEM EVENT&quot;</span>); </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;         Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; ... Event = &quot;</span>); Serial.println(event);           </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;         <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;   } <span class="comment">//switch</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;} <span class="comment">//aaNetwork::WiFiEvent()</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">  153</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">aaNetwork::connectionStatus</a>(wl_status_t status) </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;   <span class="keywordflow">switch</span>(status) </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="keywordflow">case</span> WL_NO_SHIELD: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_NO_SHIELD&quot;</span>; <span class="comment">// For compatibility with WiFi Shield library</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="keywordflow">case</span> WL_IDLE_STATUS: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_IDLE_STATUS&quot;</span>;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keywordflow">case</span> WL_NO_SSID_AVAIL: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_NO_SSID_AVAIL&quot;</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keywordflow">case</span> WL_SCAN_COMPLETED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_SCAN_COMPLETED&quot;</span>;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="keywordflow">case</span> WL_CONNECTED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_CONNECTED&quot;</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">case</span> WL_CONNECT_FAILED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_CONNECT_FAILED&quot;</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keywordflow">case</span> WL_CONNECTION_LOST: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_CONNECTION_LOST&quot;</span>;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="keywordflow">case</span> WL_DISCONNECTED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_DISCONNECTED&quot;</span>;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN_STATUS&quot;</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   } <span class="comment">//switch</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;} <span class="comment">// aaNetwork::_connectionStatus()</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* aaNetwork::_translateEncryptionType(wifi_auth_mode_t encryptionType)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;{</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;   <span class="keywordflow">switch</span> (encryptionType)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;   {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_OPEN): <span class="keywordflow">return</span> <span class="stringliteral">&quot;Open&quot;</span>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WEP): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WEP&quot;</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA_PSK): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA_PSK&quot;</span>;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA2_PSK): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA2_PSK&quot;</span>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA_WPA2_PSK): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA_WPA2_PSK&quot;</span>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA2_ENTERPRISE): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA2_ENTERPRISE&quot;</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN&quot;</span>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;   } <span class="comment">//switch</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;} <span class="comment">//aaNetwork::translateEncryptionType()</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">  199</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">aaNetwork::connect</a>()</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;{</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;   <span class="keywordflow">if</span>(_lookForAP() == _unknownAP) <span class="comment">// Scan the 2.4Ghz band for known Access Points and select the one with the strongest signal </span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;   {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::connect&gt; No known Access Point SSID was detected. Cannot connect to WiFi at this time.&quot;</span>);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;   } <span class="comment">// if</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;   <span class="keywordflow">else</span> <span class="comment">// Found a known Access Point to connect to</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;   {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      WiFi.onEvent(_wiFiEvent); <span class="comment">// Set up WiFi event handler</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      WiFi.begin(_ssid, _password); <span class="comment">// Connect too strongest AP found</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::connect&gt; Attempting to connect to Access Point with the SSID &quot;</span>);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      Serial.println(_ssid);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="keywordflow">while</span>(WiFi.waitForConnectResult() != WL_CONNECTED) <span class="comment">// Hold boot process here until IP assigned</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;         delay(500);</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      } <span class="comment">//while</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::connect&gt; Connected to Access Point with the SSID &quot;</span>);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      Serial.print(_ssid);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      Serial.print(<span class="stringliteral">&quot; with status code &quot;</span>); </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      Serial.print(WiFi.status());</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      Serial.print(<span class="stringliteral">&quot; (&quot;</span>);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      Serial.print(<a class="code" href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">connectionStatus</a>(WiFi.status())); </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      Serial.println(<span class="stringliteral">&quot;)&quot;</span>); </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;   } <span class="comment">//else</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;} <span class="comment">//aaNetwork::connect()</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">  233</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">aaNetwork::getUniqueName</a>(<span class="keywordtype">char</span> *_uniqueNamePtr)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;{</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;   String macAdd = WiFi.macAddress(); <span class="comment">// Get MAC address as String</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;   <span class="keyword">const</span> <span class="keywordtype">char</span>* myMacChar; <span class="comment">// Pointer to char array containing the SOC MAC address.   </span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;   <span class="keyword">const</span> int8_t macNumBytes = 6; <span class="comment">// MAC addresses have 6 byte addresses.</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;   <span class="keywordtype">byte</span> myMacByte[macNumBytes]; <span class="comment">// Byte array containing the 6 bytes of the SOC Mac address.</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;   myMacChar = macAdd.c_str(); <span class="comment">// Convert to pointer to const char array   </span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;   _convert.<a class="code" href="classaa_format.html#a0549666142edd860063540daf90ae925">macToByteArray</a>(myMacChar, myMacByte); <span class="comment">// Convert to Byte array</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;   _convert.<a class="code" href="classaa_format.html#a9bd278c97225bff5cc5cbd77e27eb8ca">joinTwoConstChar</a>(HOST_NAME_PREFIX, _convert.<a class="code" href="classaa_format.html#a0ea33dd911eaf84c599044bc4c9e85d5">noColonMAC</a>(macAdd), _uniqueNamePtr);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;} <span class="comment">//aaNetwork::getUniqueName()</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno"><a class="line" href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">  265</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">aaNetwork::rfSignalStrength</a>(int8_t dataPoints)</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;{</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;   <span class="keywordtype">long</span> rssi = 0;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;   <span class="keywordtype">long</span> averageRSSI = 0;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; dataPoints; i++)</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;   {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      rssi += WiFi.RSSI();</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      delay(20);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;   } <span class="comment">//for</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;   averageRSSI = rssi / dataPoints;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;   <span class="keywordflow">return</span> averageRSSI;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;} <span class="comment">//aaNetwork::rfSignalStrength()</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">  283</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">aaNetwork::evalSignal</a>(int16_t signalStrength)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;{</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= unusable) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Unusable&quot;</span>;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= notGood) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Not good&quot;</span>;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= okay) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Okay&quot;</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= veryGood) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Very Good&quot;</span>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;Amazing&quot;</span>;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;} <span class="comment">//evalSignal()</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">  298</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">aaNetwork::cfgToConsole</a>()</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;{</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;   wifi_auth_mode_t encryption = WiFi.encryptionType(_SSIDIndex);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;   int8_t dataReadings = 10; <span class="comment">// Number of data readings to average to determine Wifi signal strength.</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;   <span class="keywordtype">long</span> signalStrength = <a class="code" href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">rfSignalStrength</a>(dataReadings); <span class="comment">// Get average signal strength reading.</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; Network settings:&quot;</span>);  </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Access Point Name = &quot;</span>); Serial.println(WiFi.SSID()); </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Access Point Encryption method = &quot;</span>); Serial.print(encryption,HEX);</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;   Serial.print(<span class="stringliteral">&quot; (&quot;</span>); Serial.print(_translateEncryptionType(WiFi.encryptionType(encryption))); Serial.println(<span class="stringliteral">&quot;)&quot;</span>); </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Wifi signal strength = &quot;</span>); Serial.print(signalStrength);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;   Serial.print(<span class="stringliteral">&quot; (&quot;</span>); Serial.print(<a class="code" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">evalSignal</a>(signalStrength)); Serial.println(<span class="stringliteral">&quot;)&quot;</span>); </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;   String macAdd = WiFi.macAddress(); <span class="comment">// Get MAC address as String</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;   <span class="keyword">const</span> int8_t macNumBytes = 6; <span class="comment">// MAC addresses have 6 byte addresses.</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;   <span class="keywordtype">byte</span> myMacByte[macNumBytes]; <span class="comment">// Byte array containing the 6 bytes of the SOC Mac address.</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;   <span class="keyword">const</span> <span class="keywordtype">char</span>* myMacChar = WiFi.macAddress().c_str();  </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   _convert.<a class="code" href="classaa_format.html#a0549666142edd860063540daf90ae925">macToByteArray</a>(myMacChar, myMacByte); <span class="comment">// Convert to Byte array</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Robot MAC address: &quot;</span>);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[0]);    </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[1]);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[2]);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[3]);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[4]);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[5]);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;   Serial.println();</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Robot IP address: &quot;</span>); </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;   <span class="keyword">const</span> <span class="keywordtype">char</span>* myIpChar = _convert.<a class="code" href="classaa_format.html#ace63e200e90fe1858650882e35ee7a8b">ipToString</a>(WiFi.localIP()).c_str(); <span class="comment">// Pointer to char array containing MQTT broker IP address</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   <span class="keyword">const</span> int8_t ipv4NumBytes = 4; <span class="comment">// IPv4 has 4 byte address </span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;   <span class="keywordtype">byte</span> myIpByte[ipv4NumBytes]; <span class="comment">// Byte array for IP address   </span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;   _convert.<a class="code" href="classaa_format.html#a464b03d67714abf7ec5cd13f47a65811">ipToByteArray</a>(myIpChar, myIpByte); <span class="comment">// Convert to byte array</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   Serial.print(myIpByte[0],DEC);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;   Serial.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;   Serial.print(myIpByte[1],DEC);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;   Serial.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   Serial.print(myIpByte[2],DEC);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;   Serial.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;   Serial.println(myIpByte[3],DEC); </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;   <a class="code" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">getUniqueName</a>(_uniqueNamePtr); </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Robot Host Name: &quot;</span>); Serial.println(_uniqueName);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;} <span class="comment">//aaNetwork::cfgToConsole()</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keywordflow">case</span> WL_IDLE_STATUS: </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; Detected WL_IDLE_STATUS&quot;</span>);            </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;         <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;         Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; ERROR - UNKNOW SYSTEM EVENT&quot;</span>); </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;         Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::WiFiEvent&gt; ... Event = &quot;</span>); Serial.println(event);           </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;         <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;   } <span class="comment">//switch</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;} <span class="comment">//aaNetwork::WiFiEvent()</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">  156</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">aaNetwork::connectionStatus</a>(wl_status_t status) </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   <span class="keywordflow">switch</span>(status) </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;   {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keywordflow">case</span> WL_NO_SHIELD: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_NO_SHIELD&quot;</span>; <span class="comment">// For compatibility with WiFi Shield library</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="keywordflow">case</span> WL_IDLE_STATUS: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_IDLE_STATUS&quot;</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">case</span> WL_NO_SSID_AVAIL: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_NO_SSID_AVAIL&quot;</span>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keywordflow">case</span> WL_SCAN_COMPLETED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_SCAN_COMPLETED&quot;</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="keywordflow">case</span> WL_CONNECTED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_CONNECTED&quot;</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      <span class="keywordflow">case</span> WL_CONNECT_FAILED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_CONNECT_FAILED&quot;</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <span class="keywordflow">case</span> WL_CONNECTION_LOST: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_CONNECTION_LOST&quot;</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="keywordflow">case</span> WL_DISCONNECTED: <span class="keywordflow">return</span> <span class="stringliteral">&quot;WL_DISCONNECTED&quot;</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN_STATUS&quot;</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;   } <span class="comment">//switch</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;} <span class="comment">// aaNetwork::_connectionStatus()</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* aaNetwork::_translateEncryptionType(wifi_auth_mode_t encryptionType)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;   <span class="keywordflow">switch</span> (encryptionType)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;   {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_OPEN): <span class="keywordflow">return</span> <span class="stringliteral">&quot;Open&quot;</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WEP): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WEP&quot;</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA_PSK): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA_PSK&quot;</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA2_PSK): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA2_PSK&quot;</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA_WPA2_PSK): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA_WPA2_PSK&quot;</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keywordflow">case</span> (WIFI_AUTH_WPA2_ENTERPRISE): <span class="keywordflow">return</span> <span class="stringliteral">&quot;WPA2_ENTERPRISE&quot;</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN&quot;</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;   } <span class="comment">//switch</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;} <span class="comment">//aaNetwork::translateEncryptionType()</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">  202</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">aaNetwork::connect</a>()</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;{</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;   <span class="keywordflow">if</span>(_lookForAP() == _unknownAP) <span class="comment">// Scan the 2.4Ghz band for known Access Points and select the one with the strongest signal </span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;   {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::connect&gt; No known Access Point SSID was detected. Cannot connect to WiFi at this time.&quot;</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;   } <span class="comment">// if</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;   <span class="keywordflow">else</span> <span class="comment">// Found a known Access Point to connect to</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;   {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      WiFi.onEvent(_wiFiEvent); <span class="comment">// Set up WiFi event handler</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      WiFi.begin(_ssid, _password); <span class="comment">// Connect too strongest AP found</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::connect&gt; Attempting to connect to Access Point with the SSID &quot;</span>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      Serial.println(_ssid);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <span class="keywordflow">while</span>(WiFi.waitForConnectResult() != WL_CONNECTED) <span class="comment">// Hold boot process here until IP assigned</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;         delay(500);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      } <span class="comment">//while</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::connect&gt; Connected to Access Point with the SSID &quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      Serial.print(_ssid);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      Serial.print(<span class="stringliteral">&quot; with status code &quot;</span>); </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      Serial.print(WiFi.status());</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      Serial.print(<span class="stringliteral">&quot; (&quot;</span>);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      Serial.print(<a class="code" href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">connectionStatus</a>(WiFi.status())); </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      Serial.println(<span class="stringliteral">&quot;)&quot;</span>); </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;   } <span class="comment">//else</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;} <span class="comment">//aaNetwork::connect()</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">  236</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">aaNetwork::getUniqueName</a>(<span class="keywordtype">char</span> *_uniqueNamePtr)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;   String macAdd = WiFi.macAddress(); <span class="comment">// Get MAC address as String</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;   <span class="keyword">const</span> <span class="keywordtype">char</span>* myMacChar; <span class="comment">// Pointer to char array containing the SOC MAC address.   </span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;   <span class="keyword">const</span> int8_t macNumBytes = 6; <span class="comment">// MAC addresses have 6 byte addresses.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;   <span class="keywordtype">byte</span> myMacByte[macNumBytes]; <span class="comment">// Byte array containing the 6 bytes of the SOC Mac address.</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;   myMacChar = macAdd.c_str(); <span class="comment">// Convert to pointer to const char array   </span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;   _convert.<a class="code" href="classaa_format.html#a0549666142edd860063540daf90ae925">macToByteArray</a>(myMacChar, myMacByte); <span class="comment">// Convert to Byte array</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;   _convert.<a class="code" href="classaa_format.html#a9bd278c97225bff5cc5cbd77e27eb8ca">joinTwoConstChar</a>(HOST_NAME_PREFIX, _convert.<a class="code" href="classaa_format.html#a0ea33dd911eaf84c599044bc4c9e85d5">noColonMAC</a>(macAdd), _uniqueNamePtr);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;} <span class="comment">//aaNetwork::getUniqueName()</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">  268</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">aaNetwork::rfSignalStrength</a>(int8_t dataPoints)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;{</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;   <span class="keywordtype">long</span> rssi = 0;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;   <span class="keywordtype">long</span> averageRSSI = 0;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; dataPoints; i++)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;   {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      rssi += WiFi.RSSI();</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      delay(20);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;   } <span class="comment">//for</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;   averageRSSI = rssi / dataPoints;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;   <span class="keywordflow">return</span> averageRSSI;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;} <span class="comment">//aaNetwork::rfSignalStrength()</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">  286</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">aaNetwork::evalSignal</a>(int16_t signalStrength)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;{</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= unusable) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Unusable&quot;</span>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= notGood) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Not good&quot;</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= okay) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Okay&quot;</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;   <span class="keywordflow">if</span>(signalStrength &lt;= veryGood) <span class="keywordflow">return</span> <span class="stringliteral">&quot;Very Good&quot;</span>;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;Amazing&quot;</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;} <span class="comment">//evalSignal()</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">  301</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">aaNetwork::cfgToConsole</a>()</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;{</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;   wifi_auth_mode_t encryption = WiFi.encryptionType(_SSIDIndex);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;   int8_t dataReadings = 10; <span class="comment">// Number of data readings to average to determine Wifi signal strength.</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;   <span class="keywordtype">long</span> signalStrength = <a class="code" href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">rfSignalStrength</a>(dataReadings); <span class="comment">// Get average signal strength reading.</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;   Serial.println(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; Network settings:&quot;</span>);  </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Access Point Name = &quot;</span>); Serial.println(WiFi.SSID()); </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Access Point Encryption method = &quot;</span>); Serial.print(encryption,HEX);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;   Serial.print(<span class="stringliteral">&quot; (&quot;</span>); Serial.print(_translateEncryptionType(WiFi.encryptionType(encryption))); Serial.println(<span class="stringliteral">&quot;)&quot;</span>); </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Wifi signal strength = &quot;</span>); Serial.print(signalStrength);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;   Serial.print(<span class="stringliteral">&quot; (&quot;</span>); Serial.print(<a class="code" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">evalSignal</a>(signalStrength)); Serial.println(<span class="stringliteral">&quot;)&quot;</span>); </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;   String macAdd = WiFi.macAddress(); <span class="comment">// Get MAC address as String</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   <span class="keyword">const</span> int8_t macNumBytes = 6; <span class="comment">// MAC addresses have 6 byte addresses.</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;   <span class="keywordtype">byte</span> myMacByte[macNumBytes]; <span class="comment">// Byte array containing the 6 bytes of the SOC Mac address.</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   <span class="keyword">const</span> <span class="keywordtype">char</span>* myMacChar = WiFi.macAddress().c_str();  </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;   _convert.<a class="code" href="classaa_format.html#a0549666142edd860063540daf90ae925">macToByteArray</a>(myMacChar, myMacByte); <span class="comment">// Convert to Byte array</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Robot MAC address: &quot;</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[0]);    </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[1]);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[2]);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[3]);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[4]);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;   Serial.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;   Serial.printf(<span class="stringliteral">&quot;%02X&quot;</span>,myMacByte[5]);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   Serial.println();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Robot IP address: &quot;</span>); </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;   <span class="keyword">const</span> <span class="keywordtype">char</span>* myIpChar = _convert.<a class="code" href="classaa_format.html#ace63e200e90fe1858650882e35ee7a8b">ipToString</a>(WiFi.localIP()).c_str(); <span class="comment">// Pointer to char array containing MQTT broker IP address</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   <span class="keyword">const</span> int8_t ipv4NumBytes = 4; <span class="comment">// IPv4 has 4 byte address </span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;   <span class="keywordtype">byte</span> myIpByte[ipv4NumBytes]; <span class="comment">// Byte array for IP address   </span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;   _convert.<a class="code" href="classaa_format.html#a464b03d67714abf7ec5cd13f47a65811">ipToByteArray</a>(myIpChar, myIpByte); <span class="comment">// Convert to byte array</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;   Serial.print(myIpByte[0],DEC);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   Serial.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;   Serial.print(myIpByte[1],DEC);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;   Serial.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;   Serial.print(myIpByte[2],DEC);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   Serial.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;   Serial.println(myIpByte[3],DEC); </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;   <a class="code" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">getUniqueName</a>(_uniqueNamePtr); </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;   Serial.print(<span class="stringliteral">&quot;&lt;aaNetwork::cfgToConsole&gt; ... Robot Host Name: &quot;</span>); Serial.println(_uniqueName);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;} <span class="comment">//aaNetwork::cfgToConsole()</span></div>
 <div class="ttc" id="aclassaa_format_html_a0549666142edd860063540daf90ae925"><div class="ttname"><a href="classaa_format.html#a0549666142edd860063540daf90ae925">aaFormat::macToByteArray</a></div><div class="ttdeci">void macToByteArray(const char *str, byte *bytes)</div><div class="ttdoc">Convert char array containing MAC address to byte array.</div><div class="ttdef"><b>Definition:</b> <a href="aa_format_8cpp_source.html#l00121">aaFormat.cpp:121</a></div></div>
 <div class="ttc" id="aclassaa_format_html_a0ea33dd911eaf84c599044bc4c9e85d5"><div class="ttname"><a href="classaa_format.html#a0ea33dd911eaf84c599044bc4c9e85d5">aaFormat::noColonMAC</a></div><div class="ttdeci">const char * noColonMAC(String macAddress)</div><div class="ttdoc">Strips the colons off the MAC address of this device.</div><div class="ttdef"><b>Definition:</b> <a href="aa_format_8cpp_source.html#l00043">aaFormat.cpp:43</a></div></div>
 <div class="ttc" id="aclassaa_format_html_a464b03d67714abf7ec5cd13f47a65811"><div class="ttname"><a href="classaa_format.html#a464b03d67714abf7ec5cd13f47a65811">aaFormat::ipToByteArray</a></div><div class="ttdeci">void ipToByteArray(const char *str, byte *bytes)</div><div class="ttdoc">Convert char array containing IP address to byte array.</div><div class="ttdef"><b>Definition:</b> <a href="aa_format_8cpp_source.html#l00108">aaFormat.cpp:108</a></div></div>
 <div class="ttc" id="aclassaa_format_html_a9bd278c97225bff5cc5cbd77e27eb8ca"><div class="ttname"><a href="classaa_format.html#a9bd278c97225bff5cc5cbd77e27eb8ca">aaFormat::joinTwoConstChar</a></div><div class="ttdeci">void joinTwoConstChar(const char *a, const char *b, char *out)</div><div class="ttdoc">Join two const char* variables into one buffer.</div><div class="ttdef"><b>Definition:</b> <a href="aa_format_8cpp_source.html#l00135">aaFormat.cpp:135</a></div></div>
 <div class="ttc" id="aclassaa_format_html_ace63e200e90fe1858650882e35ee7a8b"><div class="ttname"><a href="classaa_format.html#ace63e200e90fe1858650882e35ee7a8b">aaFormat::ipToString</a></div><div class="ttdeci">String ipToString(IPAddress ip)</div><div class="ttdoc">Converts an IP address to a string.</div><div class="ttdef"><b>Definition:</b> <a href="aa_format_8cpp_source.html#l00070">aaFormat.cpp:70</a></div></div>
-<div class="ttc" id="aclassaa_network_html_a2939f0d11f02f932b3a1406de14c3876"><div class="ttname"><a href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">aaNetwork::rfSignalStrength</a></div><div class="ttdeci">long rfSignalStrength(int8_t points)</div><div class="ttdoc">Take measurements of the Wi-Fi strength and return the average result.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00265">aaNetwork.cpp:265</a></div></div>
-<div class="ttc" id="aclassaa_network_html_a5480c6bb017b0c476b1ff06c0cfef7fd"><div class="ttname"><a href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">aaNetwork::getUniqueName</a></div><div class="ttdeci">void getUniqueName(char *ptrNameArray)</div><div class="ttdoc">Puts a name which is both unique and predictable into the char array _uniqueName[].</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00233">aaNetwork.cpp:233</a></div></div>
-<div class="ttc" id="aclassaa_network_html_a7c607f1200b3ad93e34838bcff61ade1"><div class="ttname"><a href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">aaNetwork::cfgToConsole</a></div><div class="ttdeci">void cfgToConsole()</div><div class="ttdoc">Send detailed network configuration information to the console.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00298">aaNetwork.cpp:298</a></div></div>
-<div class="ttc" id="aclassaa_network_html_a8c5caf595e69a1ddb85495824d8e1813"><div class="ttname"><a href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">aaNetwork::evalSignal</a></div><div class="ttdeci">const char * evalSignal(int16_t signalStrength)</div><div class="ttdoc">Return human readable assessment of signal strength.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00283">aaNetwork.cpp:283</a></div></div>
-<div class="ttc" id="aclassaa_network_html_ac42bfbdba98e7657887754e88e052f68"><div class="ttname"><a href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">aaNetwork::~aaNetwork</a></div><div class="ttdeci">~aaNetwork()</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00052">aaNetwork.cpp:52</a></div></div>
-<div class="ttc" id="aclassaa_network_html_ac8b9195072733166e7bad1e5fee5580a"><div class="ttname"><a href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">aaNetwork::connectionStatus</a></div><div class="ttdeci">const char * connectionStatus(wl_status_t status)</div><div class="ttdoc">Provide human readable text for wifi connection status codes.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00153">aaNetwork.cpp:153</a></div></div>
-<div class="ttc" id="aclassaa_network_html_ae6deeb2d04230e62a5891f2f5c459084"><div class="ttname"><a href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">aaNetwork::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdoc">Manage the process of connecting to the WiFi network.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00199">aaNetwork.cpp:199</a></div></div>
-<div class="ttc" id="aclassaa_network_html_affbf27339bcbcaf92810034ccb69de5f"><div class="ttname"><a href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork::aaNetwork</a></div><div class="ttdeci">aaNetwork()</div><div class="ttdoc">Handle all of the networking logic required by the robot.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00036">aaNetwork.cpp:36</a></div></div>
+<div class="ttc" id="aclassaa_network_html_a2939f0d11f02f932b3a1406de14c3876"><div class="ttname"><a href="classaa_network.html#a2939f0d11f02f932b3a1406de14c3876">aaNetwork::rfSignalStrength</a></div><div class="ttdeci">long rfSignalStrength(int8_t points)</div><div class="ttdoc">Take measurements of the Wi-Fi strength and return the average result.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00268">aaNetwork.cpp:268</a></div></div>
+<div class="ttc" id="aclassaa_network_html_a5480c6bb017b0c476b1ff06c0cfef7fd"><div class="ttname"><a href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">aaNetwork::getUniqueName</a></div><div class="ttdeci">void getUniqueName(char *ptrNameArray)</div><div class="ttdoc">Puts a name which is both unique and predictable into the char array _uniqueName[].</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00236">aaNetwork.cpp:236</a></div></div>
+<div class="ttc" id="aclassaa_network_html_a7c607f1200b3ad93e34838bcff61ade1"><div class="ttname"><a href="classaa_network.html#a7c607f1200b3ad93e34838bcff61ade1">aaNetwork::cfgToConsole</a></div><div class="ttdeci">void cfgToConsole()</div><div class="ttdoc">Send detailed network configuration information to the console.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00301">aaNetwork.cpp:301</a></div></div>
+<div class="ttc" id="aclassaa_network_html_a8c5caf595e69a1ddb85495824d8e1813"><div class="ttname"><a href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">aaNetwork::evalSignal</a></div><div class="ttdeci">const char * evalSignal(int16_t signalStrength)</div><div class="ttdoc">Return human readable assessment of signal strength.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00286">aaNetwork.cpp:286</a></div></div>
+<div class="ttc" id="aclassaa_network_html_ac42bfbdba98e7657887754e88e052f68"><div class="ttname"><a href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">aaNetwork::~aaNetwork</a></div><div class="ttdeci">~aaNetwork()</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00055">aaNetwork.cpp:55</a></div></div>
+<div class="ttc" id="aclassaa_network_html_ac8b9195072733166e7bad1e5fee5580a"><div class="ttname"><a href="classaa_network.html#ac8b9195072733166e7bad1e5fee5580a">aaNetwork::connectionStatus</a></div><div class="ttdeci">const char * connectionStatus(wl_status_t status)</div><div class="ttdoc">Provide human readable text for wifi connection status codes.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00156">aaNetwork.cpp:156</a></div></div>
+<div class="ttc" id="aclassaa_network_html_ae6deeb2d04230e62a5891f2f5c459084"><div class="ttname"><a href="classaa_network.html#ae6deeb2d04230e62a5891f2f5c459084">aaNetwork::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdoc">Manage the process of connecting to the WiFi network.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00202">aaNetwork.cpp:202</a></div></div>
+<div class="ttc" id="aclassaa_network_html_affbf27339bcbcaf92810034ccb69de5f"><div class="ttname"><a href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork::aaNetwork</a></div><div class="ttdeci">aaNetwork()</div><div class="ttdoc">Handle all of the networking logic required by the robot.</div><div class="ttdef"><b>Definition:</b> <a href="aa_network_8cpp_source.html#l00039">aaNetwork.cpp:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

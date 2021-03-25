@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['twipe2_51',['Twipe2',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['twipe2_20robot_20firmware_52',['Twipe2 robot firmware',['../index.html',1,'']]]
+  ['configuration_20and_20ota_20code_20updates_20using_20a_20web_20interface_2e_61',['configuration and OTA code updates using a web interface.',['../_network.html',1,'']]]
 ];
