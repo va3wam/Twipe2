@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7eaaandrew_59',['~aaAndrew',['../classaa_andrew.html#aa8cc1ee35ca2f1300e8fba054ebabfb7',1,'aaAndrew']]],
-  ['_7eaanetwork_60',['~aaNetwork',['../classaa_network.html#ac42bfbdba98e7657887754e88e052f68',1,'aaNetwork']]]
+  ['_7eaanetwork_71',['~aaNetwork',['../classaa_network.html#ac42bfbdba98e7657887754e88e052f68',1,'aaNetwork']]],
+  ['_7eaawebservice_72',['~aaWebService',['../classaa_web_service.html#af86e1891ebfdaa47f02c7101327d5dc9',1,'aaWebService']]]
 ];

@@ -77,8 +77,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:affbf27339bcbcaf92810034ccb69de5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">aaNetwork</a> ()</td></tr>
 <tr class="memdesc:affbf27339bcbcaf92810034ccb69de5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle all of the networking logic required by the robot.  <a href="classaa_network.html#affbf27339bcbcaf92810034ccb69de5f">More...</a><br /></td></tr>
 <tr class="separator:affbf27339bcbcaf92810034ccb69de5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4c964e502159e4265aed7094b13f1c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#aa4c964e502159e4265aed7094b13f1c0">aaNetwork</a> (const char *ssid, const char *password)</td></tr>
-<tr class="separator:aa4c964e502159e4265aed7094b13f1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa7e0bb4dba9c746dc1966554c39405e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#afa7e0bb4dba9c746dc1966554c39405e">aaNetwork</a> (const char *prefix)</td></tr>
+<tr class="separator:afa7e0bb4dba9c746dc1966554c39405e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac42bfbdba98e7657887754e88e052f68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#ac42bfbdba98e7657887754e88e052f68">~aaNetwork</a> ()</td></tr>
 <tr class="separator:ac42bfbdba98e7657887754e88e052f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5480c6bb017b0c476b1ff06c0cfef7fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd">getUniqueName</a> (char *ptrNameArray)</td></tr>
@@ -127,15 +127,15 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>getPSWD</b> (void)<
 
 <p>Handle all of the networking logic required by the robot. </p>
 <p>Manages TCP/IP, HTTP server, OTA firmware loading and MQTT messaging. </p>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00039">39</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00036">36</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa4c964e502159e4265aed7094b13f1c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4c964e502159e4265aed7094b13f1c0">&#9670;&nbsp;</a></span>aaNetwork() <span class="overload">[2/2]</span></h2>
+<a id="afa7e0bb4dba9c746dc1966554c39405e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa7e0bb4dba9c746dc1966554c39405e">&#9670;&nbsp;</a></span>aaNetwork() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,25 +144,15 @@ See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
           <td class="memname">aaNetwork::aaNetwork </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>ssid</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>password</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 @brief This is the second form of the constructor for this class.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00047">47</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00044">44</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -180,10 +170,10 @@ See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 @brief This is the destructor for this class.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00055">55</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00053">53</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -205,10 +195,10 @@ See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
 
 <p>Send detailed network configuration information to the console. </p>
 <p>The ESP32-D0WDQ6 chip has dual Tensilica LX6 micro controllers. All WiFi logic runs on the PRO_CPU (core0) aka the processor core. This firmware runs on </p>
-<h1><a class="anchor" id="autotoc_md30"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 the APP_CPU (core 1) aka the application core.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00301">301</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00299">299</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -229,10 +219,10 @@ the APP_CPU (core 1) aka the application core.</h1>
 
 <p>Manage the process of connecting to the WiFi network. </p>
 <p>Scan for a suitable Access Point and if one is found then connect to it using the init_wifi() method. </p><dl class="section return"><dt>Returns</dt><dd>bool where true means a connection was made and false means no connection </dd></dl>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 was made.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00202">202</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00200">200</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -253,10 +243,10 @@ was made.</h1>
 </div><div class="memdoc">
 
 <p>Provide human readable text for wifi connection status codes. </p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 @return const char* "Text that explains what the code means".</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00156">156</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00154">154</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -283,10 +273,10 @@ was made.</h1>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 @return const char* Text assessment of signal strength.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00286">286</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00284">284</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -308,10 +298,10 @@ was made.</h1>
 
 <p>Puts a name which is both unique and predictable into the char array _uniqueName[]. </p>
 <p>Combines a prefix (HOSTNAME_PREFIX) with the 6 byte mac address of the WiFi module to produce a name that will be unque on the network. </p>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 @param char *_uniqueNamePtr pointer to variable called _uniqueName[].</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00236">236</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00234">234</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -338,10 +328,10 @@ was made.</h1>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md28"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 @return long averageRSSI which is the average of 100 signal strength readings in dBm.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00268">268</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00266">266</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
