@@ -974,6 +974,7 @@ EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = */assets/* \
                          */lib/async-mqtt-client-master/* \
                          */lib/AsyncTCP-master/* \
+                         */lib/ESP32Ping-master/* \
                          */lib/ESP32TimerInterrupt-master/* \
                          */lib/libTemplate/*
 
