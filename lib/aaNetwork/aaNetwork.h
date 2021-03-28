@@ -23,7 +23,7 @@ class aaNetwork // Define aaNetwork class
 {
    public:
       aaNetwork(); // Default class constructor.
-      aaNetwork(const char *ssid, const char *password); // Second form of class constructor.
+      aaNetwork(const char* prefix); // Second form of class constructor.
       ~aaNetwork(); // Class destructor.
       void getUniqueName(char *ptrNameArray); // Construct a name that is sure to be unique on the network
       const char* connectionStatus(wl_status_t status); // Provide human readable text for wifi connection status codes. 
@@ -43,7 +43,8 @@ class aaNetwork // Define aaNetwork class
       aaFormat _convert; // Accept various variable type/formats and return a different variable type/format.
       int8_t _SSIDIndex = 0; // Contains the SSID index number from the known list of APs.
       char _uniqueName[HOST_NAME_SIZE]; // Character array that holds unique name for Wifi network purposes. 
-      char *_uniqueNamePtr = &_uniqueName[0]; // Pointer to first address position of unique name character array. 
+      char *_uniqueNamePtr = &_uniqueName[0]; // Pointer to first address position of unique name character array.
+      const char* _HOST_NAME_PREFIX; // Prefix for unique network name. 
 }; //class aaNetwork
 
 #endif // End of precompiler protected code block.

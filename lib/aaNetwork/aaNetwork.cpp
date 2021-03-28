@@ -28,9 +28,6 @@
  ************************************************************************************/
 #include <aaNetwork.h> // Required for Webserver data type
 
-// This should be in the header file but that causes a warning durng build time.
-static const char* HOST_NAME_PREFIX = "Twipe2"; // Prefix of unique name of this device on the network.
-
 /**
  * @brief Handle all of the networking logic required by the robot. 
  * @details Manages TCP/IP, HTTP server, OTA firmware loading and MQTT messaging. 
@@ -44,9 +41,10 @@ aaNetwork::aaNetwork()
 /**
  * @brief This is the second form of the constructor for this class.
  * =================================================================================*/
-aaNetwork::aaNetwork(const char *ssid, const char *password)
+aaNetwork::aaNetwork(const char* prefix)
 {
    Serial.println("<aaNetwork::aaNetwork> aaNetwork second form constructor running.");
+   _HOST_NAME_PREFIX = prefix;
 } //aaNetwork::aaNetwork()
 
 /**
@@ -241,7 +239,7 @@ void aaNetwork::getUniqueName(char *_uniqueNamePtr)
    byte myMacByte[macNumBytes]; // Byte array containing the 6 bytes of the SOC Mac address.
    myMacChar = macAdd.c_str(); // Convert to pointer to const char array   
    _convert.macToByteArray(myMacChar, myMacByte); // Convert to Byte array
-   _convert.joinTwoConstChar(HOST_NAME_PREFIX, _convert.noColonMAC(macAdd), _uniqueNamePtr);
+   _convert.joinTwoConstChar(_HOST_NAME_PREFIX, _convert.noColonMAC(macAdd), _uniqueNamePtr);
 } //aaNetwork::getUniqueName()
 
 /**
