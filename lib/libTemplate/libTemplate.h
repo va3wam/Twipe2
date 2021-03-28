@@ -1,3 +1,6 @@
+/************************************************************************************
+ * @file libTemplate.h  
+ ************************************************************************************/
 #ifndef libTemplate_h // Start of precompiler check to avoid dupicate inclusion of this code block.
 #define libTemplate_h // Precompiler macro used for precompiler check.
 
