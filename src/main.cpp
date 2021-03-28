@@ -71,12 +71,20 @@ void showCfgDetails()
  * =================================================================================*/
 void startWebServer()
 {
-   char uniqueName[HOST_NAME_SIZE]; // Character array that holds unique name for Wifi network purposes. 
-   char *uniqueNamePtr = &uniqueName[0]; // Pointer to first address position of unique name character array. 
-   network.getUniqueName(uniqueNamePtr); // Get unique name and put it into 
+   char uniqueName[HOST_NAME_SIZE]; // Contain unique name for Wifi network purposes. 
+   char *uniqueNamePtr = &uniqueName[0]; // Pointer to starting address of name. 
+   network.getUniqueName(uniqueNamePtr); // Get unique name. 
    Serial.print("<startWebServer> Unique Name: "); Serial.println(uniqueName);
-   webServer.start(uniqueName);
-   Serial.println("<startWebServer> End of setup");
+   Serial.print("<startWebServer> Name length: "); Serial.println(strlen(uniqueName));
+   isWebServer = localWebService.start(uniqueNamePtr); // Start web server and track result.
+   if(isWebServer)
+   {
+      Serial.println("<startWebServer> Web server successfully started.");
+   } //if
+   else
+   {
+      Serial.println("<startWebServer> Web server failed to start.");
+   } //else
 } //startWebServer()
 
 /** 
@@ -89,6 +97,7 @@ void setup()
    network.connect(); // Start WiFi connection.
    startWebServer(); // Start up web server.
    showCfgDetails(); // Show all configuration details.
+   Serial.println("<setup> End of setup");
 } //setup()
 
 /**
@@ -96,4 +105,13 @@ void setup()
  * =================================================================================*/
 void loop()
 {
+   if(localWebService.connectStatus()) // If there is a valid WiFi connection
+   {
+      if(localWebService.checkForClientRequest()) // New binary or broker IP?
+      {
+         IPAddress tmpIP = localWebService.getBrokerIP();
+         Serial.print("<loop> New broker IP to be set to ");
+         Serial.println(tmpIP);
+      } //if
+   } //if   
 } //loop()
