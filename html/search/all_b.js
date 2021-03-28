@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['twipe2_32',['Twipe2',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['twipe2_20robot_20firmware_33',['Twipe2 robot firmware',['../index.html',1,'']]]
+  ['_7eaanetwork_30',['~aaNetwork',['../classaa_network.html#ac42bfbdba98e7657887754e88e052f68',1,'aaNetwork']]],
+  ['_7eaawebservice_31',['~aaWebService',['../classaa_web_service.html#af86e1891ebfdaa47f02c7101327d5dc9',1,'aaWebService']]]
 ];
