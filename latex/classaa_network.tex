@@ -47,7 +47,7 @@ Definition at line 22 of file aa\+Network.\+h.
 
 Handle all of the networking logic required by the robot. 
 
-Manages TCP/\+IP, HTTP server, OTA firmware loading and MQTT messaging. \hypertarget{classaa_network_autotoc_md16}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md16}
+Manages TCP/\+IP, HTTP server, OTA firmware loading and MQTT messaging. \hypertarget{classaa_network_autotoc_md21}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md21}
 
 
 Definition at line 36 of file aa\+Network.\+cpp.
@@ -58,7 +58,7 @@ Definition at line 36 of file aa\+Network.\+cpp.
 \doxysubsubsection{\texorpdfstring{aaNetwork()}{aaNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily aa\+Network\+::aa\+Network (\begin{DoxyParamCaption}\item[{const char $\ast$}]{prefix }\end{DoxyParamCaption})}
 
-\hypertarget{classaa_network_autotoc_md17}{}\doxysubsection{@brief This is the second form of the constructor for this class.}\label{classaa_network_autotoc_md17}
+\hypertarget{classaa_network_autotoc_md22}{}\doxysubsection{@brief This is the second form of the constructor for this class.}\label{classaa_network_autotoc_md22}
 
 
 Definition at line 44 of file aa\+Network.\+cpp.
@@ -69,7 +69,7 @@ Definition at line 44 of file aa\+Network.\+cpp.
 \doxysubsubsection{\texorpdfstring{$\sim$aaNetwork()}{~aaNetwork()}}
 {\footnotesize\ttfamily aa\+Network\+::$\sim$aa\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\hypertarget{classaa_network_autotoc_md18}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_network_autotoc_md18}
+\hypertarget{classaa_network_autotoc_md23}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_network_autotoc_md23}
 
 
 Definition at line 53 of file aa\+Network.\+cpp.
@@ -87,7 +87,7 @@ Definition at line 53 of file aa\+Network.\+cpp.
 
 Send detailed network configuration information to the console. 
 
-The ESP32-\/\+D0\+WDQ6 chip has dual Tensilica LX6 micro controllers. All Wi\+Fi logic runs on the PRO\+\_\+\+CPU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md27}{}\doxysubsection{the APP\+\_\+\+CPU (core 1) aka the application core.}\label{classaa_network_autotoc_md27}
+The ESP32-\/\+D0\+WDQ6 chip has dual Tensilica LX6 micro controllers. All Wi\+Fi logic runs on the PRO\+\_\+\+CPU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md32}{}\doxysubsection{the APP\+\_\+\+CPU (core 1) aka the application core.}\label{classaa_network_autotoc_md32}
 
 
 Definition at line 299 of file aa\+Network.\+cpp.
@@ -105,7 +105,7 @@ Manage the process of connecting to the Wi\+Fi network.
 Scan for a suitable Access Point and if one is found then connect to it using the init\+\_\+wifi() method. \begin{DoxyReturn}{Returns}
 bool where true means a connection was made and false means no connection 
 \end{DoxyReturn}
-\hypertarget{classaa_network_autotoc_md23}{}\doxysubsection{was made.}\label{classaa_network_autotoc_md23}
+\hypertarget{classaa_network_autotoc_md28}{}\doxysubsection{was made.}\label{classaa_network_autotoc_md28}
 
 
 Definition at line 200 of file aa\+Network.\+cpp.
@@ -120,7 +120,7 @@ Definition at line 200 of file aa\+Network.\+cpp.
 
 Provide human readable text for wifi connection status codes. 
 
-\hypertarget{classaa_network_autotoc_md21}{}\doxysubsection{@return const char$\ast$ \char`\"{}\+Text that explains what the code means\char`\"{}.}\label{classaa_network_autotoc_md21}
+\hypertarget{classaa_network_autotoc_md26}{}\doxysubsection{@return const char$\ast$ \char`\"{}\+Text that explains what the code means\char`\"{}.}\label{classaa_network_autotoc_md26}
 
 
 Definition at line 154 of file aa\+Network.\+cpp.
@@ -140,7 +140,7 @@ Return human readable assessment of signal strength.
 {\em int16\+\_\+t} & signal\+Strength signal in d\+Bm. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_network_autotoc_md26}{}\doxysubsection{@return const char$\ast$ Text assessment of signal strength.}\label{classaa_network_autotoc_md26}
+\hypertarget{classaa_network_autotoc_md31}{}\doxysubsection{@return const char$\ast$ Text assessment of signal strength.}\label{classaa_network_autotoc_md31}
 
 
 Definition at line 284 of file aa\+Network.\+cpp.
@@ -155,7 +155,7 @@ Definition at line 284 of file aa\+Network.\+cpp.
 
 Puts a name which is both unique and predictable into the char array \+\_\+unique\+Name\mbox{[}\mbox{]}. 
 
-Combines a prefix (HOSTNAME\+\_\+\+PREFIX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md24}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md24}
+Combines a prefix (HOSTNAME\+\_\+\+PREFIX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md29}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md29}
 
 
 Definition at line 234 of file aa\+Network.\+cpp.
@@ -175,7 +175,7 @@ RSSI (Received Signal Strength Indicator) is a common measurement, but most Wi\+
 {\em int8\+\_\+t} & data\+Points is the number of readings to average together. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_network_autotoc_md25}{}\doxysubsection{@return long average\+RSSI which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md25}
+\hypertarget{classaa_network_autotoc_md30}{}\doxysubsection{@return long average\+RSSI which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md30}
 
 
 Definition at line 266 of file aa\+Network.\+cpp.

@@ -69,14 +69,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This repository contains all of the information for the next generation of our Two Wheeled Inverted Pendulum robot. Full details about the code can be viewed in the <a href="https://va3wam.github.io/Twipe2/html/index.html">online documentation</a>.</p>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 Getting Started</h1>
 <p>Full details about this project can be read on our <a href="https://github.com/va3wam/Twipe2/wiki">wiki</a>.</p>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 Prerequisites</h2>
 <p>The software in this repository was written in the C++ (Arduino) language using Microsoft's Visual Source Code IDE and the library management was handled using the plugin PlatformIO. As such, source code files have the extension "cpp" denoting c++ rather than the extension "ino" denoting Arduino. <br  />
 </p>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 Code Compatibility</h2>
 <p>The Arduino C++ code was written to run on the Espressif ESP WROOM32 "Software On a Chip" (SOC). The development board used for this SOC is the Adafruit Huzzah32 featherboard. Note that some standard Arduino functions such as AnalogWrite() have not been implemented on the ESP32 SOC and alternate functions such as ledcSetup(), ledcAttachPin() and ledcWrite() must be used in their place. There are some additional compatibility issues of note as follows:</p>
 <ol type="1">
@@ -84,19 +84,19 @@ Code Compatibility</h2>
 <li>This code does not use the Twipe pinout configuration or naming convension so will not port over to a Twipe compliant robot unmodified</li>
 <li>This code will NOT run on an ESP8266 unmodified because of both GPIO incompatibility as well as some ESP32 specific libraries that are in use</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Installing</h2>
 <p>There are numerous tutorials on how to install Arduino code onto an ESP WROOM32 from Microsoft's Visual Studio Code. Try out one of the following tutorials or find another one that is more to your liking:</p><ul>
 <li><a href="https://maker.pro/arduino/tutorial/how-to-use-visual-studio-code-for-arduino">MakerPro</a></li>
 <li><a href="https://randomnerdtutorials.com/vs-code-platformio-ide-esp32-esp8266-arduino/">Random Nerd</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md51"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Running the tests</h1>
 <p>At this time there are no automated tests for this application.</p>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Deployment</h1>
 <p>This Arduino code was developed using the following set up.</p>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Built With</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> - The IDE</li>
@@ -105,7 +105,7 @@ Built With</h2>
 <li>Hardware platform - Espressif ESP32</li>
 <li>Board - Adafruit Huzzah32 featherboard</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Arduino Libraries</h2>
 <p>The following additional libraries are used in the Arduino C++ code:</p>
 <ul>
@@ -113,7 +113,7 @@ Arduino Libraries</h2>
 <li>The standard Wire library that is bundled with PlatformIO</li>
 <li>To be filled in as the code is developed</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md55"></a>
+<h1><a class="anchor" id="autotoc_md61"></a>
 Contributing</h1>
 <p>This project is being developed by a couple of buddies. If you wish to get involved in this project feel free to contact us at one of the email addresses listed in the authors section below. All current and planned work for this project is tracked using the <a href="https://github.com/va3wam/Twipe2/projects">Github projects feature</a>. Here are the standards that we follow for all va3wam projects:</p>
 <ul>
@@ -121,17 +121,17 @@ Contributing</h1>
 <li><a href="https://github.com/va3wam/va3wam.github.io/wiki/Software-Languages-&amp;-Tools">Recommended Tool chain</a></li>
 <li><a href="https://github.com/va3wam/va3wam.github.io/wiki/Software-Coding-Standards">va3wam coding standards</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md56"></a>
+<h1><a class="anchor" id="autotoc_md62"></a>
 Versioning</h1>
 <p>We use <a href="http://semver.org/">SemVer</a> for versioning. For the versions available, see the <a href="https://github.com/va3wam/ZippiTwipi/tags">tags on this repository</a>.</p>
-<h1><a class="anchor" id="autotoc_md57"></a>
+<h1><a class="anchor" id="autotoc_md63"></a>
 Authors</h1>
 <ul>
 <li><a href="https://github.com/nerdoug">Doug</a></li>
 <li><a href="https://github.com/va3wam">va3wam</a></li>
 </ul>
 <p>See also the list of <a href="https://github.com/va3wam/ZippiTwipi/settings/access">contributors</a> who participated in this project.</p>
-<h1><a class="anchor" id="autotoc_md58"></a>
+<h1><a class="anchor" id="autotoc_md64"></a>
 Acknowledgements</h1>
 <ul>
 <li>Joop Brokking and his <a href="http://www.brokking.net/yabr_main.html">Balancing Robot</a></li>
@@ -139,7 +139,7 @@ Acknowledgements</h1>
 <li>Jeff Rowberg for the MPU6050 DMP logic</li>
 <li>The many folks involved in porting the Arduino libraries over to the ESP32</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md65"></a>
 Lisence</h1>
 <p><a href="https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" alt="LICENSE" style="pointer-events: none;" class="inline"/></a></p>
 <p>The MIT License (MIT)</p>

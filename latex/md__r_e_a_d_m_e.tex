@@ -1,7 +1,7 @@
-This repository contains all of the information for the next generation of our Two Wheeled Inverted Pendulum robot. Full details about the code can be viewed in the \href{https://va3wam.github.io/Twipe2/html/index.html}{\texttt{ online documentation}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md47}{}\doxysection{Getting Started}\label{md__r_e_a_d_m_e_autotoc_md47}
-Full details about this project can be read on our \href{https://github.com/va3wam/Twipe2/wiki}{\texttt{ wiki}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md48}{}\doxysubsection{Prerequisites}\label{md__r_e_a_d_m_e_autotoc_md48}
+This repository contains all of the information for the next generation of our Two Wheeled Inverted Pendulum robot. Full details about the code can be viewed in the \href{https://va3wam.github.io/Twipe2/html/index.html}{\texttt{ online documentation}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md53}{}\doxysection{Getting Started}\label{md__r_e_a_d_m_e_autotoc_md53}
+Full details about this project can be read on our \href{https://github.com/va3wam/Twipe2/wiki}{\texttt{ wiki}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md54}{}\doxysubsection{Prerequisites}\label{md__r_e_a_d_m_e_autotoc_md54}
 The software in this repository was written in the C++ (Arduino) language using Microsoft\textquotesingle{}s Visual Source Code IDE and the library management was handled using the plugin Platform\+IO. As such, source code files have the extension \char`\"{}cpp\char`\"{} denoting c++ rather than the extension \char`\"{}ino\char`\"{} denoting Arduino. ~\newline
-\hypertarget{md__r_e_a_d_m_e_autotoc_md49}{}\doxysubsection{Code Compatibility}\label{md__r_e_a_d_m_e_autotoc_md49}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md55}{}\doxysubsection{Code Compatibility}\label{md__r_e_a_d_m_e_autotoc_md55}
 The Arduino C++ code was written to run on the Espressif ESP WROOM32 \char`\"{}\+Software On a Chip\char`\"{} (SOC). The development board used for this SOC is the Adafruit Huzzah32 featherboard. Note that some standard Arduino functions such as Analog\+Write() have not been implemented on the ESP32 SOC and alternate functions such as ledc\+Setup(), ledc\+Attach\+Pin() and ledc\+Write() must be used in their place. There are some additional compatibility issues of note as follows\+:
 
 
@@ -9,14 +9,14 @@ The Arduino C++ code was written to run on the Espressif ESP WROOM32 \char`\"{}\
 \item The GPIO pin usage is loosey Adafruit featherboard compliant meaning it will work with some boards such as the OLED board
 \item This code does not use the Twipe pinout configuration or naming convension so will not port over to a Twipe compliant robot unmodified
 \item This code will NOT run on an ESP8266 unmodified because of both GPIO incompatibility as well as some ESP32 specific libraries that are in use
-\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md50}{}\doxysubsection{Installing}\label{md__r_e_a_d_m_e_autotoc_md50}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md56}{}\doxysubsection{Installing}\label{md__r_e_a_d_m_e_autotoc_md56}
 There are numerous tutorials on how to install Arduino code onto an ESP WROOM32 from Microsoft\textquotesingle{}s Visual Studio Code. Try out one of the following tutorials or find another one that is more to your liking\+:
 \begin{DoxyItemize}
 \item \href{https://maker.pro/arduino/tutorial/how-to-use-visual-studio-code-for-arduino}{\texttt{ Maker\+Pro}}
 \item \href{https://randomnerdtutorials.com/vs-code-platformio-ide-esp32-esp8266-arduino/}{\texttt{ Random Nerd}}
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md51}{}\doxysection{Running the tests}\label{md__r_e_a_d_m_e_autotoc_md51}
-At this time there are no automated tests for this application.\hypertarget{md__r_e_a_d_m_e_autotoc_md52}{}\doxysection{Deployment}\label{md__r_e_a_d_m_e_autotoc_md52}
-This Arduino code was developed using the following set up.\hypertarget{md__r_e_a_d_m_e_autotoc_md53}{}\doxysubsection{Built With}\label{md__r_e_a_d_m_e_autotoc_md53}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md57}{}\doxysection{Running the tests}\label{md__r_e_a_d_m_e_autotoc_md57}
+At this time there are no automated tests for this application.\hypertarget{md__r_e_a_d_m_e_autotoc_md58}{}\doxysection{Deployment}\label{md__r_e_a_d_m_e_autotoc_md58}
+This Arduino code was developed using the following set up.\hypertarget{md__r_e_a_d_m_e_autotoc_md59}{}\doxysubsection{Built With}\label{md__r_e_a_d_m_e_autotoc_md59}
 
 \begin{DoxyItemize}
 \item \href{https://code.visualstudio.com/}{\texttt{ Visual Studio Code}} -\/ The IDE
@@ -24,7 +24,7 @@ This Arduino code was developed using the following set up.\hypertarget{md__r_e_
 \item Library Framework -\/ Arduino
 \item Hardware platform -\/ Espressif ESP32
 \item Board -\/ Adafruit Huzzah32 featherboard
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md54}{}\doxysubsection{Arduino Libraries}\label{md__r_e_a_d_m_e_autotoc_md54}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md60}{}\doxysubsection{Arduino Libraries}\label{md__r_e_a_d_m_e_autotoc_md60}
 The following additional libraries are used in the Arduino C++ code\+:
 
 
@@ -32,7 +32,7 @@ The following additional libraries are used in the Arduino C++ code\+:
 \item The standard Arduino library that is bundled with Platform\+IO
 \item The standard Wire library that is bundled with Platform\+IO
 \item To be filled in as the code is developed
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md55}{}\doxysection{Contributing}\label{md__r_e_a_d_m_e_autotoc_md55}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md61}{}\doxysection{Contributing}\label{md__r_e_a_d_m_e_autotoc_md61}
 This project is being developed by a couple of buddies. If you wish to get involved in this project feel free to contact us at one of the email addresses listed in the authors section below. All current and planned work for this project is tracked using the \href{https://github.com/va3wam/Twipe2/projects}{\texttt{ Github projects feature}}. Here are the standards that we follow for all va3wam projects\+:
 
 
@@ -40,22 +40,22 @@ This project is being developed by a couple of buddies. If you wish to get invol
 \item \href{https://github.com/va3wam/va3wam.github.io/wiki/Software-Version-Control}{\texttt{ Set up your local repo, Git workflow}}
 \item \href{https://github.com/va3wam/va3wam.github.io/wiki/Software-Languages-&-Tools}{\texttt{ Recommended Tool chain}}
 \item \href{https://github.com/va3wam/va3wam.github.io/wiki/Software-Coding-Standards}{\texttt{ va3wam coding standards}}
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md56}{}\doxysection{Versioning}\label{md__r_e_a_d_m_e_autotoc_md56}
-We use \href{http://semver.org/}{\texttt{ Sem\+Ver}} for versioning. For the versions available, see the \href{https://github.com/va3wam/ZippiTwipi/tags}{\texttt{ tags on this repository}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md57}{}\doxysection{Authors}\label{md__r_e_a_d_m_e_autotoc_md57}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md62}{}\doxysection{Versioning}\label{md__r_e_a_d_m_e_autotoc_md62}
+We use \href{http://semver.org/}{\texttt{ Sem\+Ver}} for versioning. For the versions available, see the \href{https://github.com/va3wam/ZippiTwipi/tags}{\texttt{ tags on this repository}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md63}{}\doxysection{Authors}\label{md__r_e_a_d_m_e_autotoc_md63}
 
 \begin{DoxyItemize}
 \item \href{https://github.com/nerdoug}{\texttt{ Doug}}
 \item \href{https://github.com/va3wam}{\texttt{ va3wam}}
 \end{DoxyItemize}
 
-See also the list of \href{https://github.com/va3wam/ZippiTwipi/settings/access}{\texttt{ contributors}} who participated in this project.\hypertarget{md__r_e_a_d_m_e_autotoc_md58}{}\doxysection{Acknowledgements}\label{md__r_e_a_d_m_e_autotoc_md58}
+See also the list of \href{https://github.com/va3wam/ZippiTwipi/settings/access}{\texttt{ contributors}} who participated in this project.\hypertarget{md__r_e_a_d_m_e_autotoc_md64}{}\doxysection{Acknowledgements}\label{md__r_e_a_d_m_e_autotoc_md64}
 
 \begin{DoxyItemize}
 \item Joop Brokking and his \href{http://www.brokking.net/yabr_main.html}{\texttt{ Balancing Robot}}
 \item Tony Di\+Cola and Adafruit Industries for their MQTT QOS1 Arduino library
 \item Jeff Rowberg for the MPU6050 DMP logic
 \item The many folks involved in porting the Arduino libraries over to the ESP32
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md59}{}\doxysection{Lisence}\label{md__r_e_a_d_m_e_autotoc_md59}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md65}{}\doxysection{Lisence}\label{md__r_e_a_d_m_e_autotoc_md65}
 \href{https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE}{\texttt{ }}
 
 The MIT License (MIT)
