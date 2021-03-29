@@ -16,6 +16,7 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- -------------------------------------------------------------------------------------------------------------
+ * 2021-03-28 Old Squire Fixed path to OTA web page.
  * 2021-03-17 Old Squire Program created.
  *************************************************************************************************************************************/
 #include <aaWebService.h> // Header file for linking.
@@ -197,6 +198,7 @@ bool aaWebService::start(char *uniqueNamePtr)
    _cfgCfgPageHandler(); // Define event handler for configuration web page.
    _cfgOtaPageHandler(); // Define event handler for Over The Air upload web page.
    _cfgSetMqttPageHandler(); // Define event handler for incoming post messages with new broker IP.
+   _cfgSelectBinaryPageHandler(); // Define event handler for selecting binary file.
    server.begin(); // Start web server
    return true;
 } //aaWebService::start()
@@ -298,6 +300,19 @@ void aaWebService::_cfgSetMqttPageHandler()
 } //aaWebService::_cfgSetMqttPageHandler()
 
 /**
+ * @brief Configure select binary image handler.
+===================================================================================================*/
+void aaWebService::_cfgSelectBinaryPageHandler()
+{
+   // Send OTA page to select binary image to upload
+   server.on("/otaWebUpdate", HTTP_GET, []() 
+   {
+      server.sendHeader("Connection", "close");
+      server.send(200, "text/html", _otaPage);
+   });
+} //aaWebService::_cfgSendBinaryPageHandler()
+
+/**
  * @brief Check for pending client requests and service them as required.
 ===================================================================================================*/
 bool aaWebService::newMqttBrokerIp(const char* address) // Handle new IP address for broker from web.
@@ -316,7 +331,7 @@ bool aaWebService::newMqttBrokerIp(const char* address) // Handle new IP address
    } //if
    else
    {
-      Serial.print("<aaWebService::newMqttBrokerIp> MQTT broker IP now set to "); Serial.println(tmpIp);
+      Serial.print("<aaWebService::newMqttBrokerIp> MQTT broker IP will change to "); Serial.println(tmpIp);
       optionMessage = "Broker IP successfully updated";
       newBrokerIp = tmpIp; // Store new broker IP to be collected by main later.
       haveNewBrokerIp = true; // Signal that new broker IP is available.

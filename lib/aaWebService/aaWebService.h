@@ -27,13 +27,10 @@ static String _optionPage; // Option web page.
 static String _cfgPage; // Configuration web page.
 static String _otaPage; // Over The Air upload Page.
 static aaFormat _convert; // Assortment of handy conversion functions.
-//static const char* optionMessage; // Message to put at bottom of option web page. 
-//static const char* titleName; // Name to use in web page titles.
-//static bool haveNewBrokerIp; // Flag indicatng that a new Mqtt broker IP is available.
-//static IPAddress newBrokerIp; // Contains validated new broker IP address.
 
 /************************************************************************************
- * @class Create a web service on the microcontroller.  
+ * @class Create web service on the microcontroller.
+ * @brief Set broker IP and load new binaries Over The Air (OTA).  
  ************************************************************************************/
 class aaWebService  
 {
@@ -51,7 +48,8 @@ class aaWebService
       void _cfgOptionPageHandler(); // Configure the option web page handler.
       void _cfgCfgPageHandler(); // Configure the configuration web page handler.
       void _cfgOtaPageHandler(); // Configure the OTA web page handler.
-      void _cfgSetMqttPageHandler(); // Configure the OTA web page handler.
+      void _cfgSetMqttPageHandler(); // Configure the set MQTT web page handler.
+      void _cfgSelectBinaryPageHandler(); // Configuure the select binary web page handler.
       void _defineStyleSheet(); // Defines style sheet used for all web pages. 
       void _defineLoginPage(const char* nameForTitles); //  Define login web page;
       static void _defineOptionPage(const char* nameForTitles); // Define options web page
