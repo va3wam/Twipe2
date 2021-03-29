@@ -97,6 +97,8 @@ void setup()
    network.connect(); // Start WiFi connection.
    startWebServer(); // Start up web server.
    showCfgDetails(); // Show all configuration details.
+   brokerIP = flash.readBrokerIP(); // Retrieve MQTT broker IP address from NV-RAM.
+   Serial.print("<setup> Broker IP set to "); Serial.println(brokerIP);
    Serial.println("<setup> End of setup");
 } //setup()
 
@@ -105,13 +107,13 @@ void setup()
  * =================================================================================*/
 void loop()
 {
-   if(localWebService.connectStatus()) // If there is a valid WiFi connection
+   if(localWebService.connectStatus()) // Is there is a valid WiFi connection?
    {
       if(localWebService.checkForClientRequest()) // New binary or broker IP?
       {
-         IPAddress tmpIP = localWebService.getBrokerIP();
-         Serial.print("<loop> New broker IP to be set to ");
-         Serial.println(tmpIP);
+         IPAddress tmpIP = localWebService.getBrokerIP(); // Get awaiting IP address.
+         Serial.print("<loop> Set broker IP to "); Serial.println(tmpIP);
+         flash.writeBrokerIP(tmpIP); // Write address to flash.
       } //if
    } //if   
 } //loop()
