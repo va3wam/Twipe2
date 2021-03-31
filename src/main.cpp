@@ -87,6 +87,23 @@ void startWebServer()
    } //else
 } //startWebServer()
 
+/**
+ * @brief Monitor local web service to see if there are any client requests.
+ * @details Call to checkForClientRequest() does two things. First, it causes the 
+ * localWebServer service to process any new binay downloads. Second, it returns a 
+ * boolean, that when TRUE, indicates there is a new IP address for the MQTT broker 
+ * that needs to be saved to NV RAM.
+ * =================================================================================*/
+void monitorWebServer()
+{
+   if(localWebService.checkForClientRequest()) // New binary or broker IP?
+   {
+      IPAddress tmpIP = localWebService.getBrokerIP(); // Get awaiting IP address.
+      Serial.print("<monitorWebServer> Set broker IP to "); Serial.println(tmpIP);
+      flash.writeBrokerIP(tmpIP); // Write address to flash.
+   } //if
+} //monitorWebServer()
+
 /** 
  * @brief Arduino mandatory function #1. Runs once at boot. 
  * =================================================================================*/
@@ -98,7 +115,14 @@ void setup()
    startWebServer(); // Start up web server.
    showCfgDetails(); // Show all configuration details.
    brokerIP = flash.readBrokerIP(); // Retrieve MQTT broker IP address from NV-RAM.
-   Serial.print("<setup> Broker IP set to "); Serial.println(brokerIP);
+   network.getUniqueName(uniqueNamePtr); // Puts unique name value into uniqueName[]
+   Serial.print("<setup> Ping of broker at "); Serial.print(brokerIP);
+   Serial.print(" resulted in ");
+   Serial.println(network.pingIP(brokerIP, 5));
+   Serial.print("<setup> Unique name = ");
+   Serial.println(uniqueName);
+   mqtt.connect(brokerIP, uniqueName);
+   mqtt.publishMQTT("/health", "This is a test message");
    Serial.println("<setup> End of setup");
 } //setup()
 
@@ -109,11 +133,7 @@ void loop()
 {
    if(localWebService.connectStatus()) // Is there is a valid WiFi connection?
    {
-      if(localWebService.checkForClientRequest()) // New binary or broker IP?
-      {
-         IPAddress tmpIP = localWebService.getBrokerIP(); // Get awaiting IP address.
-         Serial.print("<loop> Set broker IP to "); Serial.println(tmpIP);
-         flash.writeBrokerIP(tmpIP); // Write address to flash.
-      } //if
+      monitorWebServer(); // Handle any pending web client requests. 
    } //if   
 } //loop()
+
