@@ -21,6 +21,7 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ------------------------------------------------------------
+ * 2021-03-29 Old Squire Added overloaded class pingIP().
  * 2021-03-22 Old Squire Replaced all String vars with char[] and const char*.
  * 2021-03-19 Old Squire Overhauled code base to allow for wifi event callbacks and 
  *            added signal evaluation and encryption method data. 
@@ -340,3 +341,29 @@ void aaNetwork::cfgToConsole()
    getUniqueName(_uniqueNamePtr); 
    Serial.print("<aaNetwork::cfgToConsole> ... Robot Host Name: "); Serial.println(_uniqueName);
 } //aaNetwork::cfgToConsole()
+
+/**
+ * @brief Ping IP address once and return response.
+ * @details Ping address seccified number of times and return results.
+ * @param IPAddress Address to ping.
+ * @return bool Result of ping(s). 
+===================================================================================================*/
+bool aaNetwork::pingIP(IPAddress address)  
+{
+   int8_t numPings = 1; // How many pings to send to verify IP address
+   IPAddress tmpIp; 
+   return Ping.ping(address, numPings);
+} //aaNetwork::pingIP(()
+
+/**
+ * @brief Ping IP address multiple times and return response.
+ * @details Ping address seccified number of times and return results.
+ * @param IPAddress Address to ping.
+ * @param int8_t Number of times to ping the address.
+ * @return bool Result of ping(s). 
+===================================================================================================*/
+bool aaNetwork::pingIP(IPAddress address, int8_t numPings)  
+{
+   IPAddress tmpIp; 
+   return Ping.ping(address, numPings);
+} //aaNetwork::pingIP(()

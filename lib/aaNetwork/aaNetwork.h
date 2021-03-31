@@ -6,6 +6,7 @@
 #include <WiFi.h> // Required to connect to WiFi network. Comes with Platform.io.
 #include <aaFormat.h> // Collection of handy format conversion functions.
 #include <known_networks.h> // Defines Access points and passwords that the robot can scan for and connect to.
+#include <ESP32Ping.h> // Verify IP addresses. https://github.com/marian-craciunescu/ESP32Ping.
 
 // Avoid magic numbers and make code more readable with these constants.
 enum signalStrength // English translation of dB readings for WiFi signal strength.
@@ -25,18 +26,20 @@ class aaNetwork // Define aaNetwork class
       aaNetwork(); // Default class constructor.
       aaNetwork(const char* prefix); // Second form of class constructor.
       ~aaNetwork(); // Class destructor.
-      void getUniqueName(char *ptrNameArray); // Construct a name that is sure to be unique on the network
+      void getUniqueName(char *ptrNameArray); // Construct a name that is sure to be unique on the network.
       const char* connectionStatus(wl_status_t status); // Provide human readable text for wifi connection status codes. 
-      void cfgToConsole(); // Send wifi connection details to console
+      void cfgToConsole(); // Send wifi connection details to console.
       char* getSSID(void); // Retireve Access Point SSID.
       char* getPSWD(void); // Retrieve Access Point password.
       void connect(); // Connect to Wifi.
-      long rfSignalStrength(int8_t points); // Collect an average WiFi signal strength 
+      long rfSignalStrength(int8_t points); // Collect an average WiFi signal strength. 
       const char* evalSignal(int16_t signalStrength); // Return human readable assessment of signal strength.
+      bool pingIP(IPAddress address); // Ping IP address and return response. Assume 1 ping.
+      bool pingIP(IPAddress address, int8_t numPings); // Ping IP address and return response. User specified num pings.
    private:
       const char* _lookForAP(); // Scan 2.4GHz radio spectrum for known Access Point.
-      const char* _translateEncryptionType(wifi_auth_mode_t encryptionType); // Provide human readable wifi encryption method 
-      static void _wiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info); // Event handler for wifi
+      const char* _translateEncryptionType(wifi_auth_mode_t encryptionType); // Provide human readable wifi encryption method.
+      static void _wiFiEvent(WiFiEvent_t event, WiFiEventInfo_t info); // Event handler for wifi.
       const char* _unknownAP = "unknown"; // Comparitor used to check if a valid AP was found.
       const char* _ssid; // SSID of Access Point selected to connect to over Wifi. 
       const char* _password; // Password of Access Point selected to connect to over Wifi.
