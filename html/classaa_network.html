@@ -105,10 +105,16 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>getPSWD</b> (void)<
 <tr class="memitem:a8c5caf595e69a1ddb85495824d8e1813"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">evalSignal</a> (int16_t signalStrength)</td></tr>
 <tr class="memdesc:a8c5caf595e69a1ddb85495824d8e1813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return human readable assessment of signal strength.  <a href="classaa_network.html#a8c5caf595e69a1ddb85495824d8e1813">More...</a><br /></td></tr>
 <tr class="separator:a8c5caf595e69a1ddb85495824d8e1813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25454f1c10061c1d600820ad113c006d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#a25454f1c10061c1d600820ad113c006d">pingIP</a> (IPAddress address)</td></tr>
+<tr class="memdesc:a25454f1c10061c1d600820ad113c006d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ping IP address once and return response.  <a href="classaa_network.html#a25454f1c10061c1d600820ad113c006d">More...</a><br /></td></tr>
+<tr class="separator:a25454f1c10061c1d600820ad113c006d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae02e40ab01ca4703fb99fdb413e7e81f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_network.html#ae02e40ab01ca4703fb99fdb413e7e81f">pingIP</a> (IPAddress address, int8_t numPings)</td></tr>
+<tr class="memdesc:ae02e40ab01ca4703fb99fdb413e7e81f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ping IP address multiple times and return response.  <a href="classaa_network.html#ae02e40ab01ca4703fb99fdb413e7e81f">More...</a><br /></td></tr>
+<tr class="separator:ae02e40ab01ca4703fb99fdb413e7e81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aa_network_8h_source.html#l00022">22</a> of file <a class="el" href="aa_network_8h_source.html">aaNetwork.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8h_source.html#l00023">23</a> of file <a class="el" href="aa_network_8h_source.html">aaNetwork.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="affbf27339bcbcaf92810034ccb69de5f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#affbf27339bcbcaf92810034ccb69de5f">&#9670;&nbsp;</a></span>aaNetwork() <span class="overload">[1/2]</span></h2>
@@ -127,10 +133,10 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>getPSWD</b> (void)<
 
 <p>Handle all of the networking logic required by the robot. </p>
 <p>Manages TCP/IP, HTTP server, OTA firmware loading and MQTT messaging. </p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md42"></a>
 See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00036">36</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00037">37</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -149,10 +155,10 @@ See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 @brief This is the second form of the constructor for this class.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00044">44</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00045">45</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -170,10 +176,10 @@ See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 @brief This is the destructor for this class.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00053">53</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00054">54</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,10 +201,10 @@ See https://lastminuteengineers.com/esp32-ota-web-updater-arduino-ide/</h1>
 
 <p>Send detailed network configuration information to the console. </p>
 <p>The ESP32-D0WDQ6 chip has dual Tensilica LX6 micro controllers. All WiFi logic runs on the PRO_CPU (core0) aka the processor core. This firmware runs on </p>
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 the APP_CPU (core 1) aka the application core.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00299">299</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00300">300</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -219,10 +225,10 @@ the APP_CPU (core 1) aka the application core.</h1>
 
 <p>Manage the process of connecting to the WiFi network. </p>
 <p>Scan for a suitable Access Point and if one is found then connect to it using the init_wifi() method. </p><dl class="section return"><dt>Returns</dt><dd>bool where true means a connection was made and false means no connection </dd></dl>
-<h1><a class="anchor" id="autotoc_md28"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 was made.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00200">200</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00201">201</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -243,10 +249,10 @@ was made.</h1>
 </div><div class="memdoc">
 
 <p>Provide human readable text for wifi connection status codes. </p>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 @return const char* "Text that explains what the code means".</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00154">154</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00155">155</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,10 +279,10 @@ was made.</h1>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h1><a class="anchor" id="autotoc_md52"></a>
 @return const char* Text assessment of signal strength.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00284">284</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00285">285</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -298,10 +304,81 @@ was made.</h1>
 
 <p>Puts a name which is both unique and predictable into the char array _uniqueName[]. </p>
 <p>Combines a prefix (HOSTNAME_PREFIX) with the 6 byte mac address of the WiFi module to produce a name that will be unque on the network. </p>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 @param char *_uniqueNamePtr pointer to variable called _uniqueName[].</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00234">234</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00235">235</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a25454f1c10061c1d600820ad113c006d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25454f1c10061c1d600820ad113c006d">&#9670;&nbsp;</a></span>pingIP() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool aaNetwork::pingIP </td>
+          <td>(</td>
+          <td class="paramtype">IPAddress&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ping IP address once and return response. </p>
+<p>Ping address seccified number of times and return results. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">IPAddress</td><td>Address to ping. </td></tr>
+  </table>
+  </dd>
+</dl>
+<h1><a class="anchor" id="autotoc_md54"></a>
+@return bool Result of ping(s).</h1>
+
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00351">351</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae02e40ab01ca4703fb99fdb413e7e81f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02e40ab01ca4703fb99fdb413e7e81f">&#9670;&nbsp;</a></span>pingIP() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool aaNetwork::pingIP </td>
+          <td>(</td>
+          <td class="paramtype">IPAddress&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>numPings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ping IP address multiple times and return response. </p>
+<p>Ping address seccified number of times and return results. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">IPAddress</td><td>Address to ping. </td></tr>
+    <tr><td class="paramname">int8_t</td><td>Number of times to ping the address. </td></tr>
+  </table>
+  </dd>
+</dl>
+<h1><a class="anchor" id="autotoc_md55"></a>
+@return bool Result of ping(s).</h1>
+
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00365">365</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,10 +405,10 @@ was made.</h1>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md30"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 @return long averageRSSI which is the average of 100 signal strength readings in dBm.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00266">266</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_network_8cpp_source.html#l00267">267</a> of file <a class="el" href="aa_network_8cpp_source.html">aaNetwork.cpp</a>.</p>
 
 </div>
 </div>

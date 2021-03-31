@@ -1,0 +1,316 @@
+\hypertarget{classaa_mqtt}{}\doxysection{aa\+Mqtt Class Reference}
+\label{classaa_mqtt}\index{aaMqtt@{aaMqtt}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classaa_mqtt_a8fe0df533de2e25f1dfb2f0c8e626f7d}{aa\+Mqtt}} ()
+\begin{DoxyCompactList}\small\item\em This is the default constructor for this class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classaa_mqtt_a87e8a4db1a43fbd5d71b77a56a15b7e0}{$\sim$aa\+Mqtt}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classaa_mqtt_a7ce99a71ff5d6575dda7b1e60224850c}{connect}} (IPAddress address, const char $\ast$unique\+Name)
+\item 
+static void \mbox{\hyperlink{classaa_mqtt_adac5c0bf0c8b6ab2ba6ee6b6c5c2ad7c}{on\+Mqtt\+Connect}} (bool session\+Present)
+\begin{DoxyCompactList}\small\item\em Handle CONNACK from the MQTT broker. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_a6abfaec4d1b1fbeecb547433e98fa9fc}{on\+Mqtt\+Disconnect}} (Async\+Mqtt\+Client\+Disconnect\+Reason reason)
+\begin{DoxyCompactList}\small\item\em Handle disconnecting from an MQTT broker. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_a90c3bfc78093d9d05ffad2a86f06ea68}{on\+Mqtt\+Subscribe}} (uint16\+\_\+t packet\+Id, uint8\+\_\+t qos)
+\begin{DoxyCompactList}\small\item\em Handle SUBACK from MQTT broker. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_a1be714946ce7d4ca63f4336778ada139}{on\+Mqtt\+Unsubscribe}} (uint16\+\_\+t packet\+Id)
+\begin{DoxyCompactList}\small\item\em Handle UNSUBACK message from MQTT broker. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_ac4aec787c2d889e0b07573f100be7c22}{publish\+MQTT}} (String topic, String msg)
+\begin{DoxyCompactList}\small\item\em Publish a message to the specified MQTT broker topic tree. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_ab99783465de2e21a13eeadbb5e39b7b8}{publish\+Event}} (int evt\+Id, int evt\+Sev, String evt\+Msg)
+\begin{DoxyCompactList}\small\item\em Publishes messages to the health event topic on the MQTT broker. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_ada4234e578ec002c58e86db16b9162d8}{on\+Mqtt\+Message}} (char $\ast$topic, char $\ast$payload, Async\+Mqtt\+Client\+Message\+Properties properties, size\+\_\+t len, size\+\_\+t index, size\+\_\+t total)
+\begin{DoxyCompactList}\small\item\em Handle incoming messages from MQTT broker. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}{on\+Mqtt\+Publish}} (uint16\+\_\+t packet\+Id)
+\begin{DoxyCompactList}\small\item\em Handle the reciept of a PUBACK message message from MQTT broker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 22 of file aa\+Mqtt.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classaa_mqtt_a8fe0df533de2e25f1dfb2f0c8e626f7d}\label{classaa_mqtt_a8fe0df533de2e25f1dfb2f0c8e626f7d}} 
+\index{aaMqtt@{aaMqtt}!aaMqtt@{aaMqtt}}
+\index{aaMqtt@{aaMqtt}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{aaMqtt()}{aaMqtt()}}
+{\footnotesize\ttfamily aa\+Mqtt\+::aa\+Mqtt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the default constructor for this class. 
+
+\hypertarget{classaa_mqtt_autotoc_md21}{}\doxysubsection{@param const char$\ast$ Argument description.}\label{classaa_mqtt_autotoc_md21}
+
+
+Definition at line 43 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_a87e8a4db1a43fbd5d71b77a56a15b7e0}\label{classaa_mqtt_a87e8a4db1a43fbd5d71b77a56a15b7e0}} 
+\index{aaMqtt@{aaMqtt}!````~aaMqtt@{$\sim$aaMqtt}}
+\index{````~aaMqtt@{$\sim$aaMqtt}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{$\sim$aaMqtt()}{~aaMqtt()}}
+{\footnotesize\ttfamily aa\+Mqtt\+::$\sim$aa\+Mqtt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hypertarget{classaa_mqtt_autotoc_md22}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_mqtt_autotoc_md22}
+
+
+Definition at line 51 of file aa\+Mqtt.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classaa_mqtt_a7ce99a71ff5d6575dda7b1e60224850c}\label{classaa_mqtt_a7ce99a71ff5d6575dda7b1e60224850c}} 
+\index{aaMqtt@{aaMqtt}!connect@{connect}}
+\index{connect@{connect}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::connect (\begin{DoxyParamCaption}\item[{IPAddress}]{address,  }\item[{const char $\ast$}]{unique\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\hypertarget{classaa_mqtt_autotoc_md23}{}\doxysubsection{@brief Connect to MQTT broker.}\label{classaa_mqtt_autotoc_md23}
+
+
+Definition at line 59 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_adac5c0bf0c8b6ab2ba6ee6b6c5c2ad7c}\label{classaa_mqtt_adac5c0bf0c8b6ab2ba6ee6b6c5c2ad7c}} 
+\index{aaMqtt@{aaMqtt}!onMqttConnect@{onMqttConnect}}
+\index{onMqttConnect@{onMqttConnect}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{onMqttConnect()}{onMqttConnect()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::on\+Mqtt\+Connect (\begin{DoxyParamCaption}\item[{bool}]{session\+Present }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle CONNACK from the MQTT broker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session\+Present} & persistent session available flag contained in CONNACK message from broker. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_mqtt_autotoc_md24}{}\doxysubsection{CONNACK Message}\label{classaa_mqtt_autotoc_md24}
+The CONNACK message contains two data entries\+:
+\begin{DoxyEnumerate}
+\item The session present flag
+\item A connect acknowledge flag
+\end{DoxyEnumerate}\hypertarget{classaa_mqtt_autotoc_md25}{}\doxysubsubsection{Session Present Flag}\label{classaa_mqtt_autotoc_md25}
+The session present flag tells the client whether the broker already has a persistent session available from previous interactions with the client. When a client connects with Clean Session set to true, the session present flag is always false because there is no session available. If a client connects with Clean Session set to false, there are two possibilities\+: If session information is available for the client Id. and the broker has stored session information, the session present flag is true. Otherwise, if the broker does not have any session information for the client ID, the session present flag is false. This flag was added in MQTT 3.\+1.\+1 to help clients determine whether they need to subscribe to topics or if the topics are still stored in a persistent session.\hypertarget{classaa_mqtt_autotoc_md26}{}\doxysubsubsection{Connect Acknowledge Flag}\label{classaa_mqtt_autotoc_md26}
+The second flag in the CONNACK message is the connect acknowledge flag. This flag contains a return code that tells the client whether the connection attempt was successful. Here are the return codes at a glance\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Return Code   }&\cellcolor{\tableheadbgcolor}\textbf{ Return Code Response    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Return Code   }&\cellcolor{\tableheadbgcolor}\textbf{ Return Code Response    }\\\cline{1-2}
+\endhead
+\PBS\centering 0   &Connection accepted    \\\cline{1-2}
+\PBS\centering 1   &Connection refused, unacceptable protocol version    \\\cline{1-2}
+\PBS\centering 2   &Connection refused, identifier rejected    \\\cline{1-2}
+\PBS\centering 3   &Connection refused, server unavailable    \\\cline{1-2}
+\PBS\centering 4   &Connection refused, bad user name or password    \\\cline{1-2}
+\PBS\centering 5   &Connection refused, not authorized   \\\cline{1-2}
+\end{longtabu}
+=================================================================================================== 
+
+Definition at line 110 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_a6abfaec4d1b1fbeecb547433e98fa9fc}\label{classaa_mqtt_a6abfaec4d1b1fbeecb547433e98fa9fc}} 
+\index{aaMqtt@{aaMqtt}!onMqttDisconnect@{onMqttDisconnect}}
+\index{onMqttDisconnect@{onMqttDisconnect}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{onMqttDisconnect()}{onMqttDisconnect()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::on\+Mqtt\+Disconnect (\begin{DoxyParamCaption}\item[{Async\+Mqtt\+Client\+Disconnect\+Reason}]{reason }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle disconnecting from an MQTT broker. 
+
+\hypertarget{classaa_mqtt_autotoc_md27}{}\doxysubsection{@param reason Reason for disconnect}\label{classaa_mqtt_autotoc_md27}
+
+
+Definition at line 131 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_ada4234e578ec002c58e86db16b9162d8}\label{classaa_mqtt_ada4234e578ec002c58e86db16b9162d8}} 
+\index{aaMqtt@{aaMqtt}!onMqttMessage@{onMqttMessage}}
+\index{onMqttMessage@{onMqttMessage}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{onMqttMessage()}{onMqttMessage()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::on\+Mqtt\+Message (\begin{DoxyParamCaption}\item[{char $\ast$}]{topic,  }\item[{char $\ast$}]{payload,  }\item[{Async\+Mqtt\+Client\+Message\+Properties}]{properties,  }\item[{size\+\_\+t}]{len,  }\item[{size\+\_\+t}]{index,  }\item[{size\+\_\+t}]{total }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle incoming messages from MQTT broker. 
+
+All messaging comes here and get seperated by select statement. 
+\begin{DoxyParams}{Parameters}
+{\em topic} & Which topic this message if about \\
+\hline
+{\em payload} & The content of the message sent from the MQTT broker \\
+\hline
+{\em properties} & A structure of flags with details from the message\textquotesingle{}s packet header \\
+\hline
+{\em len} & Payload length. If unset or set to 0, the payload will be considered as a string and use strlen(payload) to calculte \\
+\hline
+{\em index} & The message ID. If unset or set to 0, the message ID will be automtaically assigned \\
+\hline
+{\em total} & Seems to be the same as len\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Property Flags The MQTT message has a header containing the following flags. 
+\end{DoxyNote}
+\hypertarget{classaa_mqtt_autotoc_md37}{}\doxysubsubsection{QOS Flag}\label{classaa_mqtt_autotoc_md37}
+Two bits that show the QOS level of the message. Valid values are 1, 2 and 3 \hypertarget{classaa_mqtt_autotoc_md38}{}\doxysubsubsection{Retain Flag}\label{classaa_mqtt_autotoc_md38}
+Boolean value showing whether the message is saved by the broker as the last known good value for a specified topic. When a new client subscribes to a topic, they receive the last message that is retained on that topic. \hypertarget{classaa_mqtt_autotoc_md39}{}\doxysubsubsection{DUP flag}\label{classaa_mqtt_autotoc_md39}
+Boolean value indicates that the message is a duplicate and was resent because the intended recipient (client or broker) did not \hypertarget{classaa_mqtt_autotoc_md40}{}\doxysubsection{acknowledge the original message. This is only relevant for Qo\+S greater than 0.}\label{classaa_mqtt_autotoc_md40}
+
+
+Definition at line 245 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}\label{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}} 
+\index{aaMqtt@{aaMqtt}!onMqttPublish@{onMqttPublish}}
+\index{onMqttPublish@{onMqttPublish}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{onMqttPublish()}{onMqttPublish()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::on\+Mqtt\+Publish (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{packet\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle the reciept of a PUBACK message message from MQTT broker. 
+
+\hypertarget{classaa_mqtt_autotoc_md41}{}\doxysubsection{@param packet\+Id Unique identifier of the message.}\label{classaa_mqtt_autotoc_md41}
+
+
+Definition at line 273 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_a90c3bfc78093d9d05ffad2a86f06ea68}\label{classaa_mqtt_a90c3bfc78093d9d05ffad2a86f06ea68}} 
+\index{aaMqtt@{aaMqtt}!onMqttSubscribe@{onMqttSubscribe}}
+\index{onMqttSubscribe@{onMqttSubscribe}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{onMqttSubscribe()}{onMqttSubscribe()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::on\+Mqtt\+Subscribe (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{packet\+Id,  }\item[{uint8\+\_\+t}]{qos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle SUBACK from MQTT broker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet\+Id} & Unique identifier of the message \\
+\hline
+{\em qos} & SUBACK return code \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_mqtt_autotoc_md28}{}\doxysubsection{Suback Message}\label{classaa_mqtt_autotoc_md28}
+To confirm each subscription, the broker sends a SUBACK acknowledgement message to the client. This message contains the packet identifier of the original Subscribe message (to clearly identify the message) and a list of return codes. \hypertarget{classaa_mqtt_autotoc_md29}{}\doxysubsubsection{Packet Identifier}\label{classaa_mqtt_autotoc_md29}
+The packet identifier is a unique identifier used to identify a message. It is the same as in the SUBSCRIBE message.\hypertarget{classaa_mqtt_autotoc_md30}{}\doxysubsubsection{Return Code}\label{classaa_mqtt_autotoc_md30}
+The broker sends one return code for each topic/\+Qo\+S-\/pair that it receives in the SUBSCRIBE message. For example, if the SUBSCRIBE message has five subscriptions, the SUBACK message contains five return codes. The return code acknowledges each topic and shows the QoS level that is granted by the broker. If the broker refuses a subscription, the SUBACK message conains a failure return code for that specific topic. For example, if the client has insufficient permission to subscribe to the topic or the topic is malformed.\hypertarget{classaa_mqtt_autotoc_md31}{}\doxysubsection{Table of SUBACK return codes}\label{classaa_mqtt_autotoc_md31}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Return Code   }&\cellcolor{\tableheadbgcolor}\textbf{ Return Code Response    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Return Code   }&\cellcolor{\tableheadbgcolor}\textbf{ Return Code Response    }\\\cline{1-2}
+\endhead
+\PBS\centering 0   &Success -\/ Maximum QoS 0    \\\cline{1-2}
+\PBS\centering 1   &Success -\/ Maximum QoS 1    \\\cline{1-2}
+\PBS\centering 2   &Success -\/ Maximum QoS 2    \\\cline{1-2}
+\PBS\centering 128   &Failure   \\\cline{1-2}
+\end{longtabu}
+=================================================================================================== 
+
+Definition at line 164 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_a1be714946ce7d4ca63f4336778ada139}\label{classaa_mqtt_a1be714946ce7d4ca63f4336778ada139}} 
+\index{aaMqtt@{aaMqtt}!onMqttUnsubscribe@{onMqttUnsubscribe}}
+\index{onMqttUnsubscribe@{onMqttUnsubscribe}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{onMqttUnsubscribe()}{onMqttUnsubscribe()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::on\+Mqtt\+Unsubscribe (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{packet\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle UNSUBACK message from MQTT broker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet\+Id} & Unique identifier of the message. This is the same packet identifier that is in the UNSUBSCRIBE message. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_mqtt_autotoc_md32}{}\doxysubsection{UNSUBACK Message}\label{classaa_mqtt_autotoc_md32}
+To confirm the unsubscribe, the broker sends an UNSUBACK acknowledgement message to the client. This message contains only the packet identifier of the original UNSUBSCRIBE message (to clearly identify the message). After receiving the UNSUBACK from the \hypertarget{classaa_mqtt_autotoc_md33}{}\doxysubsection{broker, the client can assume that the subscriptions in the UNSUBSCRIBE message are deleted.}\label{classaa_mqtt_autotoc_md33}
+
+
+Definition at line 179 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_ab99783465de2e21a13eeadbb5e39b7b8}\label{classaa_mqtt_ab99783465de2e21a13eeadbb5e39b7b8}} 
+\index{aaMqtt@{aaMqtt}!publishEvent@{publishEvent}}
+\index{publishEvent@{publishEvent}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{publishEvent()}{publishEvent()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::publish\+Event (\begin{DoxyParamCaption}\item[{int}]{evt\+Id,  }\item[{int}]{evt\+Sev,  }\item[{String}]{evt\+Msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Publishes messages to the health event topic on the MQTT broker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & Event ID. \\
+\hline
+{\em int} & Event severity? \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_mqtt_autotoc_md36}{}\doxysubsection{@param String Event message.}\label{classaa_mqtt_autotoc_md36}
+
+
+Definition at line 218 of file aa\+Mqtt.\+cpp.
+
+\mbox{\Hypertarget{classaa_mqtt_ac4aec787c2d889e0b07573f100be7c22}\label{classaa_mqtt_ac4aec787c2d889e0b07573f100be7c22}} 
+\index{aaMqtt@{aaMqtt}!publishMQTT@{publishMQTT}}
+\index{publishMQTT@{publishMQTT}!aaMqtt@{aaMqtt}}
+\doxysubsubsection{\texorpdfstring{publishMQTT()}{publishMQTT()}}
+{\footnotesize\ttfamily void aa\+Mqtt\+::publish\+MQTT (\begin{DoxyParamCaption}\item[{String}]{topic,  }\item[{String}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Publish a message to the specified MQTT broker topic tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em topic} & The topic tree to publish the messge to \\
+\hline
+{\em msg} & The message to send \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_mqtt_autotoc_md34}{}\doxysubsection{MQTT Published Messages}\label{classaa_mqtt_autotoc_md34}
+TWIPe issues a number of messages to the MQTT broker. Each message goes to it\textquotesingle{}s own topic tree. These messages and their respective topic trees are outlined in the table below. Note hat the robot name is made up of the prefix twipe followed by the MAC address of the ESP32. This acts as a unique identifier of the robot and is used to ensure that each robot has its own unique data tree structure on the MQTT broker. THis design allows for multipple twipe robots to share the same MQTT broker. \hypertarget{classaa_mqtt_autotoc_md35}{}\doxysubsubsection{Table of Published Messages}\label{classaa_mqtt_autotoc_md35}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Topic   }&\cellcolor{\tableheadbgcolor}\textbf{ Topic Tree   }&\cellcolor{\tableheadbgcolor}\textbf{ Details    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Topic   }&\cellcolor{\tableheadbgcolor}\textbf{ Topic Tree   }&\cellcolor{\tableheadbgcolor}\textbf{ Details    }\\\cline{1-3}
+\endhead
+Balance telemetry   &\{robot name\}/telemetry/balance   &Angle of IMU orientation in degrees    \\\cline{1-3}
+Robot Metadata   &\{robot name\}/metadata   &See metadata table for a full list of the data points being tracked   \\\cline{1-3}
+\end{longtabu}
+=================================================================================================== 
+
+Definition at line 202 of file aa\+Mqtt.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/aa\+Mqtt/aa\+Mqtt.\+h\item 
+lib/aa\+Mqtt/aa\+Mqtt.\+cpp\end{DoxyCompactItemize}

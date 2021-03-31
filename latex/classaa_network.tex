@@ -26,13 +26,17 @@ void \mbox{\hyperlink{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}{connect
 long \mbox{\hyperlink{classaa_network_a2939f0d11f02f932b3a1406de14c3876}{rf\+Signal\+Strength}} (int8\+\_\+t points)
 \begin{DoxyCompactList}\small\item\em Take measurements of the Wi-\/\+Fi strength and return the average result. \end{DoxyCompactList}\item 
 const char $\ast$ \mbox{\hyperlink{classaa_network_a8c5caf595e69a1ddb85495824d8e1813}{eval\+Signal}} (int16\+\_\+t signal\+Strength)
-\begin{DoxyCompactList}\small\item\em Return human readable assessment of signal strength. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Return human readable assessment of signal strength. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classaa_network_a25454f1c10061c1d600820ad113c006d}{ping\+IP}} (IPAddress address)
+\begin{DoxyCompactList}\small\item\em Ping IP address once and return response. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classaa_network_ae02e40ab01ca4703fb99fdb413e7e81f}{ping\+IP}} (IPAddress address, int8\+\_\+t num\+Pings)
+\begin{DoxyCompactList}\small\item\em Ping IP address multiple times and return response. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line 22 of file aa\+Network.\+h.
+Definition at line 23 of file aa\+Network.\+h.
 
 
 
@@ -47,10 +51,10 @@ Definition at line 22 of file aa\+Network.\+h.
 
 Handle all of the networking logic required by the robot. 
 
-Manages TCP/\+IP, HTTP server, OTA firmware loading and MQTT messaging. \hypertarget{classaa_network_autotoc_md21}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md21}
+Manages TCP/\+IP, HTTP server, OTA firmware loading and MQTT messaging. \hypertarget{classaa_network_autotoc_md42}{}\doxysubsection{See https\+://lastminuteengineers.\+com/esp32-\/ota-\/web-\/updater-\/arduino-\/ide/}\label{classaa_network_autotoc_md42}
 
 
-Definition at line 36 of file aa\+Network.\+cpp.
+Definition at line 37 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_afa7e0bb4dba9c746dc1966554c39405e}\label{classaa_network_afa7e0bb4dba9c746dc1966554c39405e}} 
 \index{aaNetwork@{aaNetwork}!aaNetwork@{aaNetwork}}
@@ -58,10 +62,10 @@ Definition at line 36 of file aa\+Network.\+cpp.
 \doxysubsubsection{\texorpdfstring{aaNetwork()}{aaNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily aa\+Network\+::aa\+Network (\begin{DoxyParamCaption}\item[{const char $\ast$}]{prefix }\end{DoxyParamCaption})}
 
-\hypertarget{classaa_network_autotoc_md22}{}\doxysubsection{@brief This is the second form of the constructor for this class.}\label{classaa_network_autotoc_md22}
+\hypertarget{classaa_network_autotoc_md43}{}\doxysubsection{@brief This is the second form of the constructor for this class.}\label{classaa_network_autotoc_md43}
 
 
-Definition at line 44 of file aa\+Network.\+cpp.
+Definition at line 45 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_ac42bfbdba98e7657887754e88e052f68}\label{classaa_network_ac42bfbdba98e7657887754e88e052f68}} 
 \index{aaNetwork@{aaNetwork}!````~aaNetwork@{$\sim$aaNetwork}}
@@ -69,10 +73,10 @@ Definition at line 44 of file aa\+Network.\+cpp.
 \doxysubsubsection{\texorpdfstring{$\sim$aaNetwork()}{~aaNetwork()}}
 {\footnotesize\ttfamily aa\+Network\+::$\sim$aa\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\hypertarget{classaa_network_autotoc_md23}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_network_autotoc_md23}
+\hypertarget{classaa_network_autotoc_md44}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_network_autotoc_md44}
 
 
-Definition at line 53 of file aa\+Network.\+cpp.
+Definition at line 54 of file aa\+Network.\+cpp.
 
 
 
@@ -87,10 +91,10 @@ Definition at line 53 of file aa\+Network.\+cpp.
 
 Send detailed network configuration information to the console. 
 
-The ESP32-\/\+D0\+WDQ6 chip has dual Tensilica LX6 micro controllers. All Wi\+Fi logic runs on the PRO\+\_\+\+CPU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md32}{}\doxysubsection{the APP\+\_\+\+CPU (core 1) aka the application core.}\label{classaa_network_autotoc_md32}
+The ESP32-\/\+D0\+WDQ6 chip has dual Tensilica LX6 micro controllers. All Wi\+Fi logic runs on the PRO\+\_\+\+CPU (core0) aka the processor core. This firmware runs on \hypertarget{classaa_network_autotoc_md53}{}\doxysubsection{the APP\+\_\+\+CPU (core 1) aka the application core.}\label{classaa_network_autotoc_md53}
 
 
-Definition at line 299 of file aa\+Network.\+cpp.
+Definition at line 300 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}\label{classaa_network_ae6deeb2d04230e62a5891f2f5c459084}} 
 \index{aaNetwork@{aaNetwork}!connect@{connect}}
@@ -105,10 +109,10 @@ Manage the process of connecting to the Wi\+Fi network.
 Scan for a suitable Access Point and if one is found then connect to it using the init\+\_\+wifi() method. \begin{DoxyReturn}{Returns}
 bool where true means a connection was made and false means no connection 
 \end{DoxyReturn}
-\hypertarget{classaa_network_autotoc_md28}{}\doxysubsection{was made.}\label{classaa_network_autotoc_md28}
+\hypertarget{classaa_network_autotoc_md49}{}\doxysubsection{was made.}\label{classaa_network_autotoc_md49}
 
 
-Definition at line 200 of file aa\+Network.\+cpp.
+Definition at line 201 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_ac8b9195072733166e7bad1e5fee5580a}\label{classaa_network_ac8b9195072733166e7bad1e5fee5580a}} 
 \index{aaNetwork@{aaNetwork}!connectionStatus@{connectionStatus}}
@@ -120,10 +124,10 @@ Definition at line 200 of file aa\+Network.\+cpp.
 
 Provide human readable text for wifi connection status codes. 
 
-\hypertarget{classaa_network_autotoc_md26}{}\doxysubsection{@return const char$\ast$ \char`\"{}\+Text that explains what the code means\char`\"{}.}\label{classaa_network_autotoc_md26}
+\hypertarget{classaa_network_autotoc_md47}{}\doxysubsection{@return const char$\ast$ \char`\"{}\+Text that explains what the code means\char`\"{}.}\label{classaa_network_autotoc_md47}
 
 
-Definition at line 154 of file aa\+Network.\+cpp.
+Definition at line 155 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_a8c5caf595e69a1ddb85495824d8e1813}\label{classaa_network_a8c5caf595e69a1ddb85495824d8e1813}} 
 \index{aaNetwork@{aaNetwork}!evalSignal@{evalSignal}}
@@ -140,10 +144,10 @@ Return human readable assessment of signal strength.
 {\em int16\+\_\+t} & signal\+Strength signal in d\+Bm. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_network_autotoc_md31}{}\doxysubsection{@return const char$\ast$ Text assessment of signal strength.}\label{classaa_network_autotoc_md31}
+\hypertarget{classaa_network_autotoc_md52}{}\doxysubsection{@return const char$\ast$ Text assessment of signal strength.}\label{classaa_network_autotoc_md52}
 
 
-Definition at line 284 of file aa\+Network.\+cpp.
+Definition at line 285 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_a5480c6bb017b0c476b1ff06c0cfef7fd}\label{classaa_network_a5480c6bb017b0c476b1ff06c0cfef7fd}} 
 \index{aaNetwork@{aaNetwork}!getUniqueName@{getUniqueName}}
@@ -155,10 +159,52 @@ Definition at line 284 of file aa\+Network.\+cpp.
 
 Puts a name which is both unique and predictable into the char array \+\_\+unique\+Name\mbox{[}\mbox{]}. 
 
-Combines a prefix (HOSTNAME\+\_\+\+PREFIX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md29}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md29}
+Combines a prefix (HOSTNAME\+\_\+\+PREFIX) with the 6 byte mac address of the Wi\+Fi module to produce a name that will be unque on the network. \hypertarget{classaa_network_autotoc_md50}{}\doxysubsection{@param char $\ast$\+\_\+unique\+Name\+Ptr pointer to variable called \+\_\+unique\+Name\mbox{[}$\,$\mbox{]}.}\label{classaa_network_autotoc_md50}
 
 
-Definition at line 234 of file aa\+Network.\+cpp.
+Definition at line 235 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_a25454f1c10061c1d600820ad113c006d}\label{classaa_network_a25454f1c10061c1d600820ad113c006d}} 
+\index{aaNetwork@{aaNetwork}!pingIP@{pingIP}}
+\index{pingIP@{pingIP}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{pingIP()}{pingIP()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool aa\+Network\+::ping\+IP (\begin{DoxyParamCaption}\item[{IPAddress}]{address }\end{DoxyParamCaption})}
+
+
+
+Ping IP address once and return response. 
+
+Ping address seccified number of times and return results. 
+\begin{DoxyParams}{Parameters}
+{\em IPAddress} & Address to ping. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_network_autotoc_md54}{}\doxysubsection{@return bool Result of ping(s).}\label{classaa_network_autotoc_md54}
+
+
+Definition at line 351 of file aa\+Network.\+cpp.
+
+\mbox{\Hypertarget{classaa_network_ae02e40ab01ca4703fb99fdb413e7e81f}\label{classaa_network_ae02e40ab01ca4703fb99fdb413e7e81f}} 
+\index{aaNetwork@{aaNetwork}!pingIP@{pingIP}}
+\index{pingIP@{pingIP}!aaNetwork@{aaNetwork}}
+\doxysubsubsection{\texorpdfstring{pingIP()}{pingIP()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool aa\+Network\+::ping\+IP (\begin{DoxyParamCaption}\item[{IPAddress}]{address,  }\item[{int8\+\_\+t}]{num\+Pings }\end{DoxyParamCaption})}
+
+
+
+Ping IP address multiple times and return response. 
+
+Ping address seccified number of times and return results. 
+\begin{DoxyParams}{Parameters}
+{\em IPAddress} & Address to ping. \\
+\hline
+{\em int8\+\_\+t} & Number of times to ping the address. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classaa_network_autotoc_md55}{}\doxysubsection{@return bool Result of ping(s).}\label{classaa_network_autotoc_md55}
+
+
+Definition at line 365 of file aa\+Network.\+cpp.
 
 \mbox{\Hypertarget{classaa_network_a2939f0d11f02f932b3a1406de14c3876}\label{classaa_network_a2939f0d11f02f932b3a1406de14c3876}} 
 \index{aaNetwork@{aaNetwork}!rfSignalStrength@{rfSignalStrength}}
@@ -175,10 +221,10 @@ RSSI (Received Signal Strength Indicator) is a common measurement, but most Wi\+
 {\em int8\+\_\+t} & data\+Points is the number of readings to average together. \\
 \hline
 \end{DoxyParams}
-\hypertarget{classaa_network_autotoc_md30}{}\doxysubsection{@return long average\+RSSI which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md30}
+\hypertarget{classaa_network_autotoc_md51}{}\doxysubsection{@return long average\+RSSI which is the average of 100 signal strength readings in d\+Bm.}\label{classaa_network_autotoc_md51}
 
 
-Definition at line 266 of file aa\+Network.\+cpp.
+Definition at line 267 of file aa\+Network.\+cpp.
 
 
 
