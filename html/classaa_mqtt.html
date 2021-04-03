@@ -97,12 +97,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1be714946ce7d4ca63f4336778ada139"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_mqtt.html#a1be714946ce7d4ca63f4336778ada139">onMqttUnsubscribe</a> (uint16_t packetId)</td></tr>
 <tr class="memdesc:a1be714946ce7d4ca63f4336778ada139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle UNSUBACK message from MQTT broker.  <a href="classaa_mqtt.html#a1be714946ce7d4ca63f4336778ada139">More...</a><br /></td></tr>
 <tr class="separator:a1be714946ce7d4ca63f4336778ada139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4aec787c2d889e0b07573f100be7c22"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_mqtt.html#ac4aec787c2d889e0b07573f100be7c22">publishMQTT</a> (String topic, String msg)</td></tr>
-<tr class="memdesc:ac4aec787c2d889e0b07573f100be7c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish a message to the specified MQTT broker topic tree.  <a href="classaa_mqtt.html#ac4aec787c2d889e0b07573f100be7c22">More...</a><br /></td></tr>
-<tr class="separator:ac4aec787c2d889e0b07573f100be7c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab99783465de2e21a13eeadbb5e39b7b8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_mqtt.html#ab99783465de2e21a13eeadbb5e39b7b8">publishEvent</a> (int evtId, int evtSev, String evtMsg)</td></tr>
-<tr class="memdesc:ab99783465de2e21a13eeadbb5e39b7b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publishes messages to the health event topic on the MQTT broker.  <a href="classaa_mqtt.html#ab99783465de2e21a13eeadbb5e39b7b8">More...</a><br /></td></tr>
-<tr class="separator:ab99783465de2e21a13eeadbb5e39b7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a734c75270b275982cc4bdc79da9faafb"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_mqtt.html#a734c75270b275982cc4bdc79da9faafb">publishMQTT</a> (const char *topic, const char *msg)</td></tr>
+<tr class="memdesc:a734c75270b275982cc4bdc79da9faafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish a message to the specified MQTT broker topic tree.  <a href="classaa_mqtt.html#a734c75270b275982cc4bdc79da9faafb">More...</a><br /></td></tr>
+<tr class="separator:a734c75270b275982cc4bdc79da9faafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75dbff2495235d44ebca911e7ad86dfd"><td class="memItemLeft" align="right" valign="top"><a id="a75dbff2495235d44ebca911e7ad86dfd"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>publishEvent</b> (int evtId, int evtSev, String evtMsg)</td></tr>
+<tr class="separator:a75dbff2495235d44ebca911e7ad86dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada4234e578ec002c58e86db16b9162d8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaa_mqtt.html#ada4234e578ec002c58e86db16b9162d8">onMqttMessage</a> (char *topic, char *payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total)</td></tr>
 <tr class="memdesc:ada4234e578ec002c58e86db16b9162d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle incoming messages from MQTT broker.  <a href="classaa_mqtt.html#ada4234e578ec002c58e86db16b9162d8">More...</a><br /></td></tr>
 <tr class="separator:ada4234e578ec002c58e86db16b9162d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,7 +112,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8h_source.html#l00022">22</a> of file <a class="el" href="aa_mqtt_8h_source.html">aaMqtt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8h_source.html#l00029">29</a> of file <a class="el" href="aa_mqtt_8h_source.html">aaMqtt.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8fe0df533de2e25f1dfb2f0c8e626f7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fe0df533de2e25f1dfb2f0c8e626f7d">&#9670;&nbsp;</a></span>aaMqtt()</h2>
@@ -133,7 +133,7 @@ Static Public Member Functions</h2></td></tr>
 <h1><a class="anchor" id="autotoc_md21"></a>
 @param const char* Argument description.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00043">43</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00058">58</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -154,7 +154,7 @@ Static Public Member Functions</h2></td></tr>
 <h1><a class="anchor" id="autotoc_md22"></a>
 @brief This is the destructor for this class.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00051">51</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00066">66</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,7 +195,7 @@ Static Public Member Functions</h2></td></tr>
 <h1><a class="anchor" id="autotoc_md23"></a>
 @brief Connect to MQTT broker.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00059">59</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00074">74</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -260,7 +260,7 @@ Connect Acknowledge Flag</h2>
 </table>
 <p>=================================================================================================== </p>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00110">110</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00126">126</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +292,7 @@ Connect Acknowledge Flag</h2>
 <h1><a class="anchor" id="autotoc_md27"></a>
 @param reason Reason for disconnect</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00131">131</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00149">149</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -367,19 +367,19 @@ Connect Acknowledge Flag</h2>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Property Flags The MQTT message has a header containing the following flags. </dd></dl>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 QOS Flag</h2>
 <p>Two bits that show the QOS level of the message. Valid values are 1, 2 and 3 </p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Retain Flag</h2>
 <p>Boolean value showing whether the message is saved by the broker as the last known good value for a specified topic. When a new client subscribes to a topic, they receive the last message that is retained on that topic. </p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 DUP flag</h2>
 <p>Boolean value indicates that the message is a duplicate and was resent because the intended recipient (client or broker) did not </p>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 acknowledge the original message. This is only relevant for QoS greater than 0.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00245">245</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00264">264</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,10 +408,10 @@ acknowledge the original message. This is only relevant for QoS greater than 0.<
 </div><div class="memdoc">
 
 <p>Handle the reciept of a PUBACK message message from MQTT broker. </p>
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md40"></a>
 @param packetId Unique identifier of the message.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00273">273</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00292">292</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +482,7 @@ Table of SUBACK return codes</h1>
 </table>
 <p>=================================================================================================== </p>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00164">164</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00183">183</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
@@ -523,12 +523,12 @@ UNSUBACK Message</h1>
 <h1><a class="anchor" id="autotoc_md33"></a>
 broker, the client can assume that the subscriptions in the UNSUBSCRIBE message are deleted.</h1>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00179">179</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00198">198</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ab99783465de2e21a13eeadbb5e39b7b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab99783465de2e21a13eeadbb5e39b7b8">&#9670;&nbsp;</a></span>publishEvent()</h2>
+<a id="a734c75270b275982cc4bdc79da9faafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a734c75270b275982cc4bdc79da9faafb">&#9670;&nbsp;</a></span>publishMQTT()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -537,70 +537,15 @@ broker, the client can assume that the subscriptions in the UNSUBSCRIBE message 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void aaMqtt::publishEvent </td>
+          <td class="memname">bool aaMqtt::publishMQTT </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>evtId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>evtSev</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>evtMsg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Publishes messages to the health event topic on the MQTT broker. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">int</td><td>Event ID. </td></tr>
-    <tr><td class="paramname">int</td><td>Event severity? </td></tr>
-  </table>
-  </dd>
-</dl>
-<h1><a class="anchor" id="autotoc_md36"></a>
-@param String Event message.</h1>
-
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00218">218</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ac4aec787c2d889e0b07573f100be7c22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4aec787c2d889e0b07573f100be7c22">&#9670;&nbsp;</a></span>publishMQTT()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void aaMqtt::publishMQTT </td>
-          <td>(</td>
-          <td class="paramtype">String&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>topic</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">String&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>msg</em>&#160;</td>
         </tr>
         <tr>
@@ -639,7 +584,7 @@ Table of Published Messages</h2>
 </table>
 <p>=================================================================================================== </p>
 
-<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00202">202</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aa_mqtt_8cpp_source.html#l00220">220</a> of file <a class="el" href="aa_mqtt_8cpp_source.html">aaMqtt.cpp</a>.</p>
 
 </div>
 </div>

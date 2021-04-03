@@ -20,10 +20,11 @@ static void \mbox{\hyperlink{classaa_mqtt_a90c3bfc78093d9d05ffad2a86f06ea68}{on\
 \begin{DoxyCompactList}\small\item\em Handle SUBACK from MQTT broker. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classaa_mqtt_a1be714946ce7d4ca63f4336778ada139}{on\+Mqtt\+Unsubscribe}} (uint16\+\_\+t packet\+Id)
 \begin{DoxyCompactList}\small\item\em Handle UNSUBACK message from MQTT broker. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classaa_mqtt_ac4aec787c2d889e0b07573f100be7c22}{publish\+MQTT}} (String topic, String msg)
+static bool \mbox{\hyperlink{classaa_mqtt_a734c75270b275982cc4bdc79da9faafb}{publish\+MQTT}} (const char $\ast$topic, const char $\ast$msg)
 \begin{DoxyCompactList}\small\item\em Publish a message to the specified MQTT broker topic tree. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classaa_mqtt_ab99783465de2e21a13eeadbb5e39b7b8}{publish\+Event}} (int evt\+Id, int evt\+Sev, String evt\+Msg)
-\begin{DoxyCompactList}\small\item\em Publishes messages to the health event topic on the MQTT broker. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaa_mqtt_a75dbff2495235d44ebca911e7ad86dfd}\label{classaa_mqtt_a75dbff2495235d44ebca911e7ad86dfd}} 
+static void {\bfseries publish\+Event} (int evt\+Id, int evt\+Sev, String evt\+Msg)
+\item 
 static void \mbox{\hyperlink{classaa_mqtt_ada4234e578ec002c58e86db16b9162d8}{on\+Mqtt\+Message}} (char $\ast$topic, char $\ast$payload, Async\+Mqtt\+Client\+Message\+Properties properties, size\+\_\+t len, size\+\_\+t index, size\+\_\+t total)
 \begin{DoxyCompactList}\small\item\em Handle incoming messages from MQTT broker. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}{on\+Mqtt\+Publish}} (uint16\+\_\+t packet\+Id)
@@ -33,7 +34,7 @@ static void \mbox{\hyperlink{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}{on\
 \doxysubsection{Detailed Description}
 
 
-Definition at line 22 of file aa\+Mqtt.\+h.
+Definition at line 29 of file aa\+Mqtt.\+h.
 
 
 
@@ -51,7 +52,7 @@ This is the default constructor for this class.
 \hypertarget{classaa_mqtt_autotoc_md21}{}\doxysubsection{@param const char$\ast$ Argument description.}\label{classaa_mqtt_autotoc_md21}
 
 
-Definition at line 43 of file aa\+Mqtt.\+cpp.
+Definition at line 58 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_a87e8a4db1a43fbd5d71b77a56a15b7e0}\label{classaa_mqtt_a87e8a4db1a43fbd5d71b77a56a15b7e0}} 
 \index{aaMqtt@{aaMqtt}!````~aaMqtt@{$\sim$aaMqtt}}
@@ -62,7 +63,7 @@ Definition at line 43 of file aa\+Mqtt.\+cpp.
 \hypertarget{classaa_mqtt_autotoc_md22}{}\doxysubsection{@brief This is the destructor for this class.}\label{classaa_mqtt_autotoc_md22}
 
 
-Definition at line 51 of file aa\+Mqtt.\+cpp.
+Definition at line 66 of file aa\+Mqtt.\+cpp.
 
 
 
@@ -76,7 +77,7 @@ Definition at line 51 of file aa\+Mqtt.\+cpp.
 \hypertarget{classaa_mqtt_autotoc_md23}{}\doxysubsection{@brief Connect to MQTT broker.}\label{classaa_mqtt_autotoc_md23}
 
 
-Definition at line 59 of file aa\+Mqtt.\+cpp.
+Definition at line 74 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_adac5c0bf0c8b6ab2ba6ee6b6c5c2ad7c}\label{classaa_mqtt_adac5c0bf0c8b6ab2ba6ee6b6c5c2ad7c}} 
 \index{aaMqtt@{aaMqtt}!onMqttConnect@{onMqttConnect}}
@@ -121,7 +122,7 @@ The second flag in the CONNACK message is the connect acknowledge flag. This fla
 \end{longtabu}
 =================================================================================================== 
 
-Definition at line 110 of file aa\+Mqtt.\+cpp.
+Definition at line 126 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_a6abfaec4d1b1fbeecb547433e98fa9fc}\label{classaa_mqtt_a6abfaec4d1b1fbeecb547433e98fa9fc}} 
 \index{aaMqtt@{aaMqtt}!onMqttDisconnect@{onMqttDisconnect}}
@@ -136,7 +137,7 @@ Handle disconnecting from an MQTT broker.
 \hypertarget{classaa_mqtt_autotoc_md27}{}\doxysubsection{@param reason Reason for disconnect}\label{classaa_mqtt_autotoc_md27}
 
 
-Definition at line 131 of file aa\+Mqtt.\+cpp.
+Definition at line 149 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_ada4234e578ec002c58e86db16b9162d8}\label{classaa_mqtt_ada4234e578ec002c58e86db16b9162d8}} 
 \index{aaMqtt@{aaMqtt}!onMqttMessage@{onMqttMessage}}
@@ -166,13 +167,13 @@ All messaging comes here and get seperated by select statement.
 \begin{DoxyNote}{Note}
 Property Flags The MQTT message has a header containing the following flags. 
 \end{DoxyNote}
-\hypertarget{classaa_mqtt_autotoc_md37}{}\doxysubsubsection{QOS Flag}\label{classaa_mqtt_autotoc_md37}
-Two bits that show the QOS level of the message. Valid values are 1, 2 and 3 \hypertarget{classaa_mqtt_autotoc_md38}{}\doxysubsubsection{Retain Flag}\label{classaa_mqtt_autotoc_md38}
-Boolean value showing whether the message is saved by the broker as the last known good value for a specified topic. When a new client subscribes to a topic, they receive the last message that is retained on that topic. \hypertarget{classaa_mqtt_autotoc_md39}{}\doxysubsubsection{DUP flag}\label{classaa_mqtt_autotoc_md39}
-Boolean value indicates that the message is a duplicate and was resent because the intended recipient (client or broker) did not \hypertarget{classaa_mqtt_autotoc_md40}{}\doxysubsection{acknowledge the original message. This is only relevant for Qo\+S greater than 0.}\label{classaa_mqtt_autotoc_md40}
+\hypertarget{classaa_mqtt_autotoc_md36}{}\doxysubsubsection{QOS Flag}\label{classaa_mqtt_autotoc_md36}
+Two bits that show the QOS level of the message. Valid values are 1, 2 and 3 \hypertarget{classaa_mqtt_autotoc_md37}{}\doxysubsubsection{Retain Flag}\label{classaa_mqtt_autotoc_md37}
+Boolean value showing whether the message is saved by the broker as the last known good value for a specified topic. When a new client subscribes to a topic, they receive the last message that is retained on that topic. \hypertarget{classaa_mqtt_autotoc_md38}{}\doxysubsubsection{DUP flag}\label{classaa_mqtt_autotoc_md38}
+Boolean value indicates that the message is a duplicate and was resent because the intended recipient (client or broker) did not \hypertarget{classaa_mqtt_autotoc_md39}{}\doxysubsection{acknowledge the original message. This is only relevant for Qo\+S greater than 0.}\label{classaa_mqtt_autotoc_md39}
 
 
-Definition at line 245 of file aa\+Mqtt.\+cpp.
+Definition at line 264 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}\label{classaa_mqtt_a235eb322300f2c9616754ba202962ad0}} 
 \index{aaMqtt@{aaMqtt}!onMqttPublish@{onMqttPublish}}
@@ -184,10 +185,10 @@ Definition at line 245 of file aa\+Mqtt.\+cpp.
 
 Handle the reciept of a PUBACK message message from MQTT broker. 
 
-\hypertarget{classaa_mqtt_autotoc_md41}{}\doxysubsection{@param packet\+Id Unique identifier of the message.}\label{classaa_mqtt_autotoc_md41}
+\hypertarget{classaa_mqtt_autotoc_md40}{}\doxysubsection{@param packet\+Id Unique identifier of the message.}\label{classaa_mqtt_autotoc_md40}
 
 
-Definition at line 273 of file aa\+Mqtt.\+cpp.
+Definition at line 292 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_a90c3bfc78093d9d05ffad2a86f06ea68}\label{classaa_mqtt_a90c3bfc78093d9d05ffad2a86f06ea68}} 
 \index{aaMqtt@{aaMqtt}!onMqttSubscribe@{onMqttSubscribe}}
@@ -227,7 +228,7 @@ The broker sends one return code for each topic/\+Qo\+S-\/pair that it receives 
 \end{longtabu}
 =================================================================================================== 
 
-Definition at line 164 of file aa\+Mqtt.\+cpp.
+Definition at line 183 of file aa\+Mqtt.\+cpp.
 
 \mbox{\Hypertarget{classaa_mqtt_a1be714946ce7d4ca63f4336778ada139}\label{classaa_mqtt_a1be714946ce7d4ca63f4336778ada139}} 
 \index{aaMqtt@{aaMqtt}!onMqttUnsubscribe@{onMqttUnsubscribe}}
@@ -248,35 +249,13 @@ Handle UNSUBACK message from MQTT broker.
 To confirm the unsubscribe, the broker sends an UNSUBACK acknowledgement message to the client. This message contains only the packet identifier of the original UNSUBSCRIBE message (to clearly identify the message). After receiving the UNSUBACK from the \hypertarget{classaa_mqtt_autotoc_md33}{}\doxysubsection{broker, the client can assume that the subscriptions in the UNSUBSCRIBE message are deleted.}\label{classaa_mqtt_autotoc_md33}
 
 
-Definition at line 179 of file aa\+Mqtt.\+cpp.
+Definition at line 198 of file aa\+Mqtt.\+cpp.
 
-\mbox{\Hypertarget{classaa_mqtt_ab99783465de2e21a13eeadbb5e39b7b8}\label{classaa_mqtt_ab99783465de2e21a13eeadbb5e39b7b8}} 
-\index{aaMqtt@{aaMqtt}!publishEvent@{publishEvent}}
-\index{publishEvent@{publishEvent}!aaMqtt@{aaMqtt}}
-\doxysubsubsection{\texorpdfstring{publishEvent()}{publishEvent()}}
-{\footnotesize\ttfamily void aa\+Mqtt\+::publish\+Event (\begin{DoxyParamCaption}\item[{int}]{evt\+Id,  }\item[{int}]{evt\+Sev,  }\item[{String}]{evt\+Msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Publishes messages to the health event topic on the MQTT broker. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em int} & Event ID. \\
-\hline
-{\em int} & Event severity? \\
-\hline
-\end{DoxyParams}
-\hypertarget{classaa_mqtt_autotoc_md36}{}\doxysubsection{@param String Event message.}\label{classaa_mqtt_autotoc_md36}
-
-
-Definition at line 218 of file aa\+Mqtt.\+cpp.
-
-\mbox{\Hypertarget{classaa_mqtt_ac4aec787c2d889e0b07573f100be7c22}\label{classaa_mqtt_ac4aec787c2d889e0b07573f100be7c22}} 
+\mbox{\Hypertarget{classaa_mqtt_a734c75270b275982cc4bdc79da9faafb}\label{classaa_mqtt_a734c75270b275982cc4bdc79da9faafb}} 
 \index{aaMqtt@{aaMqtt}!publishMQTT@{publishMQTT}}
 \index{publishMQTT@{publishMQTT}!aaMqtt@{aaMqtt}}
 \doxysubsubsection{\texorpdfstring{publishMQTT()}{publishMQTT()}}
-{\footnotesize\ttfamily void aa\+Mqtt\+::publish\+MQTT (\begin{DoxyParamCaption}\item[{String}]{topic,  }\item[{String}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily bool aa\+Mqtt\+::publish\+MQTT (\begin{DoxyParamCaption}\item[{const char $\ast$}]{topic,  }\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -306,7 +285,7 @@ Robot Metadata   &\{robot name\}/metadata   &See metadata table for a full list 
 \end{longtabu}
 =================================================================================================== 
 
-Definition at line 202 of file aa\+Mqtt.\+cpp.
+Definition at line 220 of file aa\+Mqtt.\+cpp.
 
 
 
