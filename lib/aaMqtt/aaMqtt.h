@@ -5,13 +5,20 @@
 #define aaMqtt_h // Precompiler macro used for precompiler check.
 
 /************************************************************************************
- * @section mainIncludes Included libraries.
+ * @section mqttIncludes Included libraries.
  ************************************************************************************/
 #include <Arduino.h> // Arduino Core for ESP32. Comes with Platform.io.
 #include <WiFi.h> // Required to connect to WiFi network. Comes with Platform.io.
 #include <AsyncMqttClient.h> // MQTT. https://github.com/marvinroger/async-mqtt-clientFupOLED().
 #include "freertos/FreeRTOS.h" // OS threads. Comes with Platform.io.
 #include "freertos/timers.h" // Software Timers. Comes with Platform.io.
+
+/************************************************************************************
+ * @section mqttDeclareConstants Declare constants. 
+ ************************************************************************************/
+extern const char* TOP_OF_TREE; // Declare top of MQTT topic tree.
+extern const char* HEALTH_MQTT_TOPIC; // Declare MQTT health topic.
+extern const char* CHECKIN_MQTT_TOPIC; // Declare MQTT health topic.
 
 /************************************************************************************
  * @class Describe the class here.
@@ -29,7 +36,7 @@ class aaMqtt // Indicate that we are extending LiquidCrystal_I2C class with our 
       static void onMqttDisconnect(AsyncMqttClientDisconnectReason reason); 
       static void onMqttSubscribe(uint16_t packetId, uint8_t qos);
       static void onMqttUnsubscribe(uint16_t packetId);
-      static void publishMQTT(String topic, String msg);
+      static bool publishMQTT(const char* topic, const char* msg);
       static void publishEvent(int evtId, int evtSev, String evtMsg);
       static void onMqttMessage(char *topic, char *payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total);
       static void onMqttPublish(uint16_t packetId);
