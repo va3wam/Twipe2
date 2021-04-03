@@ -24,10 +24,17 @@
  * @section mqttHistory Edit History 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ------------------------------------------------------------
+ * 2021-04-02 Old Squire Updated topic tree constants. Now only 1 function publishes
+ *                       messages. Added logic to ensure MQTT connection is active 
+ *                       before allowing a publish to occur. This fixed an issue with
+ *                       code checking in before the broker connection was ready. 
  * 2021-03-29 Old Squire Program created.
  ************************************************************************************/
 #include <aaMqtt.h> // Header file for linking.
 
+/************************************************************************************
+ * @section mqttGlobalVariables Define global variables. Redo like below. 
+ ************************************************************************************/
 static TimerHandle_t mqttReconnectTimer; // Instantiate OS software timer.
 static const char* _uniqueName; // Unique name to prefix all topics with.
 static IPAddress _brokerIP; // IP address of broker.
@@ -35,7 +42,15 @@ static uint16_t BROKER_PORT = 1883; // Port used by MQTT broker.
 static AsyncMqttClient mqttClient; // Instantiate MQTT object.
 static const char*  cmdTopicMQTT = "NOTHING"; // Full path to incoming command topic from MQTT broker.
 static uint8_t MQTT_QOS = 1; // use Quality of Service level 1 or 0? (0 has less overhead).
+static bool _mqttConnected;
 
+/************************************************************************************
+ * @section mqttDefineConstants Define constants. 
+ ************************************************************************************/
+const char* TOP_OF_TREE = "agingApprentice/"; // Define top of MQTT topic tree.
+const char* HEALTH_MQTT_TOPIC = "health"; // Define MQTT health topic.
+const char* CHECKIN_MQTT_TOPIC = "checkin"; // Define MQTT health topic.
+ 
 /**
  * @brief This is the default constructor for this class.
  * @param const char* Argument description.
@@ -58,6 +73,7 @@ aaMqtt::~aaMqtt()
 =================================================================================================== */
 void aaMqtt::connect(IPAddress address, const char* uniqueName)
 {
+   _mqttConnected = false;
    _brokerIP = address;
    _uniqueName = uniqueName; // Prefix for all MQTT topic tree names.
    Serial.print("<aaMqtt::connect> Connecting as ");
@@ -109,19 +125,21 @@ void aaMqtt::connect(IPAddress address, const char* uniqueName)
  =================================================================================================== */
 void aaMqtt::onMqttConnect(bool sessionPresent)
 {
-   Serial.println("<onMqttConnect> Connected to MQTT");
-   Serial.print("<onMqttConnect> Session present: ");
+   Serial.print("<aaMqtt::onMqttConnect> Connected to MQTT. Session present = ");
    Serial.println(sessionPresent);
-//   uint16_t packetIdSub = mqttClient.subscribe((char *)cmdTopicMQTT.c_str(), MQTTQos); // QOS can be 0,1 or 2. controlled by MQTTQos parameter
    char buf[30];
    const char* topic = "/commands";
    strcpy(buf, _uniqueName);
    strcat(buf, topic);   
    cmdTopicMQTT = buf;   
    uint16_t packetIdSub = mqttClient.subscribe(cmdTopicMQTT, MQTT_QOS); // QOS can be 0,1 or 2. controlled by MQTTQos parameter
-   Serial.print("<onMqttConnect> Subscribing to "); Serial.print(cmdTopicMQTT);
+   Serial.print("<aaMqtt::onMqttConnect> Subscribing to "); Serial.print(cmdTopicMQTT);
    Serial.print(" at a QOS of "); Serial.print(MQTT_QOS);
    Serial.print(" with a packetId of "); Serial.println(packetIdSub);
+   _mqttConnected = true; // Flag that a broker connection now exists.
+   publishMQTT(CHECKIN_MQTT_TOPIC,_uniqueName); // Checkin with unique name.
+//   Serial.print("<aaMqtt::onMqttConnect> Sent checkin message with a packId = "); 
+//   Serial.print(" with a packetId of "); Serial.println(packetIdPub);
 } //aaMqtt::onMqttConnect()
 
 /**
@@ -130,6 +148,7 @@ void aaMqtt::onMqttConnect(bool sessionPresent)
 =================================================================================================== */
 void aaMqtt::onMqttDisconnect(AsyncMqttClientDisconnectReason reason)
 {
+   _mqttConnected = false;
    Serial.println("<onMqttDisconnect> Disconnected from MQTT");
    if (WiFi.isConnected())
    {
@@ -163,9 +182,9 @@ void aaMqtt::onMqttDisconnect(AsyncMqttClientDisconnectReason reason)
 =================================================================================================== */
 void aaMqtt::onMqttSubscribe(uint16_t packetId, uint8_t qos)
 {
-   Serial.println("<onMqttSubscribe> Subscribe acknowledged by broker.");
-   Serial.print("<onMqttSubscribe>  PacketId: ");  Serial.println(packetId);
-   Serial.print("<onMqttSubscribe>  QOS: ");       Serial.println(qos);
+   Serial.print("<aaMqtt::onMqttSubscribe> Subscribe acknowledged by broker. ");
+   Serial.print(" aPacketId = "); Serial.print(packetId);
+   Serial.print(" QOS = "); Serial.println(qos);
 } //aaMqtt::onMqttSubscribe
 
 /**
@@ -179,9 +198,8 @@ void aaMqtt::onMqttSubscribe(uint16_t packetId, uint8_t qos)
 void aaMqtt::onMqttUnsubscribe(uint16_t packetId)
 {
    // skipping adding this tiny bit to MQTT CPU tally
-   Serial.println("Unsubscribe acknowledged.");
-   Serial.print("  packetId: ");
-   Serial.println(packetId);
+//   Serial.print("<aaMqtt::onMqttUnsubscribe> Unsubscribe acknowledged by broker. packetId = ");
+//   Serial.println(packetId);
 } //aaMqtt::onMqttUnsubscribe()
 
 /**
@@ -199,26 +217,27 @@ void aaMqtt::onMqttUnsubscribe(uint16_t packetId)
  * | Balance telemetry      | {robot name}/telemetry/balance   | Angle of IMU orientation in degrees                                 |
  * | Robot Metadata         | {robot name}/metadata            | See metadata table for a full list of the data points being tracked |
 =================================================================================================== */
-void aaMqtt::publishMQTT(String topic, String msg)
+bool aaMqtt::publishMQTT(const char* topic, const char* msg)
 {
-   String message = String(millis() ) + "," + msg; // prepend timestamp to message
-   String mqttPrefix = String(_uniqueName) + String(topic);  // prepend robot name to MQTT topic
-   mqttClient.publish((char *)mqttPrefix.c_str(), MQTT_QOS, false, (char *)message.c_str()); // QOS 0-2, retain t/f
-   Serial.print("<aaMqtt::publishMQTT> Publish : ");
-   Serial.print(mqttPrefix); Serial.print(",");
-   Serial.println(message);
-} //aaMqtt::publishMQTT()
+   char fullTopic[30] = "";
+   strcpy(fullTopic,TOP_OF_TREE); // Move vendor name into full topic name.
+   strcat(fullTopic,topic); // Append topic into full topic name.
 
-/**
- * @brief Publishes messages to the health event topic on the MQTT broker.
- * @param int Event ID.
- * @param int Event severity?
- * @param String Event message.
- =================================================================================================== */
-void aaMqtt::publishEvent(int evtId, int evtSev, String evtMsg)
-{  
-   publishMQTT("/hthEvt",String(evtId) +","+ String(evtSev) +","+String(evtMsg));
-} //aaMqtt::publishEvent()
+   if(_mqttConnected == true)
+   {
+      mqttClient.publish(fullTopic, MQTT_QOS, false, msg);
+//      uint16_t packetIdPub1 = mqttClient.publish(fullTopic, MQTT_QOS, false, msg);
+//      Serial.print("<aaMqtt::publishMQTT> Publishing at QoS 1, packetId: ");
+//      Serial.println(packetIdPub1);
+      return true;
+   } //if
+   else
+   {
+//      Serial.print("<aaMqtt::publishMQTT> MQTT connect flag indicates no connecion. Not sending message ");
+//      Serial.println(msg);
+      return false;
+   } //else
+} //aaMqtt::publishMQTT()
 
 /**
  * @brief Handle incoming messages from MQTT broker
@@ -272,5 +291,5 @@ void aaMqtt::onMqttMessage(char *topic, char *payload, AsyncMqttClientMessagePro
  =================================================================================================== */
 void aaMqtt::onMqttPublish(uint16_t packetId)
 {
-
+//   Serial.print("<aaMqtt::onMqttPublish> Publish acknowledged. packetId = "); Serial.println(packetId);
 } //aaMqtt::onMqttPublish()
