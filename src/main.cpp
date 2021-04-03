@@ -39,6 +39,7 @@
  * 
  * YYYY-MM-DD Dev        Description
  * ---------- ---------- ------------------------------------------------------------
+ * 2021-04-02 Old Squire Added MQTT logic.
  * 2021-03-17 Old Squire Code base created.
  ************************************************************************************/
 #include <main.h> // Allows us to have functions appear out of order. 
@@ -122,7 +123,12 @@ void setup()
    Serial.print("<setup> Unique name = ");
    Serial.println(uniqueName);
    mqtt.connect(brokerIP, uniqueName);
-   mqtt.publishMQTT("/health", "This is a test message");
+   bool x = false;
+   while(x == false)
+   {
+      x = mqtt.publishMQTT(HEALTH_MQTT_TOPIC, "This is a test message");
+      delay(1);
+   } //while  
    Serial.println("<setup> End of setup");
 } //setup()
 
